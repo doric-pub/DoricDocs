@@ -25,24 +25,15 @@ sidebar:
     commands: Commands
     basic_usage: Basic Usage
     hello: Hello,Doric
+    advanced: Advanced
+    theory: Runtime Theory
   api:
     core: Core
     overview: Overview
-    events: Events
-    locals: Locals
-    router: Router
-    box: Box
-    rendering: Rendering
-    posts: Posts
-    scaffolds: Scaffolds
-    themes: Themes
+    js: JS
+    android: Android
+    iOS: iOS
+    web: Web
     extensions: Extensions
-    console: Console
-    deployer: Deployer
-    filter: Filter
-    generator: Generator
-    helper: Helper
-    migrator: Migrator
-    processor: Processor
-    renderer: Renderer
-    tag: Tag
+    view: View
+    plugin: Native Bridge

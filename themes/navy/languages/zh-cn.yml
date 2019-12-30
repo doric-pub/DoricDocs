@@ -26,24 +26,15 @@ sidebar:
     basic_usage: 基础用法
     writing: 写作
     hello: 你好,Doric
+    advanced: 进阶
+    theory: Doric 运行机制
   api:
     core: 核心
     overview: 概述
-    events: 事件
-    locals: 本地变量
-    router: 路由
-    box: 盒(Box)
-    rendering: 渲染
-    posts: 文章
-    scaffolds: 模版 (Scaffold)
-    themes: 主题
+    js: JS篇
+    android: Android篇
+    iOS: iOS篇
+    web: Web篇
     extensions: 扩展
-    console: 控制台 (Console)
-    deployer: 部署器 (Deployer)
-    filter: 过滤器 (Filter)
-    generator: 生成器 (Generator)
-    helper: 辅助函数 (Helper)
-    migrator: 迁移器 (Migrator)
-    processor: 处理器 (Processor)
-    renderer: 渲染引擎 (Renderer)
-    tag: 标签 (Tag)
+    view: 视图
+    plugin: 桥
