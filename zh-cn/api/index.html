@@ -43,15 +43,15 @@
   <!-- RSS -->
   <link rel="alternate" href="/atom.xml" title="Doric">
   <!-- Open Graph -->
-  <meta name="description" content="本文提供更详尽的API接口信息供您查阅，使您更深入地了解Doric组件用法或拓展使用。 ViewDoric中所有视图控件的基类。属性如下：    属性 类型 描述    width number 控件宽度   height number 控件高度   backgroundColor Color 控件背景色   corners number | { leftTop?: number; rightTo">
+  <meta name="description" content="本文提供更详尽的API接口信息供您查阅，使您更深入地了解Doric组件用法或拓展使用。 PanelDoric中的视图控制器。其内部有完整的生命周期回调。    方法 描述    onCreate Panel被创建时的回调   onDestroy Panel被销毁时的回调   onShow Panel显示在前台的回调   onHidden Panel从前台切换到后台时的回调   build(root">
 <meta property="og:type" content="website">
 <meta property="og:title" content="API">
 <meta property="og:url" content="https://doric.pub/zh-cn/api/">
 <meta property="og:site_name" content="Doric">
-<meta property="og:description" content="本文提供更详尽的API接口信息供您查阅，使您更深入地了解Doric组件用法或拓展使用。 ViewDoric中所有视图控件的基类。属性如下：    属性 类型 描述    width number 控件宽度   height number 控件高度   backgroundColor Color 控件背景色   corners number | { leftTop?: number; rightTo">
+<meta property="og:description" content="本文提供更详尽的API接口信息供您查阅，使您更深入地了解Doric组件用法或拓展使用。 PanelDoric中的视图控制器。其内部有完整的生命周期回调。    方法 描述    onCreate Panel被创建时的回调   onDestroy Panel被销毁时的回调   onShow Panel显示在前台的回调   onHidden Panel从前台切换到后台时的回调   build(root">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-12-30T09:47:06.611Z">
-<meta property="article:modified_time" content="2019-12-30T09:47:06.611Z">
+<meta property="article:published_time" content="2019-12-30T10:33:32.341Z">
+<meta property="article:modified_time" content="2019-12-30T10:33:32.341Z">
 <meta property="article:author" content="Zhou Pengfei">
 <meta name="twitter:card" content="summary">
   <!-- Google Analytics -->
@@ -113,6 +113,46 @@
               </header>
               <div class="article-content" itemprop="articleBody">
                 <p>本文提供更详尽的API接口信息供您查阅，使您更深入地了解Doric组件用法或拓展使用。</p>
+<h2 id="Panel" class="article-heading"><a href="#Panel" class="headerlink" title="Panel"></a>Panel<a class="article-anchor" href="#Panel" aria-hidden="true"></a></h2><p>Doric中的视图控制器。其内部有完整的生命周期回调。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>onCreate</code></td>
+<td>Panel被创建时的回调</td>
+</tr>
+<tr>
+<td><code>onDestroy</code></td>
+<td>Panel被销毁时的回调</td>
+</tr>
+<tr>
+<td><code>onShow</code></td>
+<td>Panel显示在前台的回调</td>
+</tr>
+<tr>
+<td><code>onHidden</code></td>
+<td>Panel从前台切换到后台时的回调</td>
+</tr>
+<tr>
+<td><code>build(root:Group)</code></td>
+<td>构建视图时的回调</td>
+</tr>
+<tr>
+<td><code>getRootView():Group</code></td>
+<td>获取根视图</td>
+</tr>
+<tr>
+<td><code>getInitData():object|undefined</code></td>
+<td>获取初始化参数</td>
+</tr>
+</tbody></table>
+<h2 id="Entry" class="article-heading"><a href="#Entry" class="headerlink" title="Entry"></a>Entry<a class="article-anchor" href="#Entry" aria-hidden="true"></a></h2><p>用于<code>Panel</code>子类的注解，表示Doric程序运行的入口。<br>被其标记的Panel类将被自动创建实例并挂载。<br>用法如下:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entry</span> </span><br><span class="line">MyPanel <span class="keyword">extends</span> Panel &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="View" class="article-heading"><a href="#View" class="headerlink" title="View"></a>View<a class="article-anchor" href="#View" aria-hidden="true"></a></h2><p>Doric中所有视图控件的基类。<br>属性如下：</p>
 <table>
 <thead>
@@ -213,10 +253,173 @@
 <td>文本对齐方式</td>
 </tr>
 </tbody></table>
-<h3 id="Input" class="article-heading"><a href="#Input" class="headerlink" title="Input"></a>Input<a class="article-anchor" href="#Input" aria-hidden="true"></a></h3><h3 id="Image" class="article-heading"><a href="#Image" class="headerlink" title="Image"></a>Image<a class="article-anchor" href="#Image" aria-hidden="true"></a></h3><h3 id="VLayout" class="article-heading"><a href="#VLayout" class="headerlink" title="VLayout"></a>VLayout<a class="article-anchor" href="#VLayout" aria-hidden="true"></a></h3><h3 id="HLayout" class="article-heading"><a href="#HLayout" class="headerlink" title="HLayout"></a>HLayout<a class="article-anchor" href="#HLayout" aria-hidden="true"></a></h3><h3 id="Stack" class="article-heading"><a href="#Stack" class="headerlink" title="Stack"></a>Stack<a class="article-anchor" href="#Stack" aria-hidden="true"></a></h3><h3 id="List" class="article-heading"><a href="#List" class="headerlink" title="List"></a>List<a class="article-anchor" href="#List" aria-hidden="true"></a></h3><h3 id="Scroller" class="article-heading"><a href="#Scroller" class="headerlink" title="Scroller"></a>Scroller<a class="article-anchor" href="#Scroller" aria-hidden="true"></a></h3><h3 id="Slider" class="article-heading"><a href="#Slider" class="headerlink" title="Slider"></a>Slider<a class="article-anchor" href="#Slider" aria-hidden="true"></a></h3><h2 id="Panel" class="article-heading"><a href="#Panel" class="headerlink" title="Panel"></a>Panel<a class="article-anchor" href="#Panel" aria-hidden="true"></a></h2><h2 id="Entry" class="article-heading"><a href="#Entry" class="headerlink" title="Entry"></a>Entry<a class="article-anchor" href="#Entry" aria-hidden="true"></a></h2>
+<h3 id="Input" class="article-heading"><a href="#Input" class="headerlink" title="Input"></a>Input<a class="article-anchor" href="#Input" aria-hidden="true"></a></h3><p><code>Input</code>控件用于文本输入或编辑<br>属性如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>text</td>
+<td>string</td>
+<td>已输入文本</td>
+</tr>
+<tr>
+<td>textColor</td>
+<td>Color</td>
+<td>已输入文本颜色</td>
+</tr>
+<tr>
+<td>textSize</td>
+<td>number</td>
+<td>已输入文本尺寸</td>
+</tr>
+<tr>
+<td>textAlignmnet</td>
+<td>Gravity</td>
+<td>文本对齐方式</td>
+</tr>
+<tr>
+<td>hintText</td>
+<td>string</td>
+<td>提示文案</td>
+</tr>
+<tr>
+<td>hintTextColor</td>
+<td>Color</td>
+<td>提示文案颜色</td>
+</tr>
+<tr>
+<td>multiline</td>
+<td>boolean</td>
+<td>是否多行文本</td>
+</tr>
+<tr>
+<td>onTextChange</td>
+<td>(text: string) =&gt; void</td>
+<td>文本变化回调</td>
+</tr>
+<tr>
+<td>onFocusChange</td>
+<td>(focused: boolean) =&gt; void</td>
+<td>输入焦点变化回调</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getText</td>
+<td>(context: BridgeContext)=&gt;Promise<string></string></td>
+<td>获取当前已输入文本</td>
+</tr>
+<tr>
+<td>setSelection</td>
+<td>(context: BridgeContext, start: number, end: number = start)=&gt;Promise<any></any></td>
+<td>设置选中项</td>
+</tr>
+<tr>
+<td>requestFocus</td>
+<td>(context: BridgeContext)=&gt;Promise<any></any></td>
+<td>请求获取焦点</td>
+</tr>
+<tr>
+<td>releaseFocus</td>
+<td>(context: BridgeContext)=&gt;Promise<any></any></td>
+<td>请求释放焦点</td>
+</tr>
+</tbody></table>
+<h3 id="Image" class="article-heading"><a href="#Image" class="headerlink" title="Image"></a>Image<a class="article-anchor" href="#Image" aria-hidden="true"></a></h3><p><code>Image</code>控件用于展示图片<br>属性如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>imageUrl</td>
+<td>string</td>
+<td>图片在线地址</td>
+</tr>
+<tr>
+<td>imageBase64</td>
+<td>string</td>
+<td>Base64编码的图片内容</td>
+</tr>
+<tr>
+<td>scaleType</td>
+<td>ScaleType</td>
+<td>图片缩放方式</td>
+</tr>
+<tr>
+<td>isBlur</td>
+<td>boolean</td>
+<td>是否高斯模糊</td>
+</tr>
+<tr>
+<td>loadCallback</td>
+<td>(image: { width: number; height: number } | undefined) =&gt; void</td>
+<td>图片加载回调</td>
+</tr>
+</tbody></table>
+<h3 id="VLayout" class="article-heading"><a href="#VLayout" class="headerlink" title="VLayout"></a>VLayout<a class="article-anchor" href="#VLayout" aria-hidden="true"></a></h3><p><code>VLayout</code>是线性垂直布局容器控件</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>space</td>
+<td>number</td>
+<td>子控件间距</td>
+</tr>
+<tr>
+<td>gravity</td>
+<td>Gravity</td>
+<td>水平方向上子控件的对齐方式</td>
+</tr>
+</tbody></table>
+<h3 id="HLayout" class="article-heading"><a href="#HLayout" class="headerlink" title="HLayout"></a>HLayout<a class="article-anchor" href="#HLayout" aria-hidden="true"></a></h3><p><code>HLayout</code>是线性垂直布局容器控件</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>space</td>
+<td>number</td>
+<td>子控件间距</td>
+</tr>
+<tr>
+<td>gravity</td>
+<td>Gravity</td>
+<td>垂直方向上子控件的对齐方式</td>
+</tr>
+</tbody></table>
+<h3 id="Stack" class="article-heading"><a href="#Stack" class="headerlink" title="Stack"></a>Stack<a class="article-anchor" href="#Stack" aria-hidden="true"></a></h3><p><code>Stack</code>是层叠布局容器控件<br>子控件都是相对于其左上角顶点摆放</p>
+<h3 id="List" class="article-heading"><a href="#List" class="headerlink" title="List"></a>List<a class="article-anchor" href="#List" aria-hidden="true"></a></h3><p><code>List</code>是列表控件</p>
+<h3 id="Scroller" class="article-heading"><a href="#Scroller" class="headerlink" title="Scroller"></a>Scroller<a class="article-anchor" href="#Scroller" aria-hidden="true"></a></h3><p><code>Scroller</code>是滑动控件</p>
+<h3 id="Slider" class="article-heading"><a href="#Slider" class="headerlink" title="Slider"></a>Slider<a class="article-anchor" href="#Slider" aria-hidden="true"></a></h3><p><code>Slider</code>是幻灯片控件</p>
+
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2019-12-30T09:47:06.611Z" itemprop="dateModified">上次更新：2019-12-30</time>
+                <time class="article-footer-updated" datetime="2019-12-30T10:33:32.341Z" itemprop="dateModified">上次更新：2019-12-30</time>
                 <a href="js.html" class="article-footer-next" title="JS篇"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
@@ -225,7 +428,7 @@
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#View"><span class="toc-text">View</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Text"><span class="toc-text">Text</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input"><span class="toc-text">Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image"><span class="toc-text">Image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VLayout"><span class="toc-text">VLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLayout"><span class="toc-text">HLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stack"><span class="toc-text">Stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List"><span class="toc-text">List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scroller"><span class="toc-text">Scroller</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slider"><span class="toc-text">Slider</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Panel"><span class="toc-text">Panel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Entry"><span class="toc-text">Entry</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Panel"><span class="toc-text">Panel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Entry"><span class="toc-text">Entry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#View"><span class="toc-text">View</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Text"><span class="toc-text">Text</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input"><span class="toc-text">Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image"><span class="toc-text">Image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VLayout"><span class="toc-text">VLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLayout"><span class="toc-text">HLayout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stack"><span class="toc-text">Stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List"><span class="toc-text">List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scroller"><span class="toc-text">Scroller</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slider"><span class="toc-text">Slider</span></a></li></ol></li></ol>
               <a href="#" id="article-toc-top">回到顶部</a>
             </div>
           </aside>
