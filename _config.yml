@@ -24,3 +24,7 @@ highlight:
   line_number: false
 
 github: doric-pub/Doric
+
+deploy:
+  type: 'git'
+  repo: 'git@github.com:doric-pub/DoricDocs.git'
