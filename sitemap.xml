@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://doric.pub/zh-cn/</loc>
+    
+    <lastmod>2019-12-30T05:53:46.988Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://doric.pub/</loc>
     
-    <lastmod>2019-12-30T04:51:05.414Z</lastmod>
+    <lastmod>2019-12-30T05:53:16.687Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/icon/manifest.json</loc>
+    
+    <lastmod>2019-12-30T05:09:50.487Z</lastmod>
     
   </url>
   
