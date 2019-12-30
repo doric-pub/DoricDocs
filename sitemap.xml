@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://doric.pub/extensions/</loc>
+    
+    <lastmod>2019-12-30T09:53:29.493Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://doric.pub/zh-cn/api/</loc>
     
     <lastmod>2019-12-30T09:47:06.611Z</lastmod>
@@ -44,14 +51,14 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/view</loc>
+    <loc>https://doric.pub/zh-cn/api/web</loc>
     
     <lastmod>2019-12-30T08:11:14.310Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/web</loc>
+    <loc>https://doric.pub/zh-cn/api/view</loc>
     
     <lastmod>2019-12-30T08:11:14.310Z</lastmod>
     
