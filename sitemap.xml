@@ -4,7 +4,7 @@
   <url>
     <loc>https://doric.pub/zh-cn/api/</loc>
     
-    <lastmod>2019-12-30T09:27:16.199Z</lastmod>
+    <lastmod>2019-12-30T09:47:06.611Z</lastmod>
     
   </url>
   
@@ -44,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/web</loc>
-    
-    <lastmod>2019-12-30T08:11:14.310Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/zh-cn/api/view</loc>
     
     <lastmod>2019-12-30T08:11:14.310Z</lastmod>
@@ -58,14 +51,21 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/js</loc>
+    <loc>https://doric.pub/zh-cn/api/web</loc>
+    
+    <lastmod>2019-12-30T08:11:14.310Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/zh-cn/api/ios</loc>
     
     <lastmod>2019-12-30T08:11:14.309Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/ios</loc>
+    <loc>https://doric.pub/zh-cn/api/js</loc>
     
     <lastmod>2019-12-30T08:11:14.309Z</lastmod>
     
