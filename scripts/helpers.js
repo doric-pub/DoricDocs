@@ -9,7 +9,7 @@ const full_url_for = hexo.extend.helper.get('full_url_for').bind(hexo);
 
 const localizedPath = ['docs', 'api'];
 
-hexo.extend.helper.register('page_nav', function() {
+hexo.extend.helper.register('page_nav', function () {
   const type = this.page.canonical_path.split('/')[0];
   const sidebar = this.site.data.sidebar[type];
   const path = basename(this.path);
@@ -37,7 +37,7 @@ hexo.extend.helper.register('page_nav', function() {
   return result;
 });
 
-hexo.extend.helper.register('doc_sidebar', function(className) {
+hexo.extend.helper.register('doc_sidebar', function (className) {
   const type = this.page.canonical_path.split('/')[0];
   const sidebar = this.site.data.sidebar[type];
   const path = basename(this.path);
@@ -63,7 +63,7 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
   return result;
 });
 
-hexo.extend.helper.register('header_menu', function(className) {
+hexo.extend.helper.register('header_menu', function (className) {
   const menu = this.site.data.menu;
   let result = '';
   const self = this;
@@ -80,14 +80,14 @@ hexo.extend.helper.register('header_menu', function(className) {
   return result;
 });
 
-hexo.extend.helper.register('canonical_url', function(lang) {
+hexo.extend.helper.register('canonical_url', function (lang) {
   let path = this.page.path;
   if (lang && lang !== 'en') path = lang + '/' + path;
 
   return full_url_for(path);
 });
 
-hexo.extend.helper.register('url_for_lang', function(path) {
+hexo.extend.helper.register('url_for_lang', function (path) {
   const lang = this.page.lang;
   let url = this.url_for(path);
 
@@ -96,15 +96,15 @@ hexo.extend.helper.register('url_for_lang', function(path) {
   return url;
 });
 
-hexo.extend.helper.register('raw_link', path => `https://github.com/hexojs/site/edit/master/source/${path}`);
+hexo.extend.helper.register('raw_link', path => `https://github.com/doric-pub/DoricDocs/edit/master/source/${path}`);
 
 hexo.extend.helper.register('page_anchor', str => {
-  const $ = cheerio.load(str, {decodeEntities: false});
+  const $ = cheerio.load(str, { decodeEntities: false });
   const headings = $('h1, h2, h3, h4, h5, h6');
 
   if (!headings.length) return str;
 
-  headings.each(function() {
+  headings.each(function () {
     const id = $(this).attr('id');
 
     $(this)
@@ -116,9 +116,9 @@ hexo.extend.helper.register('page_anchor', str => {
 });
 
 hexo.extend.helper.register('lunr_index', data => {
-  const index = lunr(function() {
-    this.field('name', {boost: 10});
-    this.field('tags', {boost: 50});
+  const index = lunr(function () {
+    this.field('name', { boost: 10 });
+    this.field('tags', { boost: 50 });
     this.field('description');
     this.ref('id');
 
@@ -139,26 +139,26 @@ hexo.extend.helper.register('lunr_index', data => {
 });
 
 // Will be replace with full_url_for after hexo v4 release
-hexo.extend.helper.register('canonical_path_for_nav', function() {
+hexo.extend.helper.register('canonical_path_for_nav', function () {
   const path = this.page.canonical_path;
 
   if (path.startsWith('docs/') || path.startsWith('api/')) return path;
   return '';
 });
 
-hexo.extend.helper.register('lang_name', function(lang) {
+hexo.extend.helper.register('lang_name', function (lang) {
   const data = this.site.data.languages[lang];
   return data.name || data;
 });
 
-hexo.extend.helper.register('disqus_lang', function() {
+hexo.extend.helper.register('disqus_lang', function () {
   const lang = this.page.lang;
   const data = this.site.data.languages[lang];
 
   return data.disqus_lang || lang;
 });
 
-hexo.extend.helper.register('hexo_version', function() {
+hexo.extend.helper.register('hexo_version', function () {
   return this.env.version;
 });
 
