@@ -9,9 +9,7 @@ menu:
 
 index:
   get_started: 开始使用
-  theme_intro: 在众多美观、强大、可定制的主题中选择；使用任何兼容的模板引擎创建自己的主题。
-  theme_link: 探索主题
-
+  
 page:
   contents: 目录
   back_to_top: 回到顶部
@@ -24,34 +22,10 @@ sidebar:
   docs:
     getting_started: 开始使用
     overview: 概述
-    setup: 建站
-    configuration: 配置
     commands: 命令
-    migration: 迁移
-    basic_usage: 基本操作
+    basic_usage: 基础用法
     writing: 写作
-    front_matter: Front-matter
-    tag_plugins: 标签插件
-    asset_folders: 资源文件夹
-    data_files: 数据文件夹
-    server: 服务器
-    generating: 生成器
-    deployment: 部署
-    github_pages: GitHub Pages
-    gitlab_pages: GitLab Pages
-    one_command_deployment: 一键部署
-    customization: 自定义
-    permalinks: 永久链接
-    themes: 主题
-    structure: 结构
-    templates: 模版
-    variables: 变量
-    helpers: 辅助函数
-    internationalization: 国际化 (i18n)
-    plugins: 插件
-    miscellaneous: 其他
-    troubleshooting: 问题解答
-    contributing: 贡献
+    hello: 你好,Doric
   api:
     core: 核心
     overview: 概述
