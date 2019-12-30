@@ -1,0 +1,6 @@
+- name: doriclib-media
+  description: Doric official media library provides video player
+  link: https://github.com/doric-pub/doriclib-media
+  tags:
+    - media
+    - player
