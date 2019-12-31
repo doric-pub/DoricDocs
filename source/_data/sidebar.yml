@@ -2,6 +2,7 @@ docs:
   getting_started:
     overview: index.html
     commands: commands.html
+    mvvm: mvvm.html
   basic_usage:
     hello: hello.html
   advanced:

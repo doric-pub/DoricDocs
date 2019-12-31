@@ -1,7 +1,7 @@
 ---
-title: Doric Runtime
+title: Doric 运行机制
 ---
-This article aims to explain the operation principle and mechanism of Doric. Native refers to terminal platforms such as Android and iOS
+本文旨在说明Doric的运行原理及机制。本文所指的Native指的是Android，iOS等终端平台
 
 
 ## 整体流程

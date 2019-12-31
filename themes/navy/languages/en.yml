@@ -27,6 +27,7 @@ sidebar:
     hello: Hello,Doric
     advanced: Advanced
     theory: Runtime Theory
+    mvvm: MVVM of Doric
   api:
     core: Core
     overview: Overview
