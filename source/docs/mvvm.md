@@ -7,6 +7,8 @@ MVVM是Model-View-ViewModel的简写。在Doric中我们推荐使用MVVM进行�
 
 本文阐述了Doric中MVVM架构使用及计数器示例。
 
+您可以通过[Doric Playground](https://doric-pub.github.io/DoricPlayground/play/public/?e=77#example/2) 快速查看并运行本文源码
+
 # MVVM
 
 ## 

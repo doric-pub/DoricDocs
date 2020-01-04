@@ -26,15 +26,14 @@
   <div class="wrapper">
     <div class="inner">
       {{ page.content }}
-      <ul id="intro-cmd-wrap">
-        <li class="intro-cmd-item">npm install doric-cli -g</li>
-        <li class="intro-cmd-item">doric create HelloDoric</li>
-        <li class="intro-cmd-item">cd HelloDoric/js</li>
-        <li class="intro-cmd-item">doric dev</li>
-      </ul>
       <div id="intro-get-started-wrap">
         <a href="docs/" id="intro-get-started-link">{{ __('index.get_started') }}</a>
       </div>
     </div>
   </div>
 </div>
+
+<iframe id="playground"  
+        src = "https://doric-pub.github.io/DoricPlayground/play/public" 
+        style = "width:100%;height:100%;">
+</iframe>

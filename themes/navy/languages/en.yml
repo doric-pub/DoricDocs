@@ -6,6 +6,7 @@ menu:
   themes: Themes
   about: About
   search: Search
+  playground: Playground
 
 index:
   get_started: Get started
