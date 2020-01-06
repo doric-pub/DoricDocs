@@ -1,5 +1,5 @@
 docs: /docs/
 api: /api/
 extension: /extensions/
-playground: /#playground
+playground: https://p.doric.pub/play/public/#example/HelloDoric.ts
 about: /about/
