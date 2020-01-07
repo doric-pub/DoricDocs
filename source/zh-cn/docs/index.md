@@ -7,8 +7,9 @@ title: 文档
 
 ![Doric](http://www.kedo.gov.cn/upload/resources/image/2017/07/24/160817.png)
 
-Doric 是一个极简高效的跨端开发框架，使用[TypeScript](https://www.typescriptlang.org/index.html)编写布局，编译成js代码后可以在多种平台上直接运行，实现一份代码多目标执行。
-目前已经支持Android、iOS、Web及Qt，后续可按需接入更多场景平台。
+**Doric** 是一个极简高效的跨端开发框架，使用[**TypeScript**](https://www.typescriptlang.org/index.html)作为开发语言。
+上层遵循[**MVVM**](./mvvm.html)设计，可以在多终端平台上执行，实现一份代码多处执行。
+目前已经支持**Android**、**iOS**、**Web**及**Qt**，后续可按需接入更多场景平台。
 
 ## 安装
 

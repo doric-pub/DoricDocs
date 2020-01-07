@@ -3,7 +3,7 @@ title: Hello, Doric
 ---
 本文档将创建一个基本的Doric页面，帮助您熟悉Doric的用法。
 请在运行本文档前准备好开发环境，可参考 [概述](./)
-您可以通过[Doric Playground](https://p.doric.pub/play/public/#example/HelloDoric.ts) 快速查看并运行本文源码
+您可以通过[Doric Playground](https://p.doric.pub/play/#example/HelloDoric.ts) 快速查看并运行本文源码
 ## 创建Doric项目
 ```bash
 $ doric create HelloDoric
