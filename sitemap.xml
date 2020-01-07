@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://doric.pub/about/</loc>
+    
+    <lastmod>2020-01-07T03:43:49.842Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://doric.pub/docs/hello</loc>
     
     <lastmod>2020-01-06T08:00:50.177Z</lastmod>
@@ -58,6 +65,13 @@
   </url>
   
   <url>
+    <loc>https://doric.pub/zh-cn/api/android</loc>
+    
+    <lastmod>2019-12-31T09:26:54.766Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://doric.pub/zh-cn/api/js</loc>
     
     <lastmod>2019-12-31T09:26:54.766Z</lastmod>
@@ -66,13 +80,6 @@
   
   <url>
     <loc>https://doric.pub/zh-cn/api/web</loc>
-    
-    <lastmod>2019-12-31T09:26:54.766Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://doric.pub/zh-cn/api/android</loc>
     
     <lastmod>2019-12-31T09:26:54.766Z</lastmod>
     
