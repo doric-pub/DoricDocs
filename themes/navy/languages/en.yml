@@ -29,6 +29,7 @@ sidebar:
     advanced: Advanced
     theory: Runtime Theory
     mvvm: MVVM of Doric
+    diagram: Overall Diagram
   api:
     core: Core
     overview: Overview

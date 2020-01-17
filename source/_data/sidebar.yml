@@ -3,6 +3,7 @@ docs:
     overview: index.html
     commands: commands.html
     mvvm: mvvm.html
+    diagram: diagram.html
   basic_usage:
     hello: hello.html
   advanced:
