@@ -2,7 +2,7 @@
 <html lang="en">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>Doric</title>
+  <title>视图 | Doric</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
@@ -43,15 +43,15 @@
   <!-- RSS -->
   <link rel="alternate" href="/atom.xml" title="Doric">
   <!-- Open Graph -->
-  <meta name="description" content="Cross-platform development framework">
+  <meta name="description" content="扩展自定义视图需要通过如下步骤：  JS层面的定义和导出 Android，iOS，Web和Qt部分相应原生组件的实现    本文将通过实现一个可拖拽的视图组件来阐述视图的扩展方式。  JavaScript部分的定义和导出 作为视图容器层，需要有视图容器的基本属性，因此这里声明一个可拖拽接口IDraggable继承IStack接口 Draggable作为Stack的子集同时实现IDraggable">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Doric">
+<meta property="og:title" content="视图">
 <meta property="og:url" content="https://doric.pub/api/view">
 <meta property="og:site_name" content="Doric">
-<meta property="og:description" content="Cross-platform development framework">
+<meta property="og:description" content="扩展自定义视图需要通过如下步骤：  JS层面的定义和导出 Android，iOS，Web和Qt部分相应原生组件的实现    本文将通过实现一个可拖拽的视图组件来阐述视图的扩展方式。  JavaScript部分的定义和导出 作为视图容器层，需要有视图容器的基本属性，因此这里声明一个可拖拽接口IDraggable继承IStack接口 Draggable作为Stack的子集同时实现IDraggable">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-30T08:06:16.645Z">
-<meta property="article:modified_time" content="2019-12-30T08:06:16.644Z">
+<meta property="article:published_time" content="2020-02-20T02:04:00.889Z">
+<meta property="article:modified_time" content="2020-02-20T02:04:00.889Z">
 <meta property="article:author" content="Zhou Pengfei">
 <meta name="twitter:card" content="summary">
   <!-- Google Analytics -->
@@ -108,14 +108,44 @@
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name"></h1>
+                <h1 class="article-title" itemprop="name">视图</h1>
                 <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/api/view.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="Improve this doc"><i class="fa fa-pencil"></i></a>
               </header>
               <div class="article-content" itemprop="articleBody">
-                
+                <blockquote>
+<p>扩展自定义视图需要通过如下步骤：</p>
+<ul>
+<li>JS层面的定义和导出</li>
+<li>Android，iOS，Web和Qt部分相应原生组件的实现</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>本文将通过实现一个可拖拽的视图组件来阐述视图的扩展方式。</p>
+</blockquote>
+<h2 id="JavaScript部分的定义和导出" class="article-heading"><a href="#JavaScript部分的定义和导出" class="headerlink" title="JavaScript部分的定义和导出"></a>JavaScript部分的定义和导出<a class="article-anchor" href="#JavaScript部分的定义和导出" aria-hidden="true"></a></h2><ul>
+<li>作为视图容器层，需要有视图容器的基本属性，因此这里声明一个可拖拽接口IDraggable继承IStack接口</li>
+<li>Draggable作为Stack的子集同时实现IDraggable接口，包含一个onDrag方法，该方法包含修饰器Property，表明此方法可以被动态修改</li>
+<li>draggable方法接受IDraggable接口的具体实现和内部子视图的数组，来生成一个Draggable视图的实例</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright [2019] [Doric.Pub]</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="comment"> * you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment"> * You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment"> * distributed under the License is distributed on an "AS IS" BASIS,</span></span><br><span class="line"><span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment"> * See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment"> * limitations under the License.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> &#123; Property, View &#125; <span class="keyword">from</span> <span class="string">"../ui/view"</span></span><br><span class="line"><span class="keyword">import</span> &#123; IStack, Stack &#125; <span class="keyword">from</span> <span class="string">"../widget/layouts"</span></span><br><span class="line"><span class="keyword">import</span> &#123; layoutConfig &#125; <span class="keyword">from</span> <span class="string">"../util/layoutconfig"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> interface IDraggable extends IStack &#123;</span><br><span class="line">    onDrag?: <span class="function">(<span class="params">x: number, y: number</span>) =&gt;</span> <span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Draggable</span> <span class="keyword">extends</span> <span class="title">Stack</span> <span class="title">implements</span> <span class="title">IDraggable</span> </span>&#123;</span><br><span class="line">    @Property</span><br><span class="line">    onDrag?: <span class="function">(<span class="params">x: number, y: number</span>) =&gt;</span> <span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">draggable</span>(<span class="params">config: IDraggable, views: View[]</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> ret = <span class="keyword">new</span> Draggable</span><br><span class="line">    ret.layoutConfig = layoutConfig().fit()</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> config) &#123;</span><br><span class="line">        <span class="built_in">Reflect</span>.set(ret, key, <span class="built_in">Reflect</span>.get(config, key, config), ret)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> v <span class="keyword">of</span> views) &#123;</span><br><span class="line">        ret.addChild(v)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了提供给外部使用，则可以采用ES6的导出</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'./draggable'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Native部分的实现" class="article-heading"><a href="#Native部分的实现" class="headerlink" title="Native部分的实现"></a>Native部分的实现<a class="article-anchor" href="#Native部分的实现" aria-hidden="true"></a></h2><h3 id="Android端的实现" class="article-heading"><a href="#Android端的实现" class="headerlink" title="Android端的实现"></a>Android端的实现<a class="article-anchor" href="#Android端的实现" aria-hidden="true"></a></h3><ul>
+<li>声明DraggableNode类，继承于StackNode</li>
+<li>blend方法则用来接受从JS层面传来的onDrag参数</li>
+<li>build方法返回一个DraggableView的实例，该DraggableView在onTouchEvent内通过callJSResponse此方法将该View的位置通知JS层</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> pub.doric.shader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.annotation.SuppressLint;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.view.MotionEvent;</span><br><span class="line"><span class="keyword">import</span> android.widget.FrameLayout;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.github.pengfeizhou.jscore.JSValue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pub.doric.DoricContext;</span><br><span class="line"><span class="keyword">import</span> pub.doric.extension.bridge.DoricPlugin;</span><br><span class="line"></span><br><span class="line"><span class="meta">@DoricPlugin</span>(name = <span class="string">"Draggable"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DraggableNode</span> <span class="keyword">extends</span> <span class="title">StackNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String onDrag;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DraggableNode</span><span class="params">(DoricContext doricContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(doricContext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> FrameLayout <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DraggableView(getContext());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">blend</span><span class="params">(FrameLayout view, String name, JSValue prop)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"onDrag"</span>.equals(name)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (prop.isString()) &#123;</span><br><span class="line">                onDrag = prop.asString().value();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                onDrag = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">super</span>.blend(view, name, prop);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DraggableView</span> <span class="keyword">extends</span> <span class="title">FrameLayout</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> lastX;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> lastY;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">DraggableView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(context);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@SuppressLint</span>(<span class="string">"ClickableViewAccessibility"</span>)</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> x = (<span class="keyword">int</span>) event.getX();</span><br><span class="line">            <span class="keyword">int</span> y = (<span class="keyword">int</span>) event.getY();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> rawX = (<span class="keyword">int</span>) event.getRawX();</span><br><span class="line">            <span class="keyword">int</span> rawY = (<span class="keyword">int</span>) event.getRawY();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">switch</span> (event.getAction()) &#123;</span><br><span class="line">                <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">                    lastX = x;</span><br><span class="line">                    lastY = y;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">                    <span class="keyword">int</span> offsetX = x - lastX;</span><br><span class="line">                    <span class="keyword">int</span> offsetY = y - lastY;</span><br><span class="line">                    layout(getLeft() + offsetX, getTop() + offsetY, getRight() + offsetX, getBottom() + offsetY);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            callJSResponse(onDrag, rawX - x, rawY - y);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DoricRegistry类内显式注册DraggableNode</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.registerViewNode(DraggableNode<span class="class">.<span class="keyword">class</span>)</span>;</span><br></pre></td></tr></table></figure>
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2019-12-30T08:06:16.644Z" itemprop="dateModified">Last updated: 2019-12-30</time>
+                <time class="article-footer-updated" datetime="2020-02-20T02:04:00.889Z" itemprop="dateModified">Last updated: 2020-02-20</time>
                 <a href="web.html" class="article-footer-prev" title="Web"><i class="fa fa-chevron-left"></i><span>Prev</span></a><a href="plugin.html" class="article-footer-next" title="Native Bridge"><span>Next</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
@@ -124,7 +154,7 @@
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">Contents</strong>
-              
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript部分的定义和导出"><span class="toc-text">JavaScript部分的定义和导出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Native部分的实现"><span class="toc-text">Native部分的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android端的实现"><span class="toc-text">Android端的实现</span></a></li></ol></li></ol>
               <a href="#" id="article-toc-top">Back to Top</a>
             </div>
           </aside>

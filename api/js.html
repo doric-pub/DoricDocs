@@ -50,8 +50,8 @@
 <meta property="og:site_name" content="Doric">
 <meta property="og:description" content="Doric使用TypeScript作为开发语言，提供了一套TypeScript框架层接口。在开发Doric程序时，需依赖该框架层实现功能。 安装Doric JS程序发布在NPM官网，您可直接通过npm命令安装 $ npm install doric@latest  基础类及相关接口Panel - 页面单元面板基类具备完整的页面生命周期回调，以及区域内视图的构建逻辑。    回调 描述    onC">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-31T08:07:19.913Z">
-<meta property="article:modified_time" content="2019-12-31T08:07:19.913Z">
+<meta property="article:published_time" content="2020-02-20T03:21:22.402Z">
+<meta property="article:modified_time" content="2020-02-20T03:21:22.402Z">
 <meta property="article:author" content="Zhou Pengfei">
 <meta name="twitter:card" content="summary">
   <!-- Google Analytics -->
@@ -168,10 +168,6 @@
 <p>context中存储了当前运行所处沙盒信息。<br>当调用原生桥API时，您需要传入context作为参数。</p>
 <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">modal(context).toast(<span class="string">'This is a toast.'</span>)</span><br></pre></td></tr></table></figure>
 
-
-<p>当您自定义原生桥时，您也可直接调用context进行使用。</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//如果您定义的插件名为'myPlugin',方法名为'myMethod'</span></span><br><span class="line"><span class="keyword">const</span> resultPromise = context.myPlugin.myMethod(parameters)</span><br></pre></td></tr></table></figure>
-
 <h2 id="Environment-平台环境参数" class="article-heading"><a href="#Environment-平台环境参数" class="headerlink" title="Environment - 平台环境参数"></a>Environment - 平台环境参数<a class="article-anchor" href="#Environment-平台环境参数" aria-hidden="true"></a></h2><p>Environment提供了当前Doric应用所处平台及系统的环境参数，作为全局变量使用。<br>定义字段如下:</p>
 <table>
 <thead>
@@ -214,7 +210,7 @@
 </tbody></table>
 <p>用法如下：</p>
 <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (Environment.platform === <span class="string">'Android'</span>) &#123;</span><br><span class="line">    <span class="comment">///Do something</span></span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="View-所有视图控件的基类" class="article-heading"><a href="#View-所有视图控件的基类" class="headerlink" title="View - 所有视图控件的基类"></a>View - 所有视图控件的基类<a class="article-anchor" href="#View-所有视图控件的基类" aria-hidden="true"></a></h2><p>Doric中所有视图控件的基类。<br>属性如下：</p>
+<h1 id="View-所有视图控件的基类" class="article-heading"><a href="#View-所有视图控件的基类" class="headerlink" title="View - 所有视图控件的基类"></a>View - 所有视图控件的基类<a class="article-anchor" href="#View-所有视图控件的基类" aria-hidden="true"></a></h1><p>Doric中所有视图控件的基类。<br>属性如下：</p>
 <table>
 <thead>
 <tr>
@@ -279,6 +275,7 @@
 <td>控件的点击回调</td>
 </tr>
 </tbody></table>
+<p>下面列出Doric SDK中支持的所有控件。<br><strong>请注意，您可以通过这篇<a href="./view.html">文档</a>方便地将原生的控件转为Doric控件。</strong></p>
 <h3 id="Text-文本控件" class="article-heading"><a href="#Text-文本控件" class="headerlink" title="Text - 文本控件"></a>Text - 文本控件<a class="article-anchor" href="#Text-文本控件" aria-hidden="true"></a></h3><p>属性如下：</p>
 <table>
 <thead>
@@ -618,9 +615,249 @@
 </tbody></table>
 <p>用法如下：</p>
 <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">flowlayout(&#123;</span><br><span class="line">    layoutConfig: layoutConfig().most(),</span><br><span class="line">    itemCount: <span class="number">100</span>,</span><br><span class="line">    columnCount: <span class="number">3</span>,</span><br><span class="line">    columnSpace: <span class="number">10</span>,</span><br><span class="line">    rowSpace: <span class="number">10</span>,</span><br><span class="line">    renderItem: <span class="function">(<span class="params">idx</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> flowItem(text(&#123;</span><br><span class="line">            text: <span class="string">`<span class="subst">$&#123;idx&#125;</span>`</span>,</span><br><span class="line">            textColor: Color.WHITE,</span><br><span class="line">            textSize: <span class="number">20</span>,</span><br><span class="line">            layoutConfig: layoutConfig().fit().configAlignmnet(Gravity.Center)</span><br><span class="line">        &#125;)).apply(&#123;</span><br><span class="line">            backgroundColor: colors[idx % colors.length],</span><br><span class="line">            height: <span class="number">50</span> + (idx % <span class="number">3</span>) * <span class="number">20</span>,</span><br><span class="line">            layoutConfig: layoutConfig().configWidth(LayoutSpec.MOST),</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="原生功能插件列表" class="article-heading"><a href="#原生功能插件列表" class="headerlink" title="原生功能插件列表"></a>原生功能插件列表<a class="article-anchor" href="#原生功能插件列表" aria-hidden="true"></a></h1><p>Doric在平台原生能力之上提供一套默认的JS API，您可方便地在TypeScript代码中调用平台能力。<br><strong>您可以参照这篇文档<a href="./plugin.html">Native插件拓展</a>方便地开发您自己的插件</strong></p>
+<h2 id="Module-amp-Method" class="article-heading"><a href="#Module-amp-Method" class="headerlink" title="Module &amp; Method"></a>Module &amp; Method<a class="article-anchor" href="#Module-amp-Method" aria-hidden="true"></a></h2><p>在Doric中，插件按照模块的粒度进行管理。功能相近的一组API接口作为一个Module注册进Doric中,Module中每个API作为Method。<br>所以，请保持Module命名空间唯一。<br>举例：在Module<code>modal</code>中，存放着<code>toast</code>、<code>alert</code>、<code>confirm</code>等Method。</p>
+<h2 id="BridgeContext" class="article-heading"><a href="#BridgeContext" class="headerlink" title="BridgeContext"></a>BridgeContext<a class="article-anchor" href="#BridgeContext" aria-hidden="true"></a></h2><p><code>BridgeContext</code>定义了您当前Doric运行程序上下文<code>context</code>的类型。<br>当您从Doric中import任意变量(直接import {}都可以)时，<code>context</code>变量即可使用。<br>当您自定义原生桥时，您也可直接调用context进行使用。<br><code>BridgeContext</code> 类型结构如下：<br>属性 |类型 | 描述<br>— | — | —<br>id|string|标识沙箱的唯一ID<br>entity|any|实体内容，在Doric中即为<code>@Entry</code>所修饰的类生成的实例<br>callNative|(namespace: string, method: string, args?: any)=&gt;Promise<any>|通信API，用于与原生层进行通信，推荐不直接使用。<br>function2Id|(func:Function)=&gt;string|将Function转为string，用于某种场景下原生层与JS层通信时的数据转换<br>removeFuncById|(funcId:string)=&gt;void|用于释放经<code>function2Id</code>转换的Function</any></p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//如果您定义的插件名为'myPlugin',方法名为'myMethod'</span></span><br><span class="line"><span class="keyword">const</span> resultPromise = context.callNative(<span class="string">'myPlugin'</span>,<span class="string">'myMethod'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="modal" class="article-heading"><a href="#modal" class="headerlink" title="modal"></a>modal<a class="article-anchor" href="#modal" aria-hidden="true"></a></h2><p>提供一组模态窗口API</p>
+<h3 id="toast" class="article-heading"><a href="#toast" class="headerlink" title="toast"></a>toast<a class="article-anchor" href="#toast" aria-hidden="true"></a></h3><p>弹出Toast弹窗</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">msg: <span class="built_in">string</span> <span class="comment">///弹窗文本</span></span><br><span class="line">gravity?:Gravity <span class="comment">///弹窗位置，可为上中下，默认为下</span></span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">void</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="alert" class="article-heading"><a href="#alert" class="headerlink" title="alert"></a>alert<a class="article-anchor" href="#alert" aria-hidden="true"></a></h3><p>弹出警告弹窗</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">arg: <span class="built_in">string</span> | &#123;</span><br><span class="line">            title: <span class="built_in">string</span>; <span class="comment">///弹窗标题</span></span><br><span class="line">            msg: <span class="built_in">string</span>;<span class="comment">///弹窗内容</span></span><br><span class="line">            okLabel?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///确认按钮的文本</span></span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;<span class="comment">/// 点击确认后触发resolve回调</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="confirm" class="article-heading"><a href="#confirm" class="headerlink" title="confirm"></a>confirm<a class="article-anchor" href="#confirm" aria-hidden="true"></a></h3><p>弹出确认弹窗</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">arg: <span class="built_in">string</span> | &#123;</span><br><span class="line">            title: <span class="built_in">string</span>;<span class="comment">///弹窗标题</span></span><br><span class="line">            msg: <span class="built_in">string</span>;<span class="comment">///弹窗内容</span></span><br><span class="line">            okLabel?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///确认按钮的文本</span></span><br><span class="line">            cancelLabel?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///取消按钮的文本</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;<span class="comment">/// 点击确认后触发resolve回调，点击取消触发reject回调</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="prompt" class="article-heading"><a href="#prompt" class="headerlink" title="prompt"></a>prompt<a class="article-anchor" href="#prompt" aria-hidden="true"></a></h3><p>弹出输入弹窗</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">arg: <span class="built_in">string</span> | &#123;</span><br><span class="line">            title: <span class="built_in">string</span>;<span class="comment">///弹窗标题</span></span><br><span class="line">            msg: <span class="built_in">string</span>;<span class="comment">///弹窗内容</span></span><br><span class="line">            okLabel?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///确认按钮的文本</span></span><br><span class="line">            cancelLabel?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///取消按钮的文本;</span></span><br><span class="line">            text?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///默认填充文本</span></span><br><span class="line">            defaultText?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///内容为空时的提示文本</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">string</span>&gt;<span class="comment">/// 点击确认后触发resolve回调，返回输入值，点击取消触发reject回调</span></span><br></pre></td></tr></table></figure>
+<h2 id="navbar" class="article-heading"><a href="#navbar" class="headerlink" title="navbar"></a>navbar<a class="article-anchor" href="#navbar" aria-hidden="true"></a></h2>提供导航栏相关API<h3 id="isHidden" class="article-heading"><a href="#isHidden" class="headerlink" title="isHidden"></a>isHidden<a class="article-anchor" href="#isHidden" aria-hidden="true"></a></h3>当前导航栏是否隐藏</li>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">hidden: <span class="built_in">boolean</span> <span class="comment">///</span></span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">boolean</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="setHidden" class="article-heading"><a href="#setHidden" class="headerlink" title="setHidden"></a>setHidden<a class="article-anchor" href="#setHidden" aria-hidden="true"></a></h3><p>设置导航栏显示或隐藏，<br><strong>请注意：当设置导航栏为隐藏后，Doric视图原点为屏幕左上角，即状态栏会覆盖在DoricPanel之上</strong></p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">hidden:<span class="built_in">boolean</span></span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="setTitle" class="article-heading"><a href="#setTitle" class="headerlink" title="setTitle"></a>setTitle<a class="article-anchor" href="#setTitle" aria-hidden="true"></a></h3><p>设置导航栏标题</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">title:<span class="built_in">string</span></span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="setBgColor" class="article-heading"><a href="#setBgColor" class="headerlink" title="setBgColor"></a>setBgColor<a class="article-anchor" href="#setBgColor" aria-hidden="true"></a></h3><p>设置导航栏背景颜色</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">color:Color</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="setLeft" class="article-heading"><a href="#setLeft" class="headerlink" title="setLeft"></a>setLeft<a class="article-anchor" href="#setLeft" aria-hidden="true"></a></h3><p>设置导航栏左侧Icon或文字按钮</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">view: View</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="setRight" class="article-heading"><a href="#setRight" class="headerlink" title="setRight"></a>setRight<a class="article-anchor" href="#setRight" aria-hidden="true"></a></h3>设置导航栏右侧Icon或文字按钮</li>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">view: View</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="navigator" class="article-heading"><a href="#navigator" class="headerlink" title="navigator"></a>navigator<a class="article-anchor" href="#navigator" aria-hidden="true"></a></h2>提供导航器相关API</li>
+</ul>
+<h3 id="push" class="article-heading"><a href="#push" class="headerlink" title="push"></a>push<a class="article-anchor" href="#push" aria-hidden="true"></a></h3><p>跳转到新的Doric页面</p>
+<ul>
+<li><p>参数类型:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">source:<span class="built_in">string</span>,<span class="comment">/// 新的Doric页面对应的Source地址</span></span><br><span class="line">config?: &#123;</span><br><span class="line">            alias?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">/// 别名，用于调试信息</span></span><br><span class="line">            animated?: <span class="built_in">boolean</span> | <span class="literal">undefined</span>; <span class="comment">///是否支持跳转动画</span></span><br><span class="line">            extra?: object | <span class="literal">undefined</span>; <span class="comment">/// 新的Doric页面携带的参数</span></span><br><span class="line">        &#125; | <span class="literal">undefined</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值: </p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="pop" class="article-heading"><a href="#pop" class="headerlink" title="pop"></a>pop<a class="article-anchor" href="#pop" aria-hidden="true"></a></h3><p>跳出当前页面</p>
+<ul>
+<li><p>参数类型:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">animated?: <span class="built_in">boolean</span> <span class="comment">///是否支持跳转动画</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值: </p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="network" class="article-heading"><a href="#network" class="headerlink" title="network"></a>network<a class="article-anchor" href="#network" aria-hidden="true"></a></h2><p>提供网络相关API</p>
+<h3 id="request" class="article-heading"><a href="#request" class="headerlink" title="request"></a>request<a class="article-anchor" href="#request" aria-hidden="true"></a></h3><p>请求网络</p>
+<ul>
+<li><p>参数类型:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    url?: <span class="built_in">string</span>;</span><br><span class="line">    method?: <span class="string">"get"</span> | <span class="string">"post"</span> | <span class="string">"put"</span> | <span class="string">"delete"</span>;</span><br><span class="line">    headers?: &#123;</span><br><span class="line">        [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    params?: &#123;</span><br><span class="line">        [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    data?: object | <span class="built_in">string</span>;</span><br><span class="line">    timeout?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值: </p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt; &#123;</span><br><span class="line">        data: <span class="built_in">any</span>;</span><br><span class="line">        status: <span class="built_in">number</span>;</span><br><span class="line">        headers?: &#123;</span><br><span class="line">            [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="get" class="article-heading"><a href="#get" class="headerlink" title="get"></a>get<a class="article-anchor" href="#get" aria-hidden="true"></a></h3><p>GET 请求</p>
+<ul>
+<li>参数:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">url,</span><br><span class="line">&#123;</span><br><span class="line">    headers?: &#123;</span><br><span class="line">        [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    params?: &#123;</span><br><span class="line">        [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    timeout?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt; &#123;</span><br><span class="line">        data: <span class="built_in">any</span>;</span><br><span class="line">        status: <span class="built_in">number</span>;</span><br><span class="line">        headers?: &#123;</span><br><span class="line">            [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="post" class="article-heading"><a href="#post" class="headerlink" title="post"></a>post<a class="article-anchor" href="#post" aria-hidden="true"></a></h3><p>POST请求</p>
+<ul>
+<li>参数:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">url,</span><br><span class="line">data?: <span class="built_in">string</span> | object | <span class="literal">undefined</span>, </span><br><span class="line">&#123;</span><br><span class="line">    headers?: &#123;</span><br><span class="line">        [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    params?: &#123;</span><br><span class="line">        [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    timeout?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt; &#123;</span><br><span class="line">        data: <span class="built_in">any</span>;</span><br><span class="line">        status: <span class="built_in">number</span>;</span><br><span class="line">        headers?: &#123;</span><br><span class="line">            [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="put" class="article-heading"><a href="#put" class="headerlink" title="put"></a>put<a class="article-anchor" href="#put" aria-hidden="true"></a></h3><p>PUT请求</p>
+<ul>
+<li>参数:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">url,</span><br><span class="line">data?: <span class="built_in">string</span> | object | <span class="literal">undefined</span>, </span><br><span class="line">&#123;</span><br><span class="line">    headers?: &#123;</span><br><span class="line">        [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    params?: &#123;</span><br><span class="line">        [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    timeout?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt; &#123;</span><br><span class="line">        data: <span class="built_in">any</span>;</span><br><span class="line">        status: <span class="built_in">number</span>;</span><br><span class="line">        headers?: &#123;</span><br><span class="line">            [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="delete" class="article-heading"><a href="#delete" class="headerlink" title="delete"></a>delete<a class="article-anchor" href="#delete" aria-hidden="true"></a></h3><p>DELETE请求</p>
+<ul>
+<li>参数:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">url,</span><br><span class="line">data?: <span class="built_in">string</span> | object | <span class="literal">undefined</span>, </span><br><span class="line">&#123;</span><br><span class="line">    headers?: &#123;</span><br><span class="line">        [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    params?: &#123;</span><br><span class="line">        [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    timeout?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt; &#123;</span><br><span class="line">        data: <span class="built_in">any</span>;</span><br><span class="line">        status: <span class="built_in">number</span>;</span><br><span class="line">        headers?: &#123;</span><br><span class="line">            [index: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="storage" class="article-heading"><a href="#storage" class="headerlink" title="storage"></a>storage<a class="article-anchor" href="#storage" aria-hidden="true"></a></h2><p>提供本地存储API </p>
+<h3 id="setItem" class="article-heading"><a href="#setItem" class="headerlink" title="setItem"></a>setItem<a class="article-anchor" href="#setItem" aria-hidden="true"></a></h3><p>写入本地存储</p>
+<ul>
+<li><p>参数类型:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">key: <span class="built_in">string</span>,  <span class="comment">/// 写入的Key值</span></span><br><span class="line">value: <span class="built_in">string</span>, <span class="comment">///写入的值</span></span><br><span class="line">zone?: <span class="built_in">string</span> | <span class="literal">undefined</span> <span class="comment">///标识存储区域，如不传则为全局，建议传入。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值: </p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="getItem" class="article-heading"><a href="#getItem" class="headerlink" title="getItem"></a>getItem<a class="article-anchor" href="#getItem" aria-hidden="true"></a></h3><p>读取本地存储</p>
+<ul>
+<li><p>参数类型:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">key: <span class="built_in">string</span>,  <span class="comment">/// 存储Key值</span></span><br><span class="line">zone?: <span class="built_in">string</span> | <span class="literal">undefined</span> <span class="comment">///标识存储区域，如不传则为全局，建议传入。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值: </p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">string</span>&gt; <span class="comment">///读取的值</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="remove" class="article-heading"><a href="#remove" class="headerlink" title="remove"></a>remove<a class="article-anchor" href="#remove" aria-hidden="true"></a></h3><p>删除某个值</p>
+<ul>
+<li><p>参数类型:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">key: <span class="built_in">string</span>,  <span class="comment">/// 待删除的Key值</span></span><br><span class="line">zone?: <span class="built_in">string</span> | <span class="literal">undefined</span> <span class="comment">///标识存储区域，如不传则为全局，建议传入。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值: </p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="clear" class="article-heading"><a href="#clear" class="headerlink" title="clear"></a>clear<a class="article-anchor" href="#clear" aria-hidden="true"></a></h3><p>清空某个存储区域内的所有值</p>
+</li>
+<li><p>参数类型:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">zone: <span class="built_in">string</span> <span class="comment">///标识存储区域，如不传则为全局，建议传入。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值: </p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="popover" class="article-heading"><a href="#popover" class="headerlink" title="popover"></a>popover<a class="article-anchor" href="#popover" aria-hidden="true"></a></h2><p>提供浮层弹窗API</p>
+<h3 id="show" class="article-heading"><a href="#show" class="headerlink" title="show"></a>show<a class="article-anchor" href="#show" aria-hidden="true"></a></h3><p>显示浮层</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">view: View <span class="comment">/// 需显示的浮层View</span></span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="dismiss" class="article-heading"><a href="#dismiss" class="headerlink" title="dismiss"></a>dismiss<a class="article-anchor" href="#dismiss" aria-hidden="true"></a></h3><p>隐藏浮层</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">view?: View | <span class="literal">undefined</span><span class="comment">/// 需消失的浮层View，如果传入undefined，则当前所有浮层都会消失</span></span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="animate" class="article-heading"><a href="#animate" class="headerlink" title="animate"></a>animate<a class="article-anchor" href="#animate" aria-hidden="true"></a></h2><p>提供动画相关API</p>
+<ul>
+<li><p>参数类型:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">///在该回调里设置的View相关的变更将在duration时段内渐变过渡</span></span><br><span class="line">    animations: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">    <span class="comment">///动画时长</span></span><br><span class="line">    duration: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>返回值: </p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例子:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"> animate(context)(&#123;</span><br><span class="line">    animations: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        view.y = view.y || <span class="number">0</span></span><br><span class="line">        view.y += <span class="number">100</span></span><br><span class="line">        view2.y += <span class="number">50</span></span><br><span class="line">    &#125;,</span><br><span class="line">    duration: <span class="number">1000</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="notification" class="article-heading"><a href="#notification" class="headerlink" title="notification"></a>notification<a class="article-anchor" href="#notification" aria-hidden="true"></a></h2><p>提供广播订阅机制API</p>
+<h3 id="publish" class="article-heading"><a href="#publish" class="headerlink" title="publish"></a>publish<a class="article-anchor" href="#publish" aria-hidden="true"></a></h3><p>发出广播通知</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">/// 业务唯一ID前缀</span></span><br><span class="line">    biz?: <span class="built_in">string</span> | <span class="literal">undefined</span>;</span><br><span class="line">    <span class="comment">/// 广播名称</span></span><br><span class="line">    name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="comment">/// 广播携带的数据</span></span><br><span class="line">    data?: object | <span class="literal">undefined</span>;</span><br><span class="line">    <span class="comment">/// Android上是否通过系统广播发送，默认通过LocalBroadcast发送</span></span><br><span class="line">    androidSystem?: <span class="built_in">boolean</span> | <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="subscribe" class="article-heading"><a href="#subscribe" class="headerlink" title="subscribe"></a>subscribe<a class="article-anchor" href="#subscribe" aria-hidden="true"></a></h3><p>订阅广播</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">/// 业务唯一ID前缀</span></span><br><span class="line">    biz?: <span class="built_in">string</span> | <span class="literal">undefined</span>;</span><br><span class="line">    <span class="comment">/// 广播名称</span></span><br><span class="line">    name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="comment">/// 收到广播时的回调，广播携带的数据通过参数传入</span></span><br><span class="line">    callback: <span class="function">(<span class="params">data?: <span class="built_in">any</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">    <span class="comment">/// Android上是否监听系统广播，默认监听LocalBroadcast</span></span><br><span class="line">    androidSystem?: <span class="built_in">boolean</span> | <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">string</span>&gt; <span class="comment">/// 返回SubscribeID</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="unsubscribe" class="article-heading"><a href="#unsubscribe" class="headerlink" title="unsubscribe"></a>unsubscribe<a class="article-anchor" href="#unsubscribe" aria-hidden="true"></a></h3><p>取消订阅广播</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">string</span> <span class="comment">/// subscribe方法的返回值</span></span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="statusbar" class="article-heading"><a href="#statusbar" class="headerlink" title="statusbar"></a>statusbar<a class="article-anchor" href="#statusbar" aria-hidden="true"></a></h2><p>提供状态栏设置API</p>
+<h3 id="setHidden-1" class="article-heading"><a href="#setHidden-1" class="headerlink" title="setHidden"></a>setHidden<a class="article-anchor" href="#setHidden-1" aria-hidden="true"></a></h3><p>设置隐藏或显示导航栏</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">boolean</span></span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="setMode" class="article-heading"><a href="#setMode" class="headerlink" title="setMode"></a>setMode<a class="article-anchor" href="#setMode" aria-hidden="true"></a></h3><p>设置导航栏模式为深色或浅色</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> StatusBarMode &#123;</span><br><span class="line">        LIGHT = <span class="number">0</span>,</span><br><span class="line">        DARK = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="coordinator" class="article-heading"><a href="#coordinator" class="headerlink" title="coordinator"></a>coordinator<a class="article-anchor" href="#coordinator" aria-hidden="true"></a></h2><p>提供复杂场景下的View联动机制API</p>
+<h3 id="verticalScrolling" class="article-heading"><a href="#verticalScrolling" class="headerlink" title="verticalScrolling"></a>verticalScrolling<a class="article-anchor" href="#verticalScrolling" aria-hidden="true"></a></h3><p>将可垂直方向滑动的View与另一个View的属性绑定，使其属性值可在滑动区域内渐变。</p>
+<ul>
+<li>参数类型：<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">///需要监听滑动的View，目前支持List,Scroller,FlowLayout三种视图类型</span></span><br><span class="line">    scrollable: List | Scroller | FlowLayout;</span><br><span class="line">    <span class="comment">///滑动区域，从start到end区域渐变</span></span><br><span class="line">    scrollRange: &#123;</span><br><span class="line">        start: <span class="built_in">number</span>;</span><br><span class="line">        end: <span class="built_in">number</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">///设置目标View或导航栏</span></span><br><span class="line">    target: View | <span class="string">"NavBar"</span>;</span><br><span class="line">    <span class="comment">///映射的属性及值渐变范围，在设置target为"NavBar"时仅支持"backgroundColor"</span></span><br><span class="line">    changing: &#123;</span><br><span class="line">        name: <span class="string">"width"</span> | <span class="string">"height"</span> | <span class="string">"x"</span> | <span class="string">"y"</span> | <span class="string">"backgroundColor"</span>;</span><br><span class="line">        start: <span class="built_in">number</span> | Color;</span><br><span class="line">        end: <span class="built_in">number</span> | Color;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值:Promise<any></any></li>
+</ul>
+
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2019-12-31T08:07:19.913Z" itemprop="dateModified">Last updated: 2019-12-31</time>
+                <time class="article-footer-updated" datetime="2020-02-20T03:21:22.402Z" itemprop="dateModified">Last updated: 2020-02-20</time>
                 <a href="index.html" class="article-footer-prev" title="Overview"><i class="fa fa-chevron-left"></i><span>Prev</span></a><a href="android.html" class="article-footer-next" title="Android"><span>Next</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
@@ -629,7 +866,7 @@
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">Contents</strong>
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础类及相关接口"><span class="toc-text">基础类及相关接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Panel-页面单元面板基类"><span class="toc-text">Panel - 页面单元面板基类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Entry-入口标示"><span class="toc-text">Entry - 入口标示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#context-JS沙箱环境的上下文"><span class="toc-text">context - JS沙箱环境的上下文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Environment-平台环境参数"><span class="toc-text">Environment - 平台环境参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#View-所有视图控件的基类"><span class="toc-text">View - 所有视图控件的基类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Text-文本控件"><span class="toc-text">Text - 文本控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-文本输入或编辑"><span class="toc-text">Input - 文本输入或编辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image-图片控件"><span class="toc-text">Image - 图片控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VLayout-垂直线性布局组件"><span class="toc-text">VLayout - 垂直线性布局组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLayout-水平线性布局容器控件"><span class="toc-text">HLayout - 水平线性布局容器控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stack-层叠布局容器控件"><span class="toc-text">Stack - 层叠布局容器控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List-列表控件"><span class="toc-text">List - 列表控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scroller-滑动控件"><span class="toc-text">Scroller - 滑动控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slider-翻页滑动-幻灯片-控件"><span class="toc-text">Slider - 翻页滑动(幻灯片)控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FlowLayout-流式网格布局控件"><span class="toc-text">FlowLayout - 流式网格布局控件</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基础类及相关接口"><span class="toc-text">基础类及相关接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Panel-页面单元面板基类"><span class="toc-text">Panel - 页面单元面板基类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Entry-入口标示"><span class="toc-text">Entry - 入口标示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#context-JS沙箱环境的上下文"><span class="toc-text">context - JS沙箱环境的上下文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Environment-平台环境参数"><span class="toc-text">Environment - 平台环境参数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#View-所有视图控件的基类"><span class="toc-text">View - 所有视图控件的基类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Text-文本控件"><span class="toc-text">Text - 文本控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-文本输入或编辑"><span class="toc-text">Input - 文本输入或编辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image-图片控件"><span class="toc-text">Image - 图片控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VLayout-垂直线性布局组件"><span class="toc-text">VLayout - 垂直线性布局组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HLayout-水平线性布局容器控件"><span class="toc-text">HLayout - 水平线性布局容器控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stack-层叠布局容器控件"><span class="toc-text">Stack - 层叠布局容器控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List-列表控件"><span class="toc-text">List - 列表控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scroller-滑动控件"><span class="toc-text">Scroller - 滑动控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slider-翻页滑动-幻灯片-控件"><span class="toc-text">Slider - 翻页滑动(幻灯片)控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FlowLayout-流式网格布局控件"><span class="toc-text">FlowLayout - 流式网格布局控件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原生功能插件列表"><span class="toc-text">原生功能插件列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Module-amp-Method"><span class="toc-text">Module &amp; Method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BridgeContext"><span class="toc-text">BridgeContext</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#modal"><span class="toc-text">modal</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#toast"><span class="toc-text">toast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#alert"><span class="toc-text">alert</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#confirm"><span class="toc-text">confirm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prompt"><span class="toc-text">prompt</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#navbar"><span class="toc-text">navbar</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#isHidden"><span class="toc-text">isHidden</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setHidden"><span class="toc-text">setHidden</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setTitle"><span class="toc-text">setTitle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setBgColor"><span class="toc-text">setBgColor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setLeft"><span class="toc-text">setLeft</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setRight"><span class="toc-text">setRight</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#navigator"><span class="toc-text">navigator</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#push"><span class="toc-text">push</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pop"><span class="toc-text">pop</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#network"><span class="toc-text">network</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#request"><span class="toc-text">request</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get"><span class="toc-text">get</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#post"><span class="toc-text">post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#put"><span class="toc-text">put</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#delete"><span class="toc-text">delete</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#storage"><span class="toc-text">storage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#setItem"><span class="toc-text">setItem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getItem"><span class="toc-text">getItem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remove"><span class="toc-text">remove</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clear"><span class="toc-text">clear</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#popover"><span class="toc-text">popover</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#show"><span class="toc-text">show</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dismiss"><span class="toc-text">dismiss</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animate"><span class="toc-text">animate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#notification"><span class="toc-text">notification</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#publish"><span class="toc-text">publish</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subscribe"><span class="toc-text">subscribe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unsubscribe"><span class="toc-text">unsubscribe</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#statusbar"><span class="toc-text">statusbar</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#setHidden-1"><span class="toc-text">setHidden</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setMode"><span class="toc-text">setMode</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#coordinator"><span class="toc-text">coordinator</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#verticalScrolling"><span class="toc-text">verticalScrolling</span></a></li></ol></li></ol></li></ol>
               <a href="#" id="article-toc-top">Back to Top</a>
             </div>
           </aside>
