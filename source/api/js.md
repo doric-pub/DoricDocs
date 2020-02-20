@@ -359,6 +359,7 @@ Doric在平台原生能力之上提供一套默认的JS API，您可方便地在
 当您从Doric中import任意变量(直接import {}都可以)时，`context`变量即可使用。
 当您自定义原生桥时，您也可直接调用context进行使用。
 `BridgeContext` 类型结构如下：
+
 属性 |类型 | 描述
 --- | --- | ---
 id|string|标识沙箱的唯一ID
