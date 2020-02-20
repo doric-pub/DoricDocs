@@ -51,15 +51,7 @@ context中存储了当前运行所处沙盒信息。
 ```typescript
     modal(context).toast('This is a toast.')
 ```
-    
 
-当您自定义原生桥时，您也可直接调用context进行使用。
-
-```typescript
-    //如果您定义的插件名为'myPlugin',方法名为'myMethod'
-    const resultPromise = context.myPlugin.myMethod(parameters)
-```
-    
 ## Environment - 平台环境参数
 Environment提供了当前Doric应用所处平台及系统的环境参数，作为全局变量使用。
 定义字段如下:
@@ -83,7 +75,7 @@ if (Environment.platform === 'Android') {
 }
 
 ```
-## View - 所有视图控件的基类
+# View - 所有视图控件的基类
 
 Doric中所有视图控件的基类。
 属性如下：
@@ -102,6 +94,8 @@ padding|`{left?: number,right?: number,top?: number,bottom?: number,}`|控件内
 layoutConfig|`LayoutConfig` | 控件的布局属性
 onClick|`()=>void`|控件的点击回调
 
+下面列出Doric SDK中支持的所有控件。
+**请注意，您可以通过这篇[文档](./view.html)方便地将原生的控件转为Doric控件。**
 
 ### Text - 文本控件
 
@@ -349,3 +343,557 @@ onLoadMore|() => void|加载更多的回调
             },
         })
 ```
+
+# 原生功能插件列表
+
+Doric在平台原生能力之上提供一套默认的JS API，您可方便地在TypeScript代码中调用平台能力。
+**您可以参照这篇文档[Native插件拓展](./plugin.html)方便地开发您自己的插件**
+
+## Module & Method
+在Doric中，插件按照模块的粒度进行管理。功能相近的一组API接口作为一个Module注册进Doric中,Module中每个API作为Method。
+所以，请保持Module命名空间唯一。
+举例：在Module`modal`中，存放着`toast`、`alert`、`confirm`等Method。
+
+## BridgeContext
+`BridgeContext`定义了您当前Doric运行程序上下文`context`的类型。
+当您从Doric中import任意变量(直接import {}都可以)时，`context`变量即可使用。
+当您自定义原生桥时，您也可直接调用context进行使用。
+`BridgeContext` 类型结构如下：
+属性 |类型 | 描述
+--- | --- | ---
+id|string|标识沙箱的唯一ID
+entity|any|实体内容，在Doric中即为`@Entry`所修饰的类生成的实例
+callNative|(namespace: string, method: string, args?: any)=>Promise<any>|通信API，用于与原生层进行通信，推荐不直接使用。
+function2Id|(func:Function)=>string|将Function转为string，用于某种场景下原生层与JS层通信时的数据转换
+removeFuncById|(funcId:string)=>void|用于释放经`function2Id`转换的Function
+
+```typescript
+    //如果您定义的插件名为'myPlugin',方法名为'myMethod'
+    const resultPromise = context.callNative('myPlugin','myMethod')
+```
+
+## modal
+提供一组模态窗口API
+
+### toast
+弹出Toast弹窗
+* 参数类型:
+```typescript
+msg: string ///弹窗文本
+gravity?:Gravity ///弹窗位置，可为上中下，默认为下
+```
+* 返回值: 
+```typescript
+void
+```
+
+### alert
+弹出警告弹窗
+* 参数类型:
+```typescript
+arg: string | {
+            title: string; ///弹窗标题
+            msg: string;///弹窗内容
+            okLabel?: string | undefined; ///确认按钮的文本
+        })
+```
+* 返回值: 
+```typescript
+Promise<any>/// 点击确认后触发resolve回调
+```
+
+### confirm
+弹出确认弹窗
+* 参数类型:
+```typescript
+arg: string | {
+            title: string;///弹窗标题
+            msg: string;///弹窗内容
+            okLabel?: string | undefined; ///确认按钮的文本
+            cancelLabel?: string | undefined; ///取消按钮的文本
+        }
+```
+* 返回值: 
+```typescript
+Promise<any>/// 点击确认后触发resolve回调，点击取消触发reject回调
+```
+
+### prompt
+弹出输入弹窗
+* 参数类型:
+```typescript
+arg: string | {
+            title: string;///弹窗标题
+            msg: string;///弹窗内容
+            okLabel?: string | undefined; ///确认按钮的文本
+            cancelLabel?: string | undefined; ///取消按钮的文本;
+            text?: string | undefined; ///默认填充文本
+            defaultText?: string | undefined; ///内容为空时的提示文本
+        }
+```
+* 返回值: 
+```typescript
+Promise<string>/// 点击确认后触发resolve回调，返回输入值，点击取消触发reject回调
+```
+## navbar
+提供导航栏相关API
+### isHidden
+当前导航栏是否隐藏
+* 参数类型:
+```typescript
+hidden: boolean ///
+```
+* 返回值: 
+```typescript
+Promise<boolean>
+```
+
+### setHidden
+设置导航栏显示或隐藏，
+**请注意：当设置导航栏为隐藏后，Doric视图原点为屏幕左上角，即状态栏会覆盖在DoricPanel之上**
+* 参数类型:
+```typescript
+hidden:boolean
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+### setTitle
+设置导航栏标题
+* 参数类型:
+```typescript
+title:string
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+### setBgColor
+设置导航栏背景颜色
+* 参数类型:
+```typescript
+color:Color
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+### setLeft
+设置导航栏左侧Icon或文字按钮
+* 参数类型:
+```typescript
+view: View
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+### setRight
+设置导航栏右侧Icon或文字按钮
+* 参数类型:
+```typescript
+view: View
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+## navigator
+提供导航器相关API
+
+### push
+跳转到新的Doric页面
+* 参数类型:
+```typescript
+source:string,/// 新的Doric页面对应的Source地址
+config?: {
+            alias?: string | undefined; /// 别名，用于调试信息
+            animated?: boolean | undefined; ///是否支持跳转动画
+            extra?: object | undefined; /// 新的Doric页面携带的参数
+        } | undefined)
+```
+
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+### pop
+跳出当前页面
+* 参数类型:
+```typescript
+animated?: boolean ///是否支持跳转动画
+```
+
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+## network
+提供网络相关API
+
+### request
+请求网络
+* 参数类型:
+```typescript
+{
+    url?: string;
+    method?: "get" | "post" | "put" | "delete";
+    headers?: {
+        [index: string]: string;
+    };
+    params?: {
+        [index: string]: string;
+    };
+    data?: object | string;
+    timeout?: number;
+}
+```
+
+* 返回值: 
+```typescript
+Promise< {
+        data: any;
+        status: number;
+        headers?: {
+            [index: string]: string;
+        };
+    }>
+```
+
+### get
+GET 请求
+* 参数:
+```typescript
+url,
+{
+    headers?: {
+        [index: string]: string;
+    };
+    params?: {
+        [index: string]: string;
+    };
+    timeout?: number;
+}
+```
+* 返回值: 
+```typescript
+Promise< {
+        data: any;
+        status: number;
+        headers?: {
+            [index: string]: string;
+        };
+    }>
+```
+
+### post
+POST请求
+
+* 参数:
+```typescript
+url,
+data?: string | object | undefined, 
+{
+    headers?: {
+        [index: string]: string;
+    };
+    params?: {
+        [index: string]: string;
+    };
+    timeout?: number;
+}
+```
+* 返回值: 
+```typescript
+Promise< {
+        data: any;
+        status: number;
+        headers?: {
+            [index: string]: string;
+        };
+    }>
+```
+
+### put
+PUT请求
+
+* 参数:
+```typescript
+url,
+data?: string | object | undefined, 
+{
+    headers?: {
+        [index: string]: string;
+    };
+    params?: {
+        [index: string]: string;
+    };
+    timeout?: number;
+}
+```
+* 返回值: 
+```typescript
+Promise< {
+        data: any;
+        status: number;
+        headers?: {
+            [index: string]: string;
+        };
+    }>
+```
+
+### delete
+DELETE请求
+
+* 参数:
+```typescript
+url,
+data?: string | object | undefined, 
+{
+    headers?: {
+        [index: string]: string;
+    };
+    params?: {
+        [index: string]: string;
+    };
+    timeout?: number;
+}
+```
+* 返回值: 
+```typescript
+Promise< {
+        data: any;
+        status: number;
+        headers?: {
+            [index: string]: string;
+        };
+    }>
+```
+
+## storage
+提供本地存储API 
+
+### setItem
+写入本地存储
+* 参数类型:
+```typescript
+key: string,  /// 写入的Key值
+value: string, ///写入的值
+zone?: string | undefined ///标识存储区域，如不传则为全局，建议传入。
+```
+
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+### getItem
+读取本地存储
+* 参数类型:
+```typescript
+key: string,  /// 存储Key值
+zone?: string | undefined ///标识存储区域，如不传则为全局，建议传入。
+```
+
+* 返回值: 
+```typescript
+Promise<string> ///读取的值
+```
+
+### remove
+删除某个值
+* 参数类型:
+```typescript
+key: string,  /// 待删除的Key值
+zone?: string | undefined ///标识存储区域，如不传则为全局，建议传入。
+```
+
+* 返回值: 
+```typescript
+Promise<any>
+```
+### clear
+清空某个存储区域内的所有值
+* 参数类型:
+```typescript
+zone: string ///标识存储区域，如不传则为全局，建议传入。
+```
+
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+
+## popover
+提供浮层弹窗API
+
+### show
+显示浮层
+* 参数类型:
+```typescript
+view: View /// 需显示的浮层View
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+### dismiss
+隐藏浮层
+* 参数类型:
+```typescript
+view?: View | undefined/// 需消失的浮层View，如果传入undefined，则当前所有浮层都会消失
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+
+## animate
+提供动画相关API
+* 参数类型:
+```typescript
+{
+    ///在该回调里设置的View相关的变更将在duration时段内渐变过渡
+    animations: () => void;
+    ///动画时长
+    duration: number;
+}
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+* 例子:
+```typescript
+ animate(context)({
+    animations: () => {
+        view.y = view.y || 0
+        view.y += 100
+        view2.y += 50
+    },
+    duration: 1000,
+})
+```
+
+## notification
+提供广播订阅机制API
+
+### publish
+发出广播通知
+* 参数类型:
+```typescript
+{
+    /// 业务唯一ID前缀
+    biz?: string | undefined;
+    /// 广播名称
+    name: string;
+    /// 广播携带的数据
+    data?: object | undefined;
+    /// Android上是否通过系统广播发送，默认通过LocalBroadcast发送
+    androidSystem?: boolean | undefined;
+}
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+### subscribe
+订阅广播
+* 参数类型:
+```typescript
+{
+    /// 业务唯一ID前缀
+    biz?: string | undefined;
+    /// 广播名称
+    name: string;
+    /// 收到广播时的回调，广播携带的数据通过参数传入
+    callback: (data?: any) => void;
+    /// Android上是否监听系统广播，默认监听LocalBroadcast
+    androidSystem?: boolean | undefined;
+}
+```
+* 返回值: 
+```typescript
+Promise<string> /// 返回SubscribeID
+```
+
+### unsubscribe
+取消订阅广播
+* 参数类型:
+```typescript
+string /// subscribe方法的返回值
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+
+## statusbar
+提供状态栏设置API
+
+### setHidden
+设置隐藏或显示导航栏
+* 参数类型:
+```typescript
+boolean
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+### setMode
+设置导航栏模式为深色或浅色
+* 参数类型:
+```typescript
+enum StatusBarMode {
+        LIGHT = 0,
+        DARK = 1
+}
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+
+## coordinator
+提供复杂场景下的View联动机制API
+
+### verticalScrolling
+
+将可垂直方向滑动的View与另一个View的属性绑定，使其属性值可在滑动区域内渐变。
+
+* 参数类型：
+```typescript
+{
+    ///需要监听滑动的View，目前支持List,Scroller,FlowLayout三种视图类型
+    scrollable: List | Scroller | FlowLayout;
+    ///滑动区域，从start到end区域渐变
+    scrollRange: {
+        start: number;
+        end: number;
+    };
+    ///设置目标View或导航栏
+    target: View | "NavBar";
+    ///映射的属性及值渐变范围，在设置target为"NavBar"时仅支持"backgroundColor"
+    changing: {
+        name: "width" | "height" | "x" | "y" | "backgroundColor";
+        start: number | Color;
+        end: number | Color;
+    };
+}
+```
+* 返回值:Promise<any>
