@@ -44,5 +44,5 @@ $ npm install -g doric-cli
 安装以后，即可创建Doric项目：
 ```bash
 doric create HelloDoric
-cd HelloDoric/js && doric dev
+cd HelloDoric && doric dev
 ```
