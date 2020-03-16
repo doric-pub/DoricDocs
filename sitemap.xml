@@ -16,6 +16,13 @@
   </url>
   
   <url>
+    <loc>https://doric.pub/icon/manifest.json</loc>
+    
+    <lastmod>2020-03-15T21:48:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://doric.pub/zh-cn/api/js</loc>
     
     <lastmod>2020-02-20T07:07:27.900Z</lastmod>
@@ -58,14 +65,14 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/docs/hello</loc>
+    <loc>https://doric.pub/zh-cn/docs/commands</loc>
     
     <lastmod>2020-01-07T06:14:30.376Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/docs/commands</loc>
+    <loc>https://doric.pub/zh-cn/docs/hello</loc>
     
     <lastmod>2020-01-07T06:14:30.376Z</lastmod>
     
@@ -201,13 +208,6 @@
     <loc>https://doric.pub/zh-cn/</loc>
     
     <lastmod>2019-12-30T05:53:46.988Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://doric.pub/icon/manifest.json</loc>
-    
-    <lastmod>2019-12-30T05:09:50.487Z</lastmod>
     
   </url>
   
