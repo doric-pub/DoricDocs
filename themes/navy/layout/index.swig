@@ -34,6 +34,6 @@
 </div>
 
 <iframe id="playground"  
-        src = "https://p.doric.pub/play/public"
+        src = "https://p.doric.pub/play"
         style = "width:100%;height:100%;">
 </iframe>
