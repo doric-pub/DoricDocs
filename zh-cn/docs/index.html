@@ -51,8 +51,13 @@
 <meta property="og:description" content="欢迎使用Doric，本文档将帮助您快速上手。如果您在使用过程中遇到任何问题，请在GitHub上提问。 什么是 Doric? Doric 是一个极简高效的跨端开发框架，使用TypeScript作为开发语言。上层遵循MVVM设计，可以在多终端平台上执行，实现一份代码多处执行。目前已经支持Android、iOS、Web及Qt，后续可按需接入更多场景平台。 安装若您在安装过程中遇到无法解决的问题，请提交问">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://www.kedo.gov.cn/upload/resources/image/2017/07/24/160817.png">
-<meta property="article:published_time" content="2020-03-16T05:12:12.177Z">
-<meta property="article:modified_time" content="2020-03-16T05:12:12.177Z">
+<meta property="og:image" content="https://doric.pub/zh-cn/image/hello_android.png">
+<meta property="og:image" content="https://doric.pub/zh-cn/image/hello_iOS.png">
+<meta property="og:image" content="https://doric.pub/zh-cn/image/debug_android.png">
+<meta property="og:image" content="https://doric.pub/zh-cn/image/debug_iOS.png">
+<meta property="og:image" content="https://doric.pub/zh-cn/image/debugging.gif">
+<meta property="article:published_time" content="2020-03-23T05:40:28.620Z">
+<meta property="article:modified_time" content="2020-03-23T05:40:28.620Z">
 <meta property="article:author" content="Zhou Pengfei">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://www.kedo.gov.cn/upload/resources/image/2017/07/24/160817.png">
@@ -137,14 +142,42 @@
 <li><a href="https://guides.cocoapods.org/using/getting-started.html" target="_blank" rel="noopener external nofollow noreferrer">CocoaPods</a></li>
 </ul>
 <h2 id="安装Doric" class="article-heading"><a href="#安装Doric" class="headerlink" title="安装Doric"></a>安装Doric<a class="article-anchor" href="#安装Doric" aria-hidden="true"></a></h2><p>当必需的开发环境准备就绪后，即可使用npm安装Doric.</p>
+<ol>
+<li><p>安装<code>doric</code>命令行工具</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g doric-cli</span><br></pre></td></tr></table></figure>
-
-<p>安装以后，即可创建Doric项目：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric create HelloDoric</span><br><span class="line"><span class="built_in">cd</span> HelloDoric &amp;&amp; doric dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>doric</code>命令创建项目<br>安装以后，即可创建Doric项目：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric create HelloDoric</span><br></pre></td></tr></table></figure>
+<p>此时，<code>doric</code>命令会在当前路径创建一个<code>HelloDoric</code>的文件夹。目录结构如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">index.ts</span><br><span class="line">package.json</span><br><span class="line">tsconfig.json</span><br><span class="line">rollup.config.js</span><br><span class="line">src/</span><br><span class="line">android/</span><br><span class="line">iOS/</span><br><span class="line">build/</span><br><span class="line">bundle/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行<code>doric dev</code>命令，输出本地IP二维码<br>您可直接运行Doric命令开启热重载</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> HelloDoric</span><br><span class="line">$ doric dev</span><br></pre></td></tr></table></figure>
+<p>此时，屏幕上会出现您网络IP及对应的二维码。</p>
+</li>
+<li><p>您可按如下步骤，安装壳工程APP到手机后，通过扫码进入调试模式。</p>
+<ul>
+<li>Android<br>您可直接使用Android Studio打开<code>android</code>目录，运行项目。</li>
+<li>iOS<ul>
+<li>首先安装Podfile<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> iOS &amp;&amp; pod install</span><br></pre></td></tr></table></figure></li>
+<li>使用XCode打开<code>iOS</code>下项目,并运行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开发调试</p>
+<ul>
+<li>按上面Android或iOS项目APP安装到手机后，手机上会出现首页如下：<br><img src="../image/hello_android.png" alt="android">  <img src="../image/hello_iOS.png" alt="iOS"></li>
+<li>手机点击标题栏<code>Devkit</code>按钮，进入相机扫描页面，对准上述第一步出现的二维码扫描，连接成功后出现如下页面。如果您使用iOS或Android模拟器，则无需相机扫描，直接连接到本机地址。<br><img src="../image/debug_android.png" alt="android">  <img src="../image/debug_iOS.png" alt="iOS"><br>点击返回回到首页。</li>
+<li>修改<code>src/HelloDoric.ts</code>文件，您可以在手机上实时看到修改后的效果。<br><img src="../image/debugging.gif" alt="debugging"></li>
+<li>您也可以随时重新运行APP项目，重新安装将最新修改内容同步到手机。</li>
+</ul>
+</li>
+</ol>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2020-03-16T05:12:12.177Z" itemprop="dateModified">上次更新：2020-03-16</time>
+                <time class="article-footer-updated" datetime="2020-03-23T05:40:28.620Z" itemprop="dateModified">上次更新：2020-03-23</time>
                 <a href="commands.html" class="article-footer-next" title="命令"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
