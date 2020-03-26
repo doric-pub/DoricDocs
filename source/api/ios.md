@@ -14,16 +14,24 @@ title: Doric iOS SDK
     ```bash
     $ pod install
     ```
+# 常用参数说明
+本小节内容解释Doric SDK参数名词及意义。
+## `source`
+标示JS bundle的来源，`DoricJSLoader`可根据`source`请求到JS bundle内容。
+## `alias`
+用于标识Doric运行时，用于热重载调试。可为空。
+## `extra`
+初始化DoricJS时传入的额外数据,在`Panel`中，可通过`getInitData`获取。为JSON格式的字符串。可传空。
 
 # Doric容器
 Doric容器可以接收Doric JS bundle并运行。
 
 ## DoricViewController
 
-经DoricViewController装载的Doric程序可绘制在整个ViewController之上，传入Scheme可加载JS Bundle。
+经DoricViewController装载的Doric程序可绘制在整个ViewController之上。
 
 ```objectivec
-    DoricViewController *doricViewController = [[DoricViewController alloc] initWithScheme:[NSString stringWithFormat:@"assets://src/%@.js", bundleName]
+    DoricViewController *doricViewController = [[DoricViewController alloc] initWithSource:[NSString stringWithFormat:@"assets://src/%@.js", bundleName]
                                                                                      alias:bundleName
                                                                                      extra:@""];
     [navigationController pushViewController:doricViewController animated:YES];
@@ -31,7 +39,7 @@ Doric容器可以接收Doric JS bundle并运行。
 
 ## DoricPanel
 
-更细粒度的Doric容器，需直接传入JS bundle内容，不能通过Scheme装载JS Bundle。
+更细粒度的Doric容器，需直接传入JS bundle内容。`jsBundleString`可通过`DoricJSLoader`获取。 
 
 ```objectivec
     DoricPanel *panel = [DoricPanel new];
@@ -49,6 +57,23 @@ Doric容器可以接收Doric JS bundle并运行。
 
 # Bundle装载 - DoricJSLoader
 
+DoricJSLoader的作用是根据Source协议请求加载JS内容。
+Doric内部实现了通过`assets`文件或`http/https`地址加载。
+您也可以按如下注册自己的DoricJSLoader来实现自定义协议。
+
+## 使用
+Doric内置了两种协议实现
+1. App内文件，source格式为`assets://xxxxxx`。`xxxxxx`即为文件相对MainBundle的路径。
+2. Http或Https协议，source格式即为http地址,`https://example.com/bundle.js`
+
+```objectivec
+NSString *source = @"assets://src/HelloDoric.js";
+NSString *alias = @"HelloDoric";
+[[DoricJSLoaderManager instance] request:source].resultCallback = ^(NSString *result) {
+    [doricPanel config:source alias:alias extra:@"{}"];
+};
+```
+## 注册
 您可以注册DoricJSLoader来实现对JS Bundle的自定义请求下载。
 
 ```objectivec
