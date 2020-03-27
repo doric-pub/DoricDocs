@@ -30,6 +30,7 @@ sidebar:
     theory: Runtime Theory
     mvvm: MVVM of Doric
     diagram: Overall Diagram
+    layout: Doric Layouts
   api:
     core: Core
     overview: Overview

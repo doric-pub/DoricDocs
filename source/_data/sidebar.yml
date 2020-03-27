@@ -4,6 +4,7 @@ docs:
     commands: commands.html
     mvvm: mvvm.html
     diagram: diagram.html
+    layout: layout.html
   basic_usage:
     hello: hello.html
   advanced:

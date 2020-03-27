@@ -28,6 +28,7 @@ sidebar:
     advanced: 进阶
     theory: Doric 运行机制
     mvvm: Doric中的MVVM框架
+    layout: Doric Layouts
   api:
     core: 核心
     overview: 概述
