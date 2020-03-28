@@ -165,8 +165,8 @@ public class DoricHttpJSLoader implements IDoricJSLoader {
 
 ## 注册生效
 
-创建`JSLoader`的实例并在`DoricRegistry`中注册
+创建`JSLoader`的实例并在`Doric`中注册
 
 ```java
-DoricRegistry.addJSLoader(new DoricHttpJSLoader());
+Doric.addJSLoader(new DoricHttpJSLoader());
 ```

@@ -117,8 +117,8 @@ NSString *alias = @"HelloDoric";
 
 ## 注册生效
 
-创建`JSLoader`的实例并在`DoricRegistry`中注册
+创建`JSLoader`的实例并在`Doric`中注册
 
 ```objectivec
-    [DoricJSLoaderManager.instance addJSLoader:[DoricHttpJSLoader new]];
+    [Doric addJSLoader:[DoricHttpJSLoader new]];
 ```

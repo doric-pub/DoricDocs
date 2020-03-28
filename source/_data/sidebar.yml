@@ -17,5 +17,6 @@ api:
     iOS: ios.html
     web: web.html
   extensions:
+    overview: extensions.html
     view: view.html
     plugin: plugin.html
