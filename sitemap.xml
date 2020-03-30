@@ -23,13 +23,6 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/plugin</loc>
-    
-    <lastmod>2020-03-28T08:16:40.388Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/zh-cn/api/plugin</loc>
     
     <lastmod>2020-03-28T08:16:40.388Z</lastmod>
@@ -37,14 +30,21 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/extensions</loc>
+    <loc>https://doric.pub/api/plugin</loc>
+    
+    <lastmod>2020-03-28T08:16:40.388Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/zh-cn/api/extensions</loc>
     
     <lastmod>2020-03-28T08:01:10.028Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/extensions</loc>
+    <loc>https://doric.pub/api/extensions</loc>
     
     <lastmod>2020-03-28T08:01:10.028Z</lastmod>
     
@@ -114,13 +114,6 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/js</loc>
-    
-    <lastmod>2020-02-20T07:07:09.878Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/api/js</loc>
     
     <lastmod>2020-02-20T07:07:09.878Z</lastmod>
@@ -128,14 +121,21 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/view</loc>
+    <loc>https://doric.pub/zh-cn/api/js</loc>
+    
+    <lastmod>2020-02-20T07:07:09.878Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/zh-cn/api/view</loc>
     
     <lastmod>2020-02-20T02:04:00.889Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/view</loc>
+    <loc>https://doric.pub/api/view</loc>
     
     <lastmod>2020-02-20T02:04:00.889Z</lastmod>
     
@@ -226,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/</loc>
+    <loc>https://doric.pub/zh-cn/api/</loc>
     
     <lastmod>2019-12-31T07:46:59.210Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/</loc>
+    <loc>https://doric.pub/api/</loc>
     
     <lastmod>2019-12-31T07:46:59.210Z</lastmod>
     
