@@ -36,18 +36,4 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
   <!-- RSS -->
   {{ feed_tag('atom.xml') }}
-  <!-- Open Graph -->
-  {{ open_graph({
-    fb_admins: config.fb_admins,
-    twitter_site: config.twitter
-  }) }}
-  <!-- Google Analytics -->
-  {{ partial('google_analytics') }}
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-6482217598104186",
-          enable_page_level_ads: true
-     });
-  </script>
 </head>
