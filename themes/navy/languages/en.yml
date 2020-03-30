@@ -31,6 +31,7 @@ sidebar:
     mvvm: MVVM of Doric
     diagram: Overall Diagram
     layout: Doric Layouts
+    progressive: Progressive Framework
   api:
     core: Core
     overview: Overview

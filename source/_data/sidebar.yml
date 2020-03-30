@@ -9,6 +9,7 @@ docs:
     hello: hello.html
   advanced:
     theory: theory.html
+    progressive: progressive.html
 api:
   core:
     overview: index.html
