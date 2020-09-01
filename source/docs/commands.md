@@ -8,14 +8,15 @@ title: 命令
 $ doric create [ProjectName]
 ```
 
-新建一个Doric项目，项目名为`ProjectName`。
+新建一个 Doric 项目，项目名为`ProjectName`。
 
 ## dev
 
 ```bash
 $ doric dev
 ```
-开始开发Doric页面，此时终端会输出二维码。可通过[Doric Playground]()扫码查看页面效果
+
+开始开发 Doric 页面，此时终端会输出二维码。可通过[Doric Playground](https://www.pgyer.com/0Pfu)扫码查看页面效果
 
 ## build
 
@@ -23,7 +24,7 @@ $ doric dev
 $ doric build
 ```
 
-进行代码打包，此时输出JS bundle文件至 `bundle` 目录下。 
+进行代码打包，此时输出 JS bundle 文件至 `bundle` 目录下。
 
 ## clean
 
