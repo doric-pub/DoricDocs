@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://doric.pub/docs/commands</loc>
+    
+    <lastmod>2020-09-01T12:17:43.137Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://doric.pub/zh-cn/docs/commands</loc>
     
     <lastmod>2020-09-01T12:03:10.675Z</lastmod>
@@ -72,14 +79,14 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/android</loc>
+    <loc>https://doric.pub/zh-cn/api/android</loc>
     
     <lastmod>2020-03-28T07:58:50.224Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/android</loc>
+    <loc>https://doric.pub/api/android</loc>
     
     <lastmod>2020-03-28T07:58:50.224Z</lastmod>
     
@@ -121,14 +128,14 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/js</loc>
+    <loc>https://doric.pub/zh-cn/api/js</loc>
     
     <lastmod>2020-02-20T07:07:09.878Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/js</loc>
+    <loc>https://doric.pub/api/js</loc>
     
     <lastmod>2020-02-20T07:07:09.878Z</lastmod>
     
@@ -198,23 +205,9 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/docs/commands</loc>
-    
-    <lastmod>2019-12-31T09:37:00.381Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/docs/theory</loc>
     
     <lastmod>2019-12-31T09:37:00.380Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://doric.pub/zh-cn/api/web</loc>
-    
-    <lastmod>2019-12-31T09:26:14.664Z</lastmod>
     
   </url>
   
@@ -226,14 +219,21 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/</loc>
+    <loc>https://doric.pub/zh-cn/api/web</loc>
+    
+    <lastmod>2019-12-31T09:26:14.664Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/zh-cn/api/</loc>
     
     <lastmod>2019-12-31T07:46:59.210Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/</loc>
+    <loc>https://doric.pub/api/</loc>
     
     <lastmod>2019-12-31T07:46:59.210Z</lastmod>
     
