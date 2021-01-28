@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://doric.pub/zh-cn/docs/</loc>
+    
+    <lastmod>2021-01-28T09:15:56.868Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/</loc>
+    
+    <lastmod>2021-01-28T09:15:41.968Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://doric.pub/docs/commands</loc>
     
     <lastmod>2020-09-01T12:17:43.137Z</lastmod>
@@ -37,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/plugin</loc>
-    
-    <lastmod>2020-03-28T08:16:40.388Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/zh-cn/api/plugin</loc>
     
     <lastmod>2020-03-28T08:16:40.388Z</lastmod>
@@ -51,9 +58,9 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/extensions</loc>
+    <loc>https://doric.pub/api/plugin</loc>
     
-    <lastmod>2020-03-28T08:01:10.028Z</lastmod>
+    <lastmod>2020-03-28T08:16:40.388Z</lastmod>
     
   </url>
   
@@ -65,14 +72,21 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/ios</loc>
+    <loc>https://doric.pub/api/extensions</loc>
+    
+    <lastmod>2020-03-28T08:01:10.028Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/zh-cn/api/ios</loc>
     
     <lastmod>2020-03-28T07:59:16.220Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/ios</loc>
+    <loc>https://doric.pub/api/ios</loc>
     
     <lastmod>2020-03-28T07:59:16.220Z</lastmod>
     
@@ -103,20 +117,6 @@
     <loc>https://doric.pub/docs/layout</loc>
     
     <lastmod>2020-03-27T10:25:35.525Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://doric.pub/zh-cn/docs/</loc>
-    
-    <lastmod>2020-03-23T05:40:28.620Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://doric.pub/docs/</loc>
-    
-    <lastmod>2020-03-23T03:36:55.740Z</lastmod>
     
   </url>
   
@@ -212,14 +212,14 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/web</loc>
+    <loc>https://doric.pub/zh-cn/api/web</loc>
     
     <lastmod>2019-12-31T09:26:14.664Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/zh-cn/api/web</loc>
+    <loc>https://doric.pub/api/web</loc>
     
     <lastmod>2019-12-31T09:26:14.664Z</lastmod>
     
