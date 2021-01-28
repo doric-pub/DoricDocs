@@ -5,7 +5,7 @@ title: 文档
 
 ## 什么是 Doric?
 
-![Doric](http://www.kedo.gov.cn/upload/resources/image/2017/07/24/160817.png)
+![Doric](./temple.png)
 
 **Doric** 是一个极简高效的跨端开发框架，使用[**TypeScript**](https://www.typescriptlang.org/index.html)作为开发语言。
 上层遵循[**MVVM**](./mvvm.html)设计，可以在多终端平台上执行，实现一份代码多处执行。
