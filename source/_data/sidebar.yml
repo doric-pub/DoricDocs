@@ -5,6 +5,7 @@ docs:
     mvvm: mvvm.html
     diagram: diagram.html
     layout: layout.html
+    devkit: devkit.html
   basic_usage:
     hello: hello.html
   advanced:
