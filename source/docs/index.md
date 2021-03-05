@@ -59,32 +59,14 @@ iOS/
 build/
 bundle/
 ```
-
-1. 运行`doric dev`命令，输出本地IP二维码
-您可直接运行Doric命令开启热重载
+1. 连接手机,并运行以下命令
+Android 手机:
 ```bash
-$ cd HelloDoric
-$ doric dev
+doric run android
 ```
-此时，屏幕上会出现您网络IP及对应的二维码。
-
-1. 您可按如下步骤，安装壳工程APP到手机后，通过扫码进入调试模式。
-
-    * Android
-您可直接使用Android Studio打开`android`目录，运行项目。
-    * iOS
-        * 首先安装Podfile
+iOS 手机或模拟器
 ```bash
-$ cd iOS && pod install
+doric run ios
 ```
-        * 使用XCode打开`iOS`下项目,并运行
-
-1. 开发调试
-    * 按上面Android或iOS项目APP安装到手机后，手机上会出现首页如下：
-    ![android](../image/hello_android.png)  ![iOS](../image/hello_iOS.png)
-    * 手机点击标题栏`Devkit`按钮，进入相机扫描页面，对准上述第一步出现的二维码扫描，连接成功后出现如下页面。如果您使用iOS或Android模拟器，则无需相机扫描，直接连接到本机地址。
-    ![android](../image/debug_android.png)  ![iOS](../image/debug_iOS.png)
-    点击返回回到首页。
-    * 修改`src/HelloDoric.ts`文件，您可以在手机上实时看到修改后的效果。
-    ![debugging](../image/debugging.gif)
-    * 您也可以随时重新运行APP项目，重新安装将最新修改内容同步到手机。
+## 开发与调试
+请查看文档[Doric 开发与调试](./devkit.html)
