@@ -11,6 +11,8 @@ docs:
   advanced:
     theory: theory.html
     progressive: progressive.html
+    modular: modular.html
+    viewComponent: viewComponent.html
 api:
   core:
     overview: index.html

@@ -33,6 +33,8 @@ sidebar:
     layout: Doric Layouts
     progressive: Progressive Framework
     devkit: Doric Devkit
+    modular: Modular in Doric
+    viewComponent: View Component
   api:
     core: Core
     overview: Overview
