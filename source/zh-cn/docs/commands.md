@@ -26,6 +26,18 @@ $ doric build
 
 进行代码打包，此时输出 JS bundle 文件至 `bundle` 目录下。
 
+## run
+在Android或iOS中运行Doric
+### Android
+```bash
+$ doric run android
+```
+### iOS
+```bash
+$ doric run ios
+```
+编译Android&iOS项目,并安装APP到手机或模拟器中(请先连接好手机)
+
 ## clean
 
 ```bash
