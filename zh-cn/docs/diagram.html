@@ -2,17 +2,17 @@
 <html lang="zh-cn">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>Doric渐进式开发 | Doric</title>
+  <title>Doric</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://doric.pub/zh-cn/docs/progressive.html">
+  <link rel="canonical" href="https://doric.pub/zh-cn/docs/diagram.html">
   <!-- Alternative links -->
   
     
-      <link rel="alternative" hreflang="en" href="https://doric.pub/zh-cn/docs/progressive">
+      <link rel="alternative" hreflang="en" href="https://doric.pub/zh-cn/docs/diagram">
     
-      <link rel="alternative" hreflang="zh-cn" href="https://doric.pub/zh-cn/zh-cn/docs/progressive">
+      <link rel="alternative" hreflang="zh-cn" href="https://doric.pub/zh-cn/zh-cn/docs/diagram">
     
   
   <!-- Icon -->
@@ -63,7 +63,7 @@
     </nav>
     <div id="lang-select-wrap">
       <label id="lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></label>
-      <select id="lang-select" data-canonical="docs/progressive.html">
+      <select id="lang-select" data-canonical="docs/diagram.html">
         
           <option value="en">English</option>
         
@@ -87,21 +87,16 @@
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name">Doric渐进式开发</h1>
-                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/zh-cn/docs/progressive.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+                <h1 class="article-title" itemprop="name"></h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/zh-cn/docs/diagram.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
               </header>
               <div class="article-content" itemprop="articleBody">
-                <blockquote>
-<p>Doric满足渐进式框架特点，您可以用Doric从头开始开发一个新的APP，也可以用它完成APP中某些页面，或者只是完成一个页面中部分区域内容。<br>Doric提供了不同层级的容器，可按需使用。</p>
-</blockquote>
-<h1 id="Doric-APP" class="article-heading"><a href="#Doric-APP" class="headerlink" title="Doric APP"></a>Doric APP<a class="article-anchor" href="#Doric-APP" aria-hidden="true"></a></h1><p>您可以通过<code>doric create</code>命令创建Doric项目，项目中自动生成Android和iOS项目工程。您可以基于自动生成的项目工程，通过多个<code>Panel</code>构建Doric APP。</p>
-<h1 id="Doric-页面" class="article-heading"><a href="#Doric-页面" class="headerlink" title="Doric 页面"></a>Doric 页面<a class="article-anchor" href="#Doric-页面" aria-hidden="true"></a></h1><p>Doric在Android或iOS都提供了页面级容器供装载Doric程序。<br>Android中的<a href="../api/android.html#DoricActivity">DoricActivity</a>或iOS中的<a href="../api/ios.html#DoricViewController">DoricViewController</a>都提供页面级容器供Doric装载运行。</p>
-<h1 id="Doric-Panel" class="article-heading"><a href="#Doric-Panel" class="headerlink" title="Doric Panel"></a>Doric Panel<a class="article-anchor" href="#Doric-Panel" aria-hidden="true"></a></h1><p>在原生页面中可以灵活嵌入使用Doric开发，此时Doric可作为普通的View视图无缝嵌入原生页面。<br>可直接使用Android中的<a href="../api/android.html#DoricPanel">DoricPanel</a>或iOS中的<a href="../api/ios.html#DoricPanel">DoricPanel</a>进行装载。</p>
+                <h2 id="Overall-Class-Diagram" class="article-heading"><a href="#Overall-Class-Diagram" class="headerlink" title="Overall Class Diagram"></a>Overall Class Diagram<a class="article-anchor" href="#Overall-Class-Diagram" aria-hidden="true"></a></h2><p><img src="../image/OverallClassDiagram.png" alt="Overall Class Diagram"></p>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2020-03-30T06:53:26.773Z" itemprop="dateModified">上次更新：2020-03-30</time>
-                <a href="theory.html" class="article-footer-prev" title="Doric 运行机制"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="modular.html" class="article-footer-next" title="Doric中的模块化"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+                <time class="article-footer-updated" datetime="2020-02-20T01:55:47.456Z" itemprop="dateModified">上次更新：2020-02-20</time>
+                <a href="mvvm.html" class="article-footer-prev" title="Doric中的MVVM框架"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="layout.html" class="article-footer-next" title="Doric Layouts"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
             </div>
@@ -109,7 +104,7 @@
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Doric-APP"><span class="toc-text">Doric APP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Doric-页面"><span class="toc-text">Doric 页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Doric-Panel"><span class="toc-text">Doric Panel</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overall-Class-Diagram"><span class="toc-text">Overall Class Diagram</span></a></li></ol>
               <a href="#" id="article-toc-top">回到顶部</a>
             </div>
           </aside>
@@ -117,7 +112,7 @@
       </article>
       <aside id="sidebar" role="navigation">
   <div class="inner">
-    <strong class="sidebar-title">开始使用</strong><a href="index.html" class="sidebar-link">概述</a><a href="commands.html" class="sidebar-link">命令</a><a href="mvvm.html" class="sidebar-link">Doric中的MVVM框架</a><a href="diagram.html" class="sidebar-link">Overall Diagram</a><a href="layout.html" class="sidebar-link">Doric Layouts</a><a href="devkit.html" class="sidebar-link">Doric Devkit</a><strong class="sidebar-title">基础用法</strong><a href="hello.html" class="sidebar-link">你好,Doric</a><strong class="sidebar-title">进阶</strong><a href="theory.html" class="sidebar-link">Doric 运行机制</a><a href="progressive.html" class="sidebar-link current">渐进式框架</a><a href="modular.html" class="sidebar-link">Doric中的模块化</a><a href="viewComponent.html" class="sidebar-link">Doric中的视图组件</a>
+    <strong class="sidebar-title">开始使用</strong><a href="index.html" class="sidebar-link">概述</a><a href="commands.html" class="sidebar-link">命令</a><a href="mvvm.html" class="sidebar-link">Doric中的MVVM框架</a><a href="diagram.html" class="sidebar-link current">Overall Diagram</a><a href="layout.html" class="sidebar-link">Doric Layouts</a><a href="devkit.html" class="sidebar-link">Doric Devkit</a><strong class="sidebar-title">基础用法</strong><a href="hello.html" class="sidebar-link">你好,Doric</a><strong class="sidebar-title">进阶</strong><a href="theory.html" class="sidebar-link">Doric 运行机制</a><a href="progressive.html" class="sidebar-link">渐进式框架</a><a href="modular.html" class="sidebar-link">Doric中的模块化</a><a href="viewComponent.html" class="sidebar-link">Doric中的视图组件</a>
   </div>
 </aside>
     </div>
@@ -147,12 +142,12 @@
       </li>
     </ul>
     
-      <strong class="mobile-nav-title">开始使用</strong><a href="index.html" class="mobile-nav-link">概述</a><a href="commands.html" class="mobile-nav-link">命令</a><a href="mvvm.html" class="mobile-nav-link">Doric中的MVVM框架</a><a href="diagram.html" class="mobile-nav-link">Overall Diagram</a><a href="layout.html" class="mobile-nav-link">Doric Layouts</a><a href="devkit.html" class="mobile-nav-link">Doric Devkit</a><strong class="mobile-nav-title">基础用法</strong><a href="hello.html" class="mobile-nav-link">你好,Doric</a><strong class="mobile-nav-title">进阶</strong><a href="theory.html" class="mobile-nav-link">Doric 运行机制</a><a href="progressive.html" class="mobile-nav-link current">渐进式框架</a><a href="modular.html" class="mobile-nav-link">Doric中的模块化</a><a href="viewComponent.html" class="mobile-nav-link">Doric中的视图组件</a>
+      <strong class="mobile-nav-title">开始使用</strong><a href="index.html" class="mobile-nav-link">概述</a><a href="commands.html" class="mobile-nav-link">命令</a><a href="mvvm.html" class="mobile-nav-link">Doric中的MVVM框架</a><a href="diagram.html" class="mobile-nav-link current">Overall Diagram</a><a href="layout.html" class="mobile-nav-link">Doric Layouts</a><a href="devkit.html" class="mobile-nav-link">Doric Devkit</a><strong class="mobile-nav-title">基础用法</strong><a href="hello.html" class="mobile-nav-link">你好,Doric</a><strong class="mobile-nav-title">进阶</strong><a href="theory.html" class="mobile-nav-link">Doric 运行机制</a><a href="progressive.html" class="mobile-nav-link">渐进式框架</a><a href="modular.html" class="mobile-nav-link">Doric中的模块化</a><a href="viewComponent.html" class="mobile-nav-link">Doric中的视图组件</a>
     
   </div>
   <div id="mobile-lang-select-wrap">
     <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
-    <select id="mobile-lang-select" data-canonical="docs/progressive.html">
+    <select id="mobile-lang-select" data-canonical="docs/diagram.html">
       
         <option value="en">English</option>
       
