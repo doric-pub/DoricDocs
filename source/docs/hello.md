@@ -13,52 +13,12 @@ $ doric create HelloDoric
 ```bash
 $ cd HelloDoric && code ./js
 ```
+<iframe
+  src="https://carbon.now.sh/embed?bg=rgba%28171%2C184%2C195%2C0%29&t=vscode&wt=none&l=application%2Ftypescript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=import%2520%257B%250A%2520%2520Panel%252C%250A%2520%2520Group%252C%250A%2520%2520vlayout%252C%250A%2520%2520layoutConfig%252C%250A%2520%2520Gravity%252C%250A%2520%2520text%252C%250A%2520%2520Text%252C%250A%2520%2520Color%252C%250A%2520%2520navbar%252C%250A%257D%2520from%2520%27doric%27%250A%250A%2540Entry%250Aclass%2520HelloDoric%2520extends%2520Panel%2520%257B%250A%2520%2520onShow%28%29%2520%257B%250A%2520%2520%2520%2520navbar%28context%29.setTitle%28%27HelloDoric%27%29%250A%2520%2520%257D%250A%2520%2520build%28rootView%253A%2520Group%29%2520%257B%250A%2520%2520%2520%2520let%2520number%253A%2520Text%250A%2520%2520%2520%2520let%2520count%2520%253D%25200%250A%2520%2520%2520%2520vlayout%28%250A%2520%2520%2520%2520%2520%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%28number%2520%253D%2520text%28%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520textSize%253A%252040%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520text%253A%2520%270%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%29%29%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520text%28%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520text%253A%2520%27Click%2520to%2520count%27%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520textSize%253A%252020%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520backgroundColor%253A%2520Color.parse%28%27%252370a1ff%27%29%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520textColor%253A%2520Color.WHITE%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520onClick%253A%2520%28%29%2520%253D%253E%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520number.text%2520%253D%2520%2560%2524%257B%252B%252Bcount%257D%2560%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520layoutConfig%253A%2520layoutConfig%28%29.just%28%29%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520width%253A%2520200%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520height%253A%252050%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%29%252C%250A%2520%2520%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2520%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520layoutConfig%253A%2520layoutConfig%28%29.just%28%29.configAlignment%28Gravity.Center%29%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520width%253A%2520200%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520height%253A%2520200%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520space%253A%252020%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520border%253A%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520color%253A%2520Color.BLUE%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520width%253A%25201%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520gravity%253A%2520Gravity.Center%252C%250A%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%29.in%28rootView%29%250A%2520%2520%257D%250A%257D%250A"
+  style="width: 100%; height: 1000px; border:0; transform: scale(1); overflow:hidden;"
+  sandbox="allow-scripts allow-same-origin">
+</iframe>
 
-```TypeScript
-import { Panel, Group, vlayout, layoutConfig, Gravity, IVLayout, text, Text, Color, navbar } from "doric";
-
-@Entry
-class HelloDoric extends Panel {
-    onShow() {
-        navbar(context).setTitle("HelloDoric")
-    }
-    build(rootView: Group): void {
-        let number: Text
-        let count = 0
-        vlayout([
-            number = text({
-                textSize: 40,
-                text: '0',
-            }),
-            text({
-                text: "Click to count",
-                textSize: 20,
-                backgroundColor: Color.parse('#70a1ff'),
-                textColor: Color.WHITE,
-                onClick: () => {
-                    number.text = `${++count}`
-                },
-                layoutConfig: layoutConfig().just(),
-                width: 200,
-                height: 50,
-            }),
-        ])
-            .apply({
-                layoutConfig: layoutConfig().just().configAlignment(Gravity.Center),
-                width: 200,
-                height: 200,
-                space: 20,
-                border: {
-                    color: Color.BLUE,
-                    width: 1,
-                },
-                gravity: Gravity.Center,
-            } as IVLayout)
-            .in(rootView)
-    }
-
-}
-```
 ## 代码导读
 
 ### Panel

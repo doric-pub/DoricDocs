@@ -113,7 +113,7 @@ public class MyLibrary extends DoricLibrary {
 ```
 1.结束iOS部分的开发，重新编译代码并安装运行。
 
-# TS调用
+# TypeScript调用
 使用时，调用JS API即可。
 ```typescript
 examplePlugin(context).nativeAdd(1,2).then(result=>{

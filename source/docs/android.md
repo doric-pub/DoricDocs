@@ -1,23 +1,21 @@
 ---
-title: Doric Android SDK
+title: Android中接入Doric SDK
 ---
 本文介绍在Android中使用Doric的方式及常用API
 
 # 项目引入
-
+![icon](https://img.shields.io/maven-central/v/pub.doric/core)
 1. 在项目根目录 build.gradle 中添加远程maven地址:
     ```gradle
     allprojects {
         repositories {
             ......
-            maven {
-                    url "https://dl.bintray.com/osborn/Android"
-            }
+            mavenCentral()
         }
     }
     ```
 
-1. 在app目录中的 build.gradle 中添加依赖:
+2. 在app目录中的 build.gradle 中添加依赖:
     ```gradle
         dependencies {
             ......
@@ -26,7 +24,7 @@ title: Doric Android SDK
         }
     ```
 
-1. 直接跳转到DoricActivity(装载JS Bundle为 `assets/src/BUNDLE_NAME.js`)
+3. 直接跳转到DoricActivity(装载JS Bundle为 `assets/src/BUNDLE_NAME.js`)
     ```java
         Intent intent  = new Intent(context, DoricActivity.class);
         intent.putExtra("source", "assets://src/" + BUNDLE_NAME + ".js");

@@ -15,7 +15,8 @@ ModularPanel是Module的子类,可作为Module之上的组装体,也可被其他
 ### Provider
 提供全局数据的读写、监听及更新等能力
 ## UML
-![UML](../image/modular_1.png)
+<iframe id="embed_dom" name="embed_dom" frameborder="0" style="display:block;width:525px; height:800px;" src="https://www.processon.com/embed/60a3680be401fd3995ffc052"></iframe>
+
 ## 模块化框架的使用
 1. 根据已划分模块分别继承`Module`实现子类,在该类中实现当前模块的视图及业务处理逻辑
 1. 继承`ModularPanel`实现子类,通过如下两个方法提供出模块视图的父视图,以及其子模块的清单.该子类可继续嵌入更上层的`ModularPanel`的子类,也可以直接加上`@Entry`注解直接展示.

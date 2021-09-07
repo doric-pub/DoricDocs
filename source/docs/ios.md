@@ -1,10 +1,10 @@
 ---
-title: Doric iOS SDK
+title: iOS中接入Doric SDK
 ---
 本文介绍在iOS中使用Doric的方式及常用API
 
 # 项目引入
-
+![icon](https://img.shields.io/cocoapods/v/DoricCore)
 1. 在pod spec中添加:
     ```ruby
       pod 'DoricCore', '~>0.2.1'

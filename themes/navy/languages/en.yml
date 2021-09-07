@@ -22,26 +22,27 @@ sidebar:
   docs:
     getting_started: 开始使用
     overview: 概述
-    commands: 命令
+    cli: 命令行工具
     basic_usage: 基础用法
     writing: 写作
     hello: 你好,Doric
     advanced: 进阶
     theory: Doric的运行机制
-    mvvm: Doric中的MVVM框架
-    layout: Doric中的布局
+    mvvm: Doric中的MVVM
+    layout: 布局方式与布局容器
     progressive: 渐进式框架
     modular: Doric中的模块化
     viewComponent: Doric中的视图组件
     diagram: Doric架构
     devkit: Doric调试工具(Devkit)
+    extensions: 扩展
+    extensionLibrary: 开发Doric扩展库
+    view: 扩展原生视图
+    plugin: 扩展原生能力
+    bringin: 接入
+    android: Android接入Doric SDK
+    iOS: iOS接入Doric SDK
   api:
     core: 核心
     overview: 概述
     js: JS篇
-    android: Android篇
-    iOS: iOS篇
-    web: Web篇
-    extensions: 扩展
-    view: 原生视图组件
-    plugin: 原生能力模块

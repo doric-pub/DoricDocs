@@ -1,5 +1,5 @@
 ---
-title: Doric Devkit的集成与使用
+title: Doric调试工具(Devkit)的使用
 ---
 Doric Devkit可以在开发Doric程序过程中,帮助开发者进行日志查看、代码热重载、断点调试等.
 本文档介绍如何集成及使用Doric devkit.

@@ -1,7 +1,7 @@
 docs:
   getting_started:
     overview: index.html
-    commands: commands.html
+    cli: cli.html
     mvvm: mvvm.html
     diagram: diagram.html
     layout: layout.html
@@ -13,14 +13,14 @@ docs:
     progressive: progressive.html
     modular: modular.html
     viewComponent: viewComponent.html
+  bringin:
+    android: android.html
+    iOS: ios.html
+  extensions:
+    extensionLibrary: extensions.html
+    view: view.html
+    plugin: plugin.html
 api:
   core:
     overview: index.html
     js: js.html
-    android: android.html
-    iOS: ios.html
-    web: web.html
-  extensions:
-    overview: extensions.html
-    view: view.html
-    plugin: plugin.html
