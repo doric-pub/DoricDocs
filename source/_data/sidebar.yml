@@ -23,4 +23,30 @@ docs:
 api:
   core:
     overview: index.html
-    js: js.html
+    View: view.html
+    Panel: panel.html
+    VMPanel:
+    BridgeContext:
+    Environment:
+  widgets:
+    Text:
+    Image:
+    Input:
+    Stack: stack.html
+    VLayout: vlayout.html
+    HLayout: hlayout.html
+    Scroller: scroller.html
+    Slider: slider.html
+    List:
+    FlowLayout:
+  platform:
+    Animation:
+    Storage:
+    Notification:
+    Modal:
+    Popover:
+    Statusbar:
+    Network:
+    Coordinator:
+    Navbar:
+    Navigator:
