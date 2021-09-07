@@ -8,7 +8,7 @@ Doric SDK中提供了一系列基础的视图单元,也提供了插件机制用�
 **您需要继承Doric中已实现的视图单元类来实现子类,并在该子类上添加`ViewComponent`注解.**
 
 ```typescript
-@ViewComponent
+@ViewComponent  
 export class RichTitleView extends HLayout {
     title: Text
     subTitle: Text

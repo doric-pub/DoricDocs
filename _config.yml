@@ -26,5 +26,5 @@ highlight:
 github: doric-pub/Doric
 
 deploy:
-  type: 'git'
-  repo: 'git@github.com:doric-pub/DoricDocs.git'
+  type: "git"
+  repo: "git@github.com:doric-pub/DoricDocs.git"

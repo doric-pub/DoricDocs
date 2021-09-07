@@ -1,47 +1,47 @@
 menu:
-  docs: Docs
+  docs: 文档
   api: API
-  news: News
-  extension: Extensions
-  themes: Themes
-  about: About
-  search: Search
+  news: 新闻
+  extension: 扩展插件
+  about: 关于
+  search: 搜索
   playground: Playground
 
 index:
-  get_started: Get started
+  get_started: 开始使用
 
 page:
-  contents: Contents
-  back_to_top: Back to Top
-  improve: Improve this doc
-  prev: Prev
-  next: Next
-  last_updated: "Last updated: %s"
+  contents: 目录
+  back_to_top: 回到顶部
+  improve: 改进本文
+  prev: 上一页
+  next: 下一页
+  last_updated: 上次更新：%s
 
 sidebar:
   docs:
-    getting_started: Getting Started
-    overview: Overview
-    commands: Commands
-    basic_usage: Basic Usage
-    hello: Hello,Doric
-    advanced: Advanced
-    theory: Runtime Theory
-    mvvm: MVVM of Doric
-    diagram: Overall Diagram
-    layout: Doric Layouts
-    progressive: Progressive Framework
-    devkit: Doric Devkit
-    modular: Modular in Doric
-    viewComponent: View Component
+    getting_started: 开始使用
+    overview: 概述
+    commands: 命令
+    basic_usage: 基础用法
+    writing: 写作
+    hello: 你好,Doric
+    advanced: 进阶
+    theory: Doric的运行机制
+    mvvm: Doric中的MVVM框架
+    layout: Doric中的布局
+    progressive: 渐进式框架
+    modular: Doric中的模块化
+    viewComponent: Doric中的视图组件
+    diagram: Doric架构
+    devkit: Doric调试工具(Devkit)
   api:
-    core: Core
-    overview: Overview
-    js: JS
-    android: Android
-    iOS: iOS
-    web: Web
-    extensions: Extensions
-    view: View
-    plugin: Native Bridge
+    core: 核心
+    overview: 概述
+    js: JS篇
+    android: Android篇
+    iOS: iOS篇
+    web: Web篇
+    extensions: 扩展
+    view: 原生视图组件
+    plugin: 原生能力模块

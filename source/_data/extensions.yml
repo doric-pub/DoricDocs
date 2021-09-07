@@ -1,6 +1,35 @@
-- name: doriclib-media
-  description: Doric official media library provides video player
-  link: https://github.com/doric-pub/doriclib-media
+- name: doric-websocket
+  description: Doric WebSocket能力支持库
+  link: https://github.com/doric-pub/DoricWebsocket
+  tags:
+    - websocket
+- name: doric-sqlite
+  description: 提供Doric中的SQLite数据库读写能力
+  link: https://github.com/doric-pub/DoricSQLite
+  tags:
+    - sqlite
+- name: doric-imagepicker
+  description: Doric图片选择器,支持从图库中选择图片及直接拍照
+  link: https://github.com/doric-pub/DoricImagePicker
+  tags:
+    - imagepicker
+    - camera
+    - image
+- name: doric-fs
+  description: Doric文件系统插件,提供对系统文件系统的读写能力
+  link: https://github.com/doric-pub/DoricFs
+  tags:
+    - file
+- name: doric-barcodescanner
+  description: Doric 扫描器,支持扫描条形码、二维码等
+  link: https://github.com/doric-pub/DoricBarcodeScanner
+  tags:
+    - barcode
+    - qr
+    - camera
+- name: doric-media
+  description: Doric视频播放器组件
+  link: https://github.com/doric-pub/DoricMedia
   tags:
     - media
     - player
