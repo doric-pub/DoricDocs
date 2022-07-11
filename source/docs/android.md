@@ -19,8 +19,9 @@ title: Android中接入Doric SDK
     ```gradle
         dependencies {
             ......
-            implementation "pub.doric:core:0.2.1"
-            debugImplementation "pub.doric:devkit:0.2.1"
+                // 请注意sdkVersion需与当前JS项目中的doric版本对应
+            implementation "pub.doric:core:${sdkVersion}"
+            debugImplementation "pub.doric:devkit:${sdkVersion}"
         }
     ```
 
