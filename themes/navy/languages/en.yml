@@ -46,3 +46,9 @@ sidebar:
     core: 核心
     overview: 概述
     js: JS篇
+    android: Android篇
+    iOS: iOS篇
+    web: Web篇
+    extensions: 扩展
+    view: 视图
+    plugin: 桥
