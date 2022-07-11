@@ -7,7 +7,7 @@ title: iOS中接入Doric SDK
 ![icon](https://img.shields.io/cocoapods/v/DoricCore)
 1. 在pod spec中添加:
     ```ruby
-    // 请注意sdkVersion需与当前JS项目中的doric版本对应
+    // 请注意sdkVersion需>=当前项目中的doric js库版本
       pod 'DoricCore', '~>${sdkVersion}'
     ```
 
