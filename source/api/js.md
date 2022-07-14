@@ -387,7 +387,12 @@ gravity?:Gravity ///弹窗位置，可为上中下，默认为下
 ```typescript
 void
 ```
+* 使用示例: 
+```typescript
+modal(context).toast("保存成功");
 
+modal(context).toast("保存成功", Gravity.Center);
+```
 ### alert
 弹出警告弹窗
 * 参数类型:
@@ -401,6 +406,12 @@ arg: string | {
 * 返回值: 
 ```typescript
 Promise<any>/// 点击确认后触发resolve回调
+```
+* 使用示例: 
+```typescript
+modal(context).alert('确定删除吗？')
+
+modal(context).alert({title: '提示', msg: '确定删除吗？', okLabel:'确认'})
 ```
 
 ### confirm
@@ -418,6 +429,14 @@ arg: string | {
 ```typescript
 Promise<any>/// 点击确认后触发resolve回调，点击取消触发reject回调
 ```
+* 使用示例: 
+```typescript
+// 方式1
+modal(context).confirm('确定删除吗？')
+// 方式2
+modal(context).confirm({title: '提示', msg: '确定删除吗？', okLabel:'确认', cancelLabel: '取消'})
+```
+
 
 ### prompt
 弹出输入弹窗
@@ -436,6 +455,18 @@ arg: string | {
 ```typescript
 Promise<string>/// 点击确认后触发resolve回调，返回输入值，点击取消触发reject回调
 ```
+* 使用示例: 
+```typescript
+// 方式1
+modal(this.context).prompt({title: '提示', msg: '请输入手机号', okLabel:'确认', cancelLabel: '取消'}).then((result)=>{
+    log(`result = ${result}`);
+});
+
+// 方式2
+const result = await modal(this.context).prompt({title: '提示', msg: '请输入手机号', okLabel:'确认', cancelLabel: '取消'});
+log(`result = ${result}`);
+```
+
 ## navbar
 提供导航栏相关API
 ### isHidden
@@ -503,6 +534,15 @@ view: View
 ```typescript
 Promise<any>
 ```
+
+**使用示例：**
+```typescript
+const isHidden = await navbar(context).isHidden()
+navbar(context).setBgColor(Color.CYAN)
+navbar(context).setHidden(true)
+navbar(context).setTitle('首页')
+```
+
 ## navigator
 提供导航器相关API
 
@@ -513,7 +553,7 @@ Promise<any>
 source:string,/// 新的Doric页面对应的Source地址
 config?: {
             alias?: string | undefined; /// 别名，用于调试信息
-            animated?: boolean | undefined; ///是否支持跳转动画
+            animated?: boolean | undefined; ///是否启用跳转动画
             extra?: object | undefined; /// 新的Doric页面携带的参数
         } | undefined)
 ```
@@ -523,16 +563,95 @@ config?: {
 Promise<any>
 ```
 
+* 使用示例: 
+```typescript
+// 方式1
+import { ComponentDetail } from "./ComponentDetail";
+
+navigator(context).push(ComponentDetail, {
+    extra: {},
+    animated: true,
+});
+
+// 方式2
+navigator(context).push("https://raw.githubusercontent.com/doric-pub/DoricCookbook/v0.1.5/bundle/src/DoricExamples.js");
+   
+// 方式3
+navigator(context).push(`assets://src/TestDemo.js`, { extra: model})
+
+```
+
 ### pop
 跳出当前页面
 * 参数类型:
 ```typescript
-animated?: boolean ///是否支持跳转动画
+animated?: boolean ///是否启用跳转动画
 ```
 
 * 返回值: 
 ```typescript
 Promise<any>
+```
+
+* 使用示例: 
+```typescript
+// 方式1
+navigator(context).pop()
+
+// 方式2
+navigator(context).pop(false)
+```
+
+### popSelf
+将当前控制器从导航里移除
+* 参数类型:
+```typescript
+animated?: boolean ///是否启用跳转动画
+```
+
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+* 使用示例: 
+```typescript
+navigator(context).popSelf()
+```
+
+### popToRoot
+pop到根视图控制器
+* 参数类型:
+```typescript
+animated?: boolean ///是否启用跳转动画
+```
+
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+* 使用示例: 
+```typescript
+navigator(context).popToRoot()
+```
+
+
+### openUrl
+通过系统浏览器打开链接
+* 参数类型:
+```typescript
+url: string  /// 链接url
+```
+
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+* 使用示例: 
+```typescript
+navigator(context).openUrl('https://doric.pub/')
 ```
 
 ## network
@@ -567,6 +686,22 @@ Promise< {
     }>
 ```
 
+* 使用示例: 
+```typescript
+
+let r: IRequest = {
+                url: "http://baobab.kaiyanapp.com/api/v4/discovery/hot",
+                method: "post",
+                data: "start=1&num=1"
+                };
+network(this.context).request(r).then((res) => {
+    const jsonStr = JSON.stringify(res);
+}).catch((e) => {
+    modal(this.context).toast("Catched:" + JSON.stringify(e));
+ });
+```
+
+
 ### get
 GET 请求
 * 参数:
@@ -592,6 +727,16 @@ Promise< {
         };
     }>
 ```
+
+* 使用示例: 
+```typescript
+network(this.context).get('https://www.dmoe.cc/random.php?return=json').then((res) => {
+    const jsonStr = JSON.stringify(res);
+}).catch((e) => {
+    modal(this.context).toast("Catched:" + JSON.stringify(e));
+ });
+```
+
 
 ### post
 POST请求
@@ -619,6 +764,17 @@ Promise< {
             [index: string]: string;
         };
     }>
+```
+
+* 使用示例: 
+```typescript
+
+const data = 'start=1&num=1'
+network(this.context).post('http://baobab.kaiyanapp.com/api/v4/discovery/hot', data).then((res) => {
+    const jsonStr = JSON.stringify(res);
+}).catch((e) => {
+    modal(this.context).toast("Catched:" + JSON.stringify(e));
+ });
 ```
 
 ### put
@@ -731,6 +887,23 @@ zone: string ///标识存储区域，如不传则为全局，建议传入。
 Promise<any>
 ```
 
+**使用示例：**
+```typescript
+const storedKey = "StoredKey"
+const zone = "StorageDemo"
+
+storage(context).setItem(storedKey, 'Jack', zone)
+
+storage(context).getItem(storedKey, zone).then((e) => {
+    this.nameLabel.text = e || "";
+})
+
+storage(context).remove(storedKey, zone)
+
+storage(context).clear(zone).then((e) => {
+    this.update();
+})
+```
 
 ## popover
 提供浮层弹窗API
@@ -746,6 +919,22 @@ view: View /// 需显示的浮层View
 Promise<any>
 ```
 
+* 使用示例:
+```typescript
+popover(context).show(stack([
+    text({
+        width: 200,
+        height: 50,
+        textColor: Color.WHITE,
+        layoutConfig: layoutConfig().just().configAlignment(Gravity.Center),
+        text: "This is PopOver Window",
+        })
+    ],{
+        layoutConfig: layoutConfig().most().configMargin({left: 20, right:20, top:20, bottom:20}),
+        backgroundColor: Color.RED.alpha(1),
+}))
+```
+
 ### dismiss
 隐藏浮层
 * 参数类型:
@@ -757,6 +946,10 @@ view?: View | undefined/// 需消失的浮层View，如果传入undefined，则�
 Promise<any>
 ```
 
+* 使用示例:
+```typescript
+popover(context).dismiss();
+```
 
 ## animate
 提供动画相关API
@@ -774,7 +967,7 @@ Promise<any>
 Promise<any>
 ```
 
-* 例子:
+* 使用示例:
 ```typescript
  animate(context)({
     animations: () => {
@@ -809,6 +1002,18 @@ Promise<any>
 Promise<any>
 ```
 
+* 使用示例:
+```typescript
+notification(this.context).publish({
+              biz: "Test",
+              name: "Demo",
+              data: {
+                a: "1",
+                b: "2",
+              },
+            });
+```
+
 ### subscribe
 订阅广播
 * 参数类型:
@@ -829,6 +1034,20 @@ Promise<any>
 Promise<string> /// 返回SubscribeID
 ```
 
+* 使用示例:
+```typescript
+notification(context)
+    .subscribe({
+        biz: "Test",
+        name: "Demo",
+        callback: (data) => {
+            modal(context).alert(`Received notification,data is ${JSON.stringify(data)}`);},
+        })
+    .then((e) => {
+        this.subscribeId = e;
+    });
+```
+
 ### unsubscribe
 取消订阅广播
 * 参数类型:
@@ -839,7 +1058,14 @@ string /// subscribe方法的返回值
 ```typescript
 Promise<any>
 ```
-
+* 使用示例:
+```typescript
+notification(context)
+    .unsubscribe(this.subscribeId)
+    .then((e) => {
+        this.subscribeId = undefined;
+    });
+```
 
 ## statusbar
 提供状态栏设置API
@@ -868,7 +1094,12 @@ enum StatusBarMode {
 ```typescript
 Promise<any>
 ```
-
+**使用示例：**
+```typescript
+statusbar(context).setHidden(false)
+statusbar(context).setColor(Color.DKGRAY)
+statusbar(context).setMode(StatusBarMode.DARK)
+```
 
 ## coordinator
 提供复杂场景下的View联动机制API
@@ -897,4 +1128,52 @@ Promise<any>
     };
 }
 ```
-* 返回值:Promise<any>
+* 返回值:
+```typescript
+Promise<any>
+```
+
+* 使用示例：
+```typescript
+scroller(
+          vlayout([
+            ...
+          ],
+            {
+              layoutConfig: layoutConfig().most().configHeight(LayoutSpec.FIT),
+              gravity: gravity().center(),
+              space: 10,
+            }
+          ),
+          {
+            layoutConfig: layoutConfig().most(),
+          }
+        ).also((it) => {
+            coordinator(context).verticalScrolling({
+              scrollable: it,
+              scrollRange: {
+                start: 0,
+                end: 100,
+              },
+              target: "NavBar",
+              changing: {
+                name: "backgroundColor",
+                start: Color.WHITE,
+                end: Color.RED,
+              },
+            });
+            coordinator(context).verticalScrolling({
+              scrollable: it,
+              scrollRange: {
+                start: 0,
+                end: 100,
+              },
+              target: imageView,
+              changing: {
+                name: "width",
+                start: 10,
+                end: 200,
+              },
+            });
+          })
+```
