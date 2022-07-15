@@ -1177,3 +1177,160 @@ scroller(
             });
           })
 ```
+## notch
+获取刘海屏安全区域相关API
+
+### inset
+
+获取刘海屏安全区域
+
+* 参数类型：
+```typescript
+void
+```
+* 返回值:
+```typescript
+Promise<{
+    top: number,
+    left: number,
+    bottom: number,
+    right: number,
+}>
+```
+
+* 使用示例：
+```typescript
+notch(context).inset()
+              .then((inset) => {
+                    let result = "top: " + inset.top + "\n" + "left: " + inset.left + "\n" + "bottom: " + inset.bottom + "\n" + "right: " + inset.right
+                    modal(context).toast(result, Gravity.Bottom)
+                })
+```
+
+
+## keyboard
+监听键盘frame变化相关API
+
+### subscribe
+
+监听键盘frame变化
+
+* 参数类型：
+```typescript
+callback: (data: { 
+    oldBottomMargin: number, /// 键盘起始位置时离底部间距
+    oldHeight: number,  /// 键盘起始位置时的高度
+    bottomMargin: number,  /// 键盘最终位置时离底部间距
+    height: number }  /// 键盘最终位置时的高度
+```
+* 返回值:
+```typescript
+Promise<string>  /// 返回一个订阅id
+```
+
+* 使用示例：
+```typescript
+keyboard(context).subscribe(data => {
+                    bottomView.translationY = - (data.bottomMargin + data.height)
+                }).then(e => {
+                    this.subscribeId = e
+                })
+```
+
+### unsubscribe
+
+监听键盘frame变化
+
+* 参数类型：
+```typescript
+subscribeId: string   /// 订阅id
+```
+* 返回值:
+```typescript
+Promise<any>
+```
+
+* 使用示例：
+```typescript
+keyboard(context).unsubscribe(this.subscribeId)
+                 .then(e => {
+                      this.subscribeId = undefined
+                })
+```
+
+
+## imageDecoder
+图片解码相关API
+
+### getImageInfo
+
+获取图片宽高、图片类型等信息
+
+* 参数类型：
+```typescript
+resource: Resource 
+```
+* 返回值:
+```typescript
+Promise<{
+            width: number;   /// 宽度
+            height: number;  /// 高度
+            mimeType: string; /// 图片类型
+        }>
+```
+
+* 使用示例：
+```typescript
+imageDecoder(context)
+      .getImageInfo(new AssetsResource("bg.jpeg"))
+      .then((info)=>{
+        const width = info.width
+        const height = info.height
+        const mimeType = info.mimeType
+      })
+```
+
+### decodeToPixels
+
+解码图片
+
+* 参数类型：
+```typescript
+resource: Resource 
+```
+* 返回值:
+```typescript
+Promise<ArrayBuffer>
+```
+
+* 使用示例：
+```typescript
+imageDecoder(context)
+      .decodeToPixels(new AssetsResource("bg.jpeg"))
+      .then((buffer)=>{
+        const byteLength = buffer.byteLength
+      })
+```
+
+## resourceLoader
+资源加载相关API
+
+### load
+
+加载资源
+
+* 参数类型：
+```typescript
+resource: Resource 
+```
+* 返回值:
+```typescript
+Promise<ArrayBuffer>
+```
+
+* 使用示例：
+```typescript
+resourceLoader(context).load(new AssetsResource("bg.jpeg")).then((buffer)=>{
+    const byteLength = buffer.byteLength
+})
+```
