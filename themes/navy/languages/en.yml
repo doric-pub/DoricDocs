@@ -46,9 +46,11 @@ sidebar:
     use: 应用接入
     else: 其他文档
   api:
-    core: 核心
-    overview: 概述
-    js: JS篇
-    android: Android篇
-    iOS: iOS篇
-    web: Web篇
+    core: 基础概念
+    panel: Panel-页面
+    view: View-视图基类
+    context: Context-控制上下文
+    text: Text-文本控件
+    views: 视图组件
+    plugins: 能力接口
+    modal: modal-模态窗口接口

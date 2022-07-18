@@ -21,8 +21,10 @@ docs:
     viewComponent: viewComponent.html
 api:
   core:
-    overview: index.html
-    js: js.html
-    android: android.html
-    iOS: ios.html
-    web: web.html
+    panel: panel.html
+    view: view.html
+    context: context.html
+  views:
+    text: text.html
+  plugins:
+    modal: modal.html
