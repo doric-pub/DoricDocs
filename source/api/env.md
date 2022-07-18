@@ -36,7 +36,6 @@ if (Environment.platform === 'Android') {
 
 ## 自定义注入
 您可以扩展Environment定义,加入提前定义好的一些变量值,以让JS侧读取到
-请在Doric初始化前调用该方法
 ### Android中
 ```java
 package pub.doric;
