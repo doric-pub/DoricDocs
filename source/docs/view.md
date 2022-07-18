@@ -14,21 +14,6 @@ title: 新增Doric扩展视图组件
 * draggable方法接受IDraggable接口的具体实现和内部子视图的数组，来生成一个Draggable视图的实例
 
 ```javascript
-/*
- * Copyright [2019] [Doric.Pub]
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 import { Property, View } from "../ui/view"
 import { IStack, Stack } from "../widget/layouts"
 import { layoutConfig } from "../util/layoutconfig"
@@ -147,8 +132,67 @@ public class DraggableNode extends StackNode {
 }
 ```
 
-* DoricRegistry类内显式注册DraggableNode
+### iOS端的实现
 
+* 声明DraggableNode类，继承于StackNode
+* blendView方法则用来接受从JS层面传来的onDrag参数
+* build方法返回一个UIView的实例，该UIView实现了UIPanGestureRecognizer，当监听到拖拽手势时通过callJSResponse此方法将该View的位置通知JS层
+
+```objc
+#import "DoricStackNode.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface DoricDraggableNode : DoricStackNode
+
+@property(nonatomic, strong) NSString *onDragFunction;
+
+@end
+
+NS_ASSUME_NONNULL_END
+```
+
+```objc
+#import "DoricDraggableNode.h"
+
+@implementation DoricDraggableNode
+- (UIView *)build {
+    UIView *stackView = [super build];
+    UIPanGestureRecognizer *gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onDrag:)];
+    [stackView addGestureRecognizer:gesture];
+    return stackView;
+}
+
+- (void)onDrag:(UIPanGestureRecognizer *)gesture {
+    CGPoint point = [gesture translationInView:self.view];
+    CGRect originalFrame = self.view.frame;
+    originalFrame.origin.x += point.x;
+    originalFrame.origin.y += point.y;
+    self.view.frame = originalFrame;
+    self.view.doricLayout.marginLeft = originalFrame.origin.x;
+    self.view.doricLayout.marginTop = originalFrame.origin.y;
+    [gesture setTranslation:CGPointZero inView:self.view];
+    [self callJSResponse:_onDragFunction, @(originalFrame.origin.x), @(originalFrame.origin.y), nil];
+}
+
+- (void)blendView:(UIView *)view forPropName:(NSString *)name propValue:(id)prop {
+    if ([name isEqualToString:@"onDrag"]) {
+        _onDragFunction = prop;
+    } else {
+        [super blendView:view forPropName:name propValue:prop];
+    }
+}
+@end
+```
+
+### DoricRegistry类内显式注册DraggableNode
+
+#### Android端
 ```java
 this.registerViewNode(DraggableNode.class);
+```
+
+#### iOS端
+```objc
+[self registerViewNode:DoricDraggableNode.class withName:@"Draggable"];
 ```
