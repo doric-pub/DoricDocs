@@ -21,7 +21,7 @@ page:
 sidebar:
   docs:
     quick_start: 使用指南
-    overview: 概述
+    overview: 准备环境
     commands: 命令行工具
     basic_usage: 基础用法
     writing: 写作
@@ -50,6 +50,7 @@ sidebar:
     panel: Panel-页面
     view: View-视图基类
     context: Context-控制上下文
+    env: Environment-环境变量
     text: Text-文本控件
     views: 视图组件
     plugins: 能力接口

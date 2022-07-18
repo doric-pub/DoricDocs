@@ -1,6 +1,5 @@
 docs:
   quick_start:
-    overview: index.html
     hello: hello.html
   tool:
     commands: commands.html
@@ -24,6 +23,7 @@ api:
     panel: panel.html
     view: view.html
     context: context.html
+    env: env.html
   views:
     text: text.html
   plugins:

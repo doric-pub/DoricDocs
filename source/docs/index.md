@@ -39,8 +39,8 @@ npm install -g doric-cli
 
 ### Doric Playground
 您可以安装Doric Playground APP来快速查看运行效果
-### [Android](https://www.pgyer.com/YvN1) 
-### [iOS](https://testflight.apple.com/join/ADOzNQKd)
+* [Android](https://www.pgyer.com/YvN1) 
+* [iOS](https://testflight.apple.com/join/ADOzNQKd)
 
 ## 开发与调试
 请查看文档[Doric 开发与调试](./devkit.html)
