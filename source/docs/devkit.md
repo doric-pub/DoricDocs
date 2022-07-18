@@ -91,8 +91,17 @@ Doric支持断点调试的开发模式.
 ```
 
 ### 开始调试
+
+
+**注意事项**
+**请注意,必须要在Panel所在的TypeScript文件中点击**
+**请注意,必须要在Panel所在的TypeScript文件中点击**
+**请注意,必须要在Panel所在的TypeScript文件中点击**
+
 按图进入调试
 ![Debug](../image/devkit_4.png)
+
+
 调试中
 ![Debugging](../image/devkit_6.png)
 
