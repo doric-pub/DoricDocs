@@ -1,5 +1,5 @@
 ---
-title: Doric原生插件
+title: 新增Doric扩展接口插件
 ---
 > 本文介绍如何在Android和iOS侧自定义Native插件，并供Doric调用。
 > 本文以定义一个原生的加法器举例.

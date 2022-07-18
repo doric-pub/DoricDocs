@@ -1,5 +1,5 @@
 ---
-title: 命令
+title: 命令行工具
 ---
 
 ## create
@@ -16,8 +16,8 @@ $ doric create [ProjectName]
 $ doric dev
 ```
 
-开始开发 Doric 页面，此时终端会输出二维码。可通过``[Android](https://www.pgyer.com/YvN1
-)[iOS](https://testflight.apple.com/join/ADOzNQKd)扫码查看页面效果
+开始开发 Doric 页面，此时终端会输出二维码。可通过`Doric Playground APP`[Android](https://www.pgyer.com/YvN1
+) [iOS](https://testflight.apple.com/join/ADOzNQKd)扫码查看页面效果
 
 ## build
 

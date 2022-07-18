@@ -1,11 +1,11 @@
 ---
-title: Doric原生拓展
+title: 注册Doric拓展
 ---
-> 当Doric SDK中自带的视图组件及原生能力不能满足您的需求时，您可以选择针对Doric SDK进行拓展。
-> 本文讲解在Doric中如何进行拓展。
+> 当您需要在Doric中使用已有的原生组件或接口能力时，您可以选择针对Doric SDK进行拓展。
+> 本文讲解在Doric中如何进行注册原生组件或接口。
 
 # Doric Library
-1. 您可以实现您自己的`DoricLibrary`，并在其中管理您的拓展需求。
+1. 您可以实现您自己的`DoricLibrary`，并在其中管理您的拓展组件或接口插件。
 在Android中:
 ```java
 @DoricComponent

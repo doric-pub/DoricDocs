@@ -20,7 +20,7 @@ page:
 
 sidebar:
   docs:
-    getting_started: 开始使用
+    quick_start: 使用指南
     overview: 概述
     commands: 命令行工具
     basic_usage: 基础用法
@@ -35,13 +35,16 @@ sidebar:
     viewComponent: Doric中的视图组件
     diagram: Doric架构
     devkit: Doric调试工具(Devkit)
-    extensions: 扩展
-    extensionLibrary: 开发Doric扩展库
-    view: 扩展原生视图
-    plugin: 扩展原生能力
+    extend: Doric扩展
+    extensions: 注册扩展
+    view: 视图组件
+    plugin: 能力组件
     bringin: 接入
-    android: Android接入Doric SDK
-    iOS: iOS接入Doric SDK
+    android: Android
+    iOS: iOS
+    tool: 工具链
+    use: 应用接入
+    else: 其他文档
   api:
     core: 核心
     overview: 概述
@@ -49,6 +52,3 @@ sidebar:
     android: Android篇
     iOS: iOS篇
     web: Web篇
-    extensions: 扩展
-    view: 视图
-    plugin: 桥

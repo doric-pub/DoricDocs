@@ -1,5 +1,5 @@
 ---
-title: 文档
+title: 开发环境与工具
 ---
 欢迎使用Doric，本文档将帮助您快速上手。如果您在使用过程中遇到任何问题，请在[GitHub](https://github.com/doric-pub/Doric/issues)上提问。
 
@@ -28,9 +28,19 @@ Doric使用TypeScript作为开发语言，推荐使用编辑器
 - [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)
 
 ## 安装与运行
+### 命令行工具
 
 当必需的开发环境准备就绪后，即可使用npm安装Doric命令行工具.
-请查看文档[命令行工具](./cli.html)
+
+```bash
+npm install -g doric-cli
+```
+更多详细用法请查看文档[命令行工具](./commands.html)
+
+### Doric Playground
+您可以安装Doric Playground APP来快速查看运行效果
+### [Android](https://www.pgyer.com/YvN1) 
+### [iOS](https://testflight.apple.com/join/ADOzNQKd)
 
 ## 开发与调试
 请查看文档[Doric 开发与调试](./devkit.html)

@@ -1,14 +1,20 @@
 docs:
-  getting_started:
+  quick_start:
     overview: index.html
-    commands: commands.html
-    mvvm: mvvm.html
-    diagram: diagram.html
-    layout: layout.html
-    devkit: devkit.html
-  basic_usage:
     hello: hello.html
-  advanced:
+  tool:
+    commands: commands.html
+    devkit: devkit.html
+  use:
+    android: android.html
+    iOS: ios.html
+  extend:
+    extensions: extensions.html
+    view: view.html
+    plugin: plugin.html
+  else:
+    mvvm: mvvm.html
+    layout: layout.html
     theory: theory.html
     progressive: progressive.html
     modular: modular.html
@@ -20,7 +26,3 @@ api:
     android: android.html
     iOS: ios.html
     web: web.html
-  extensions:
-    overview: extensions.html
-    view: view.html
-    plugin: plugin.html

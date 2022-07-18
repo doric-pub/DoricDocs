@@ -1,5 +1,5 @@
 ---
-title: Android中接入Doric SDK
+title: Android应用中使用Doric
 ---
 本文介绍在Android中使用Doric的方式及常用API
 

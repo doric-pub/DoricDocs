@@ -1,5 +1,5 @@
 ---
-title: iOS中接入Doric SDK
+title: iOS应用中使用Doric
 ---
 本文介绍在iOS中使用Doric的方式及常用API
 
