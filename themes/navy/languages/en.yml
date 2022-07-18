@@ -22,7 +22,7 @@ sidebar:
   docs:
     getting_started: 开始使用
     overview: 概述
-    cli: 命令行工具
+    commands: 命令行工具
     basic_usage: 基础用法
     writing: 写作
     hello: 你好,Doric

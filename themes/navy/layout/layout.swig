@@ -2,6 +2,8 @@
 <html lang="{{ page.lang }}">
 {{ partial('partial/head') }}
 <body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654617376495799"
+     crossorigin="anonymous"></script>
   <div id="container">
     {{ partial('partial/header') }}
     {{ body }}
