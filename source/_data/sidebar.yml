@@ -26,5 +26,15 @@ api:
     env: env.html
   views:
     text: text.html
+    list: list.html
+    scroller: scroller.html
+    slider: slider.html
+    nestedslider: nestedslider.html
+    flowlayout: flowlayout.html
+    switch: switch.html
+    gesture: gesture.html
+    refreshable: refreshable.html
+    blureffect: blureffect.html
+    aeroeffect: aeroeffect.html
   plugins:
     modal: modal.html
