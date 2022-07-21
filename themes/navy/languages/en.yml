@@ -51,7 +51,17 @@ sidebar:
     view: View-视图基类
     context: Context-控制上下文
     env: Environment-环境变量
-    text: Text-文本控件
     views: 视图组件
+    text: Text-文本控件
+    list: List-列表控件
+    scroller: Scroller-滑动控件
+    slider: Slider-翻页滑动(幻灯片)控件
+    nestedslider: NestedSlider-嵌套滑动控件
+    flowlayout: FlowLayout-流式网格布局控件
+    switch: Switch-开关控件
+    gesture: Gesture-手势控件
+    refreshable: Refreshable-刷新控件
+    blureffect: BlurEffect-高斯模糊控件
+    aeroeffect: AeroEffect-透明模糊控件
     plugins: 能力接口
     modal: modal-模态窗口接口
