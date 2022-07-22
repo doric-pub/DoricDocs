@@ -37,4 +37,17 @@ api:
     blureffect: blureffect.html
     aeroeffect: aeroeffect.html
   plugins:
+    navigator: navigator.html
+    network: network.html
+    storage: storage.html
+    popover: popover.html
+    animate: animate.html
+    notification: notification.html
     modal: modal.html
+    navbar: navbar.html
+    statusbar: statusbar.html
+    coordinator: coordinator.html
+    notch: notch.html
+    keyboard: keyboard.html
+    imageDecoder: imageDecoder.html
+

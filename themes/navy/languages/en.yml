@@ -64,4 +64,17 @@ sidebar:
     blureffect: BlurEffect-高斯模糊控件
     aeroeffect: AeroEffect-透明模糊控件
     plugins: 能力接口
-    modal: modal-模态窗口接口
+    modal: modal-模态窗口
+    navbar: navbar-导航栏
+    navigator: navigator-导航控制器
+    network: network-网络请求
+    storage: storage-本地存储
+    popover: popover-浮层弹窗
+    animate: animate-动画相关
+    notification: notification-广播/通知
+    statusbar: statusbar-状态栏
+    coordinator: coordinator-视图联动
+    notch: notch-刘海屏安全区域
+    keyboard: keyboard-监听键盘
+    imageDecoder: imageDecoder-图片解码
+
