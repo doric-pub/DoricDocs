@@ -9,21 +9,14 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/switch</loc>
-    
-    <lastmod>2022-07-28T10:08:36.474Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://doric.pub/api/storage</loc>
-    
-    <lastmod>2022-07-28T10:08:36.474Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/api/slider</loc>
+    
+    <lastmod>2022-07-28T10:08:36.474Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/switch</loc>
     
     <lastmod>2022-07-28T10:08:36.474Z</lastmod>
     
@@ -37,14 +30,21 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/refreshable</loc>
+    <loc>https://doric.pub/api/storage</loc>
+    
+    <lastmod>2022-07-28T10:08:36.474Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/scroller</loc>
     
     <lastmod>2022-07-28T10:08:36.473Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/api/scroller</loc>
+    <loc>https://doric.pub/api/refreshable</loc>
     
     <lastmod>2022-07-28T10:08:36.473Z</lastmod>
     
@@ -107,13 +107,6 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/keyboard</loc>
-    
-    <lastmod>2022-07-28T10:08:36.470Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/api/list</loc>
     
     <lastmod>2022-07-28T10:08:36.470Z</lastmod>
@@ -122,6 +115,13 @@
   
   <url>
     <loc>https://doric.pub/api/imageDecoder</loc>
+    
+    <lastmod>2022-07-28T10:08:36.470Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/keyboard</loc>
     
     <lastmod>2022-07-28T10:08:36.470Z</lastmod>
     
