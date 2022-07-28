@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://doric.pub/api/vLayout</loc>
+    
+    <lastmod>2022-07-28T10:51:07.550Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/stack</loc>
+    
+    <lastmod>2022-07-28T10:51:07.550Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/input</loc>
+    
+    <lastmod>2022-07-28T10:51:07.549Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/image</loc>
+    
+    <lastmod>2022-07-28T10:51:07.549Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/hLayout</loc>
+    
+    <lastmod>2022-07-28T10:51:07.549Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://doric.pub/api/text</loc>
     
     <lastmod>2022-07-28T10:08:36.475Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/statusbar</loc>
+    
+    <lastmod>2022-07-28T10:08:36.474Z</lastmod>
     
   </url>
   
@@ -17,13 +59,6 @@
   
   <url>
     <loc>https://doric.pub/api/switch</loc>
-    
-    <lastmod>2022-07-28T10:08:36.474Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://doric.pub/api/statusbar</loc>
     
     <lastmod>2022-07-28T10:08:36.474Z</lastmod>
     
@@ -44,13 +79,6 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/refreshable</loc>
-    
-    <lastmod>2022-07-28T10:08:36.473Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/api/popover</loc>
     
     <lastmod>2022-07-28T10:08:36.473Z</lastmod>
@@ -58,9 +86,9 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/notification</loc>
+    <loc>https://doric.pub/api/refreshable</loc>
     
-    <lastmod>2022-07-28T10:08:36.472Z</lastmod>
+    <lastmod>2022-07-28T10:08:36.473Z</lastmod>
     
   </url>
   
@@ -72,7 +100,7 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/notch</loc>
+    <loc>https://doric.pub/api/notification</loc>
     
     <lastmod>2022-07-28T10:08:36.472Z</lastmod>
     
@@ -86,14 +114,21 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/modal</loc>
+    <loc>https://doric.pub/api/notch</loc>
+    
+    <lastmod>2022-07-28T10:08:36.472Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/navigator</loc>
     
     <lastmod>2022-07-28T10:08:36.471Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/api/navigator</loc>
+    <loc>https://doric.pub/api/modal</loc>
     
     <lastmod>2022-07-28T10:08:36.471Z</lastmod>
     
@@ -128,13 +163,6 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/gesture</loc>
-    
-    <lastmod>2022-07-28T10:08:36.469Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/api/coordinator</loc>
     
     <lastmod>2022-07-28T10:08:36.469Z</lastmod>
@@ -149,14 +177,21 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/aeroeffect</loc>
+    <loc>https://doric.pub/api/gesture</loc>
+    
+    <lastmod>2022-07-28T10:08:36.469Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/animate</loc>
     
     <lastmod>2022-07-28T10:08:36.468Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/api/animate</loc>
+    <loc>https://doric.pub/api/aeroeffect</loc>
     
     <lastmod>2022-07-28T10:08:36.468Z</lastmod>
     
