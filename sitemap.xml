@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://doric.pub/api/vLayout</loc>
-    
-    <lastmod>2022-07-28T10:51:07.550Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/api/stack</loc>
     
     <lastmod>2022-07-28T10:51:07.550Z</lastmod>
@@ -16,7 +9,14 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/input</loc>
+    <loc>https://doric.pub/api/vLayout</loc>
+    
+    <lastmod>2022-07-28T10:51:07.550Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/hLayout</loc>
     
     <lastmod>2022-07-28T10:51:07.549Z</lastmod>
     
@@ -30,7 +30,7 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/hLayout</loc>
+    <loc>https://doric.pub/api/input</loc>
     
     <lastmod>2022-07-28T10:51:07.549Z</lastmod>
     
@@ -51,7 +51,7 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/slider</loc>
+    <loc>https://doric.pub/api/storage</loc>
     
     <lastmod>2022-07-28T10:08:36.474Z</lastmod>
     
@@ -65,9 +65,16 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/storage</loc>
+    <loc>https://doric.pub/api/slider</loc>
     
     <lastmod>2022-07-28T10:08:36.474Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/refreshable</loc>
+    
+    <lastmod>2022-07-28T10:08:36.473Z</lastmod>
     
   </url>
   
@@ -86,9 +93,9 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/refreshable</loc>
+    <loc>https://doric.pub/api/notification</loc>
     
-    <lastmod>2022-07-28T10:08:36.473Z</lastmod>
+    <lastmod>2022-07-28T10:08:36.472Z</lastmod>
     
   </url>
   
@@ -100,7 +107,7 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/notification</loc>
+    <loc>https://doric.pub/api/notch</loc>
     
     <lastmod>2022-07-28T10:08:36.472Z</lastmod>
     
@@ -114,9 +121,9 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/notch</loc>
+    <loc>https://doric.pub/api/navbar</loc>
     
-    <lastmod>2022-07-28T10:08:36.472Z</lastmod>
+    <lastmod>2022-07-28T10:08:36.471Z</lastmod>
     
   </url>
   
@@ -135,21 +142,7 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/navbar</loc>
-    
-    <lastmod>2022-07-28T10:08:36.471Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://doric.pub/api/list</loc>
-    
-    <lastmod>2022-07-28T10:08:36.470Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://doric.pub/api/imageDecoder</loc>
     
     <lastmod>2022-07-28T10:08:36.470Z</lastmod>
     
@@ -163,6 +156,13 @@
   </url>
   
   <url>
+    <loc>https://doric.pub/api/imageDecoder</loc>
+    
+    <lastmod>2022-07-28T10:08:36.470Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://doric.pub/api/coordinator</loc>
     
     <lastmod>2022-07-28T10:08:36.469Z</lastmod>
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>https://doric.pub/api/flowlayout</loc>
+    <loc>https://doric.pub/api/gesture</loc>
     
     <lastmod>2022-07-28T10:08:36.469Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://doric.pub/api/gesture</loc>
+    <loc>https://doric.pub/api/flowlayout</loc>
     
     <lastmod>2022-07-28T10:08:36.469Z</lastmod>
     
