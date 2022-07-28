@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://doric.pub/api/text</loc>
+    
+    <lastmod>2022-07-28T10:08:36.475Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/switch</loc>
+    
+    <lastmod>2022-07-28T10:08:36.474Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/storage</loc>
+    
+    <lastmod>2022-07-28T10:08:36.474Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/slider</loc>
+    
+    <lastmod>2022-07-28T10:08:36.474Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/statusbar</loc>
+    
+    <lastmod>2022-07-28T10:08:36.474Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/refreshable</loc>
+    
+    <lastmod>2022-07-28T10:08:36.473Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/scroller</loc>
+    
+    <lastmod>2022-07-28T10:08:36.473Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/popover</loc>
+    
+    <lastmod>2022-07-28T10:08:36.473Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/notification</loc>
+    
+    <lastmod>2022-07-28T10:08:36.472Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/network</loc>
+    
+    <lastmod>2022-07-28T10:08:36.472Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/notch</loc>
+    
+    <lastmod>2022-07-28T10:08:36.472Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/nestedslider</loc>
+    
+    <lastmod>2022-07-28T10:08:36.472Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/modal</loc>
+    
+    <lastmod>2022-07-28T10:08:36.471Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/navigator</loc>
+    
+    <lastmod>2022-07-28T10:08:36.471Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/navbar</loc>
+    
+    <lastmod>2022-07-28T10:08:36.471Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/keyboard</loc>
+    
+    <lastmod>2022-07-28T10:08:36.470Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/list</loc>
+    
+    <lastmod>2022-07-28T10:08:36.470Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/imageDecoder</loc>
+    
+    <lastmod>2022-07-28T10:08:36.470Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/gesture</loc>
+    
+    <lastmod>2022-07-28T10:08:36.469Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/coordinator</loc>
+    
+    <lastmod>2022-07-28T10:08:36.469Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/flowlayout</loc>
+    
+    <lastmod>2022-07-28T10:08:36.469Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/aeroeffect</loc>
+    
+    <lastmod>2022-07-28T10:08:36.468Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/animate</loc>
+    
+    <lastmod>2022-07-28T10:08:36.468Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/blureffect</loc>
+    
+    <lastmod>2022-07-28T10:08:36.468Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/env</loc>
+    
+    <lastmod>2022-07-18T09:22:40.992Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/view</loc>
+    
+    <lastmod>2022-07-18T09:22:40.985Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/devkit</loc>
+    
+    <lastmod>2022-07-18T07:50:30.424Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/context</loc>
+    
+    <lastmod>2022-07-18T07:31:57.013Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/view</loc>
+    
+    <lastmod>2022-07-18T07:06:08.423Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/panel</loc>
+    
+    <lastmod>2022-07-18T06:58:11.066Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/</loc>
+    
+    <lastmod>2022-07-18T06:35:54.942Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/</loc>
+    
+    <lastmod>2022-07-18T06:31:59.976Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/plugin</loc>
+    
+    <lastmod>2022-07-18T06:18:28.760Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/extensions</loc>
+    
+    <lastmod>2022-07-18T06:17:11.913Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/ios</loc>
+    
+    <lastmod>2022-07-18T05:59:51.010Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/android</loc>
+    
+    <lastmod>2022-07-18T05:59:36.630Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/commands</loc>
+    
+    <lastmod>2022-07-18T05:56:56.879Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/api/js</loc>
+    
+    <lastmod>2022-07-18T04:51:49.876Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/modular</loc>
+    
+    <lastmod>2021-09-07T07:55:29.780Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/diagram</loc>
+    
+    <lastmod>2021-09-07T07:49:26.654Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/layout</loc>
+    
+    <lastmod>2021-09-07T07:12:02.579Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/mvvm</loc>
+    
+    <lastmod>2021-09-07T07:08:58.664Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/hello</loc>
+    
+    <lastmod>2021-09-07T05:42:40.810Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/</loc>
+    
+    <lastmod>2021-09-07T03:48:57.072Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/viewComponent</loc>
+    
+    <lastmod>2021-09-07T03:39:45.343Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/progressive</loc>
+    
+    <lastmod>2020-03-30T06:53:26.773Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/news/2019/12/30/hello-world/</loc>
+    
+    <lastmod>2020-03-30T06:24:25.942Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/icon/manifest.json</loc>
+    
+    <lastmod>2020-03-15T21:48:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/about/</loc>
+    
+    <lastmod>2020-01-07T03:43:49.842Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/docs/theory</loc>
+    
+    <lastmod>2019-12-31T09:37:00.380Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://doric.pub/extensions/</loc>
+    
+    <lastmod>2019-12-30T09:53:29.493Z</lastmod>
+    
+  </url>
+  
+</urlset>

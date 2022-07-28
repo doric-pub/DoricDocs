@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>List - 列表控件 | Doric</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://doric.pub/api/list.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="en" href="https://doric.pub/api/list">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Doric">
+</head>
+
+<body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654617376495799"
+     crossorigin="anonymous"></script>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/docs/" class="main-nav-link">文档</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">关于</a>
+      <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">List - 列表控件</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/api/list.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="属性" class="article-heading"><a href="#属性" class="headerlink" title="属性"></a>属性<a class="article-anchor" href="#属性" aria-hidden="true"></a></h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>itemCount</td>
+<td>number</td>
+<td>列表条数</td>
+</tr>
+<tr>
+<td>renderItem</td>
+<td>(index: number) =&gt; ListItem</td>
+<td>列表每项渲染回调</td>
+</tr>
+<tr>
+<td>batchCount</td>
+<td>number</td>
+<td>批量渲染Item的数量</td>
+</tr>
+<tr>
+<td>onLoadMore</td>
+<td>() =&gt; void</td>
+<td>加载更多的回调</td>
+</tr>
+<tr>
+<td>loadMore</td>
+<td>boolean</td>
+<td>设置是否显示加载更多</td>
+</tr>
+<tr>
+<td>loadMoreView</td>
+<td>ListItem</td>
+<td>显示在底部表示加载更多的视图</td>
+</tr>
+<tr>
+<td>onScroll</td>
+<td>(offset: { x: number, y: number }) =&gt; void</td>
+<td>滑动过程中的回调</td>
+</tr>
+<tr>
+<td>onScrollEnd</td>
+<td>(offset: { x: number, y: number }) =&gt; void</td>
+<td>滑动停止的回调</td>
+</tr>
+<tr>
+<td>scrolledPosition</td>
+<td>number</td>
+<td>滑动到指定位置</td>
+</tr>
+<tr>
+<td>scrollable</td>
+<td>boolean</td>
+<td>列表是否可以滑动</td>
+</tr>
+<tr>
+<td>bounces</td>
+<td>boolean</td>
+<td>边界回弹效果（iOS专属）</td>
+</tr>
+<tr>
+<td>canDrag</td>
+<td>boolean</td>
+<td>是否可以拖拽Item</td>
+</tr>
+<tr>
+<td>beforeDragging</td>
+<td>(from: number) =&gt; void</td>
+<td>准备拖拽Item时的回调</td>
+</tr>
+<tr>
+<td>onDragging</td>
+<td>(from: number, to: number) =&gt; void</td>
+<td>拖拽Item过程中的的回调</td>
+</tr>
+<tr>
+<td>onDragged</td>
+<td>(from: number, to: number) =&gt; void</td>
+<td>拖拽Item动作结束的回调</td>
+</tr>
+</tbody></table>
+<h3 id="用法示例" class="article-heading"><a href="#用法示例" class="headerlink" title="用法示例"></a>用法示例<a class="article-anchor" href="#用法示例" aria-hidden="true"></a></h3><h4 id="基础用法" class="article-heading"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法<a class="article-anchor" href="#基础用法" aria-hidden="true"></a></h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">list(&#123;</span><br><span class="line">    itemCount: <span class="number">10</span>,</span><br><span class="line">    renderItem: <span class="function">(<span class="params">idx</span>) =&gt;</span> listItem(text(&#123;</span><br><span class="line">        height: <span class="number">50</span>,</span><br><span class="line">        layoutConfig: &#123;</span><br><span class="line">            widthSpec: LayoutSpec.MOST,</span><br><span class="line">            heightSpec: LayoutSpec.JUST,</span><br><span class="line">            alignment: gravity().center(),</span><br><span class="line">        &#125;,</span><br><span class="line">        text: <span class="string">`Cell At Line <span class="subst">$&#123;idx&#125;</span>`</span>,</span><br><span class="line">        textAlignment: gravity().center(),</span><br><span class="line">        textColor: Color.BLACK,</span><br><span class="line">        textSize: <span class="number">20</span>,</span><br><span class="line">    &#125;)),</span><br><span class="line">    layoutConfig: layoutConfig().most(),</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+
+<h4 id="tsx写法" class="article-heading"><a href="#tsx写法" class="headerlink" title="tsx写法"></a>tsx写法<a class="article-anchor" href="#tsx写法" aria-hidden="true"></a></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;List</span><br><span class="line">    itemCount&#x3D;&#123;10&#125;</span><br><span class="line">    renderItem&#x3D;&#123;</span><br><span class="line">        (idx) &#x3D;&gt; &#123;</span><br><span class="line">            return (</span><br><span class="line">                &lt;ListItem&gt;</span><br><span class="line">                    &lt;Text</span><br><span class="line">                        height&#x3D;&#123;50&#125;</span><br><span class="line">                        layoutConfig&#x3D;&#123;layoutConfig().most().justHeight()&#125;</span><br><span class="line">                        textColor&#x3D;&#123;Color.BLACK&#125;</span><br><span class="line">                        textAlignment&#x3D;&#123;Gravity.Center&#125;</span><br><span class="line">                        textSize&#x3D;&#123;20&#125;</span><br><span class="line">                    &gt;</span><br><span class="line">                        &#123;&#96;Cell At Line $&#123;idx&#125;&#96;&#125;</span><br><span class="line">                    &lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;&#x2F;ListItem&gt;</span><br><span class="line">            ) as ListItem</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    layoutConfig&#x3D;&#123;layoutConfig().most()&#125;</span><br><span class="line">&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="mvvm写法完整示例" class="article-heading"><a href="#mvvm写法完整示例" class="headerlink" title="mvvm写法完整示例"></a>mvvm写法完整示例<a class="article-anchor" href="#mvvm写法完整示例" aria-hidden="true"></a></h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Color, gravity, Group, layoutConfig, LayoutSpec, List, list, listItem, log, loge, modal, stack, text, Text, ViewHolder, ViewModel, vlayout, VMPanel &#125; <span class="keyword">from</span> <span class="string">"doric"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> ItemModel &#123;</span><br><span class="line">    text: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> ListModel &#123;</span><br><span class="line">    end: <span class="built_in">boolean</span></span><br><span class="line">    offset: <span class="built_in">number</span></span><br><span class="line">    data: ItemModel[]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">loadData</span>(<span class="params">offset: <span class="built_in">number</span></span>): <span class="title">Promise</span>&lt;</span>&#123;</span><br><span class="line">    isEnd: <span class="built_in">boolean</span>,</span><br><span class="line">    data: ItemModel[]</span><br><span class="line">&#125;&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>&lt;&#123;</span><br><span class="line">        isEnd: <span class="built_in">boolean</span>,</span><br><span class="line">        data: ItemModel[]</span><br><span class="line">    &#125;&gt;(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(&#123;</span><br><span class="line">                isEnd: offset &gt; <span class="number">100</span>,</span><br><span class="line">                data: <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>).fill(offset).map(<span class="function">(<span class="params">e, idx</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> &#123; text: <span class="string">`Item: <span class="subst">$&#123;e + idx&#125;</span>`</span> &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> ListVH <span class="keyword">extends</span> ViewHolder &#123;</span><br><span class="line">    list!: List</span><br><span class="line">    build(root: Group) &#123;</span><br><span class="line">        vlayout(</span><br><span class="line">            [</span><br><span class="line">                text(&#123;</span><br><span class="line">                    text: <span class="string">"ListDemo"</span>,</span><br><span class="line">                    layoutConfig: &#123;</span><br><span class="line">                        widthSpec: LayoutSpec.MOST,</span><br><span class="line">                        heightSpec: LayoutSpec.JUST,</span><br><span class="line">                    &#125;,</span><br><span class="line">                    textSize: <span class="number">30</span>,</span><br><span class="line">                    textColor: Color.parse(<span class="string">"#535c68"</span>),</span><br><span class="line">                    backgroundColor: Color.parse(<span class="string">"#dff9fb"</span>),</span><br><span class="line">                    textAlignment: gravity().center(),</span><br><span class="line">                    height: <span class="number">50</span>,</span><br><span class="line">                &#125;),</span><br><span class="line">                <span class="keyword">this</span>.list = list(&#123;</span><br><span class="line">                    itemCount: <span class="number">0</span>,</span><br><span class="line">                    layoutConfig: &#123;</span><br><span class="line">                        widthSpec: LayoutSpec.MOST,</span><br><span class="line">                        heightSpec: LayoutSpec.JUST,</span><br><span class="line">                        weight: <span class="number">1</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                &#125;)</span><br><span class="line">            ],</span><br><span class="line">            &#123;</span><br><span class="line">                layoutConfig: layoutConfig().most(),</span><br><span class="line">                backgroundColor: Color.WHITE</span><br><span class="line">            &#125;).in(root)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> ListVM <span class="keyword">extends</span> ViewModel&lt;ListModel, ListVH&gt; &#123;</span><br><span class="line">    onAttached(state: ListModel, vh: ListVH) &#123;</span><br><span class="line">        vh.list.apply(&#123;</span><br><span class="line">            canDrag: <span class="literal">true</span>,</span><br><span class="line">            onDragging: <span class="function">(<span class="params"><span class="keyword">from</span>, to</span>) =&gt;</span> &#123;</span><br><span class="line">                log(<span class="string">`onDragging, from: <span class="subst">$&#123;<span class="keyword">from</span>&#125;</span>, to: <span class="subst">$&#123;to&#125;</span>`</span>)</span><br><span class="line">            &#125;,</span><br><span class="line">            onDragged: <span class="function">(<span class="params"><span class="keyword">from</span>, to</span>) =&gt;</span> &#123;</span><br><span class="line">                log(<span class="string">`onDragged, from: <span class="subst">$&#123;<span class="keyword">from</span>&#125;</span>, to: <span class="subst">$&#123;to&#125;</span>`</span>)</span><br><span class="line">            &#125;,</span><br><span class="line">            renderItem: <span class="function">(<span class="params">index</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> data = state.data[index]</span><br><span class="line">                <span class="keyword">return</span> listItem(stack([</span><br><span class="line">                    text(&#123;</span><br><span class="line">                        text: data.text,</span><br><span class="line">                        textSize: <span class="number">20</span>,</span><br><span class="line">                        layoutConfig: &#123;</span><br><span class="line">                            widthSpec: LayoutSpec.FIT,</span><br><span class="line">                            heightSpec: LayoutSpec.JUST,</span><br><span class="line">                        &#125;,</span><br><span class="line">                        height: <span class="number">50</span>,</span><br><span class="line">                        onClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                            (<span class="keyword">this</span> <span class="keyword">as</span> Text).height += <span class="number">10</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                ]), &#123;</span><br><span class="line">                    layoutConfig: &#123;</span><br><span class="line">                        widthSpec: LayoutSpec.MOST,</span><br><span class="line">                        heightSpec: LayoutSpec.FIT,</span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="comment">//onClick: () =&gt; &#123; modal(context).alert("Item Clicked " + index) &#125;</span></span><br><span class="line">                &#125;).apply(&#123;</span><br><span class="line">                    actions: [</span><br><span class="line">                        &#123;</span><br><span class="line">                            title: <span class="string">"First"</span>,</span><br><span class="line">                            backgroundColor: Color.RED,</span><br><span class="line">                            callback: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                                modal(context).alert(<span class="string">"First action "</span> + index)</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;,</span><br><span class="line">                        &#123;</span><br><span class="line">                            title: <span class="string">"Second"</span>,</span><br><span class="line">                            backgroundColor: Color.BLUE,</span><br><span class="line">                            callback: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                                modal(context).alert(<span class="string">"Second action "</span> + index)</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    ]</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;,</span><br><span class="line">            onLoadMore: <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">                loge(<span class="string">`LoadMore,offset:<span class="subst">$&#123;state.offset&#125;</span>`</span>)</span><br><span class="line">                <span class="keyword">const</span> ret = <span class="keyword">await</span> loadData(state.offset)</span><br><span class="line">                <span class="keyword">this</span>.updateState(<span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">                    state.end = ret.isEnd</span><br><span class="line">                    state.data = state.data.concat(ret.data)</span><br><span class="line">                    state.offset = state.data.length</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;,</span><br><span class="line">            onScrollEnd: <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">                <span class="keyword">const</span> ret = <span class="keyword">await</span> vh.list.findCompletelyVisibleItems(context)</span><br><span class="line">                loge(<span class="string">'completelyVisible Items is:'</span>, ret)</span><br><span class="line">                <span class="keyword">const</span> ret2 = <span class="keyword">await</span> vh.list.findVisibleItems(context)</span><br><span class="line">                loge(<span class="string">'visible Items is:'</span>, ret2)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        loadData(state.offset).then(<span class="function"><span class="params">ret</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.updateState(<span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">                state.end = ret.isEnd</span><br><span class="line">                state.data = state.data.concat(ret.data)</span><br><span class="line">                state.offset = state.data.length</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onBind(state: ListModel, vh: ListVH) &#123;</span><br><span class="line">        vh.list.apply(&#123;</span><br><span class="line">            itemCount: state.data.length,</span><br><span class="line">            loadMore: !state.end</span><br><span class="line">        &#125;)</span><br><span class="line">        loge(<span class="string">`onBind,itemCount:<span class="subst">$&#123;vh.list.itemCount&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Entry</span></span><br><span class="line"><span class="keyword">class</span> ListPanel <span class="keyword">extends</span> VMPanel&lt;ListModel, ListVH&gt; &#123;</span><br><span class="line">    getViewModelClass() &#123;</span><br><span class="line">        <span class="keyword">return</span> ListVM</span><br><span class="line">    &#125;</span><br><span class="line">    getViewHolderClass() &#123;</span><br><span class="line">        <span class="keyword">return</span> ListVH</span><br><span class="line">    &#125;</span><br><span class="line">    getState() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            end: <span class="literal">true</span>,</span><br><span class="line">            data: [],</span><br><span class="line">            offset: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-07-28T10:08:36.470Z" itemprop="dateModified">上次更新：2022-07-28</time>
+                <a href="text.html" class="article-footer-prev" title="Text-文本控件"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="scroller.html" class="article-footer-next" title="Scroller-滑动控件"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用法示例"><span class="toc-text">用法示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基础用法"><span class="toc-text">基础用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tsx写法"><span class="toc-text">tsx写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mvvm写法完整示例"><span class="toc-text">mvvm写法完整示例</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">基础概念</strong><a href="panel.html" class="sidebar-link">Panel-页面</a><a href="view.html" class="sidebar-link">View-视图基类</a><a href="context.html" class="sidebar-link">Context-控制上下文</a><a href="env.html" class="sidebar-link">Environment-环境变量</a><strong class="sidebar-title">视图组件</strong><a href="text.html" class="sidebar-link">Text-文本控件</a><a href="list.html" class="sidebar-link current">List-列表控件</a><a href="scroller.html" class="sidebar-link">Scroller-滑动控件</a><a href="slider.html" class="sidebar-link">Slider-翻页滑动(幻灯片)控件</a><a href="nestedslider.html" class="sidebar-link">NestedSlider-嵌套滑动控件</a><a href="flowlayout.html" class="sidebar-link">FlowLayout-流式网格布局控件</a><a href="switch.html" class="sidebar-link">Switch-开关控件</a><a href="gesture.html" class="sidebar-link">Gesture-手势控件</a><a href="refreshable.html" class="sidebar-link">Refreshable-刷新控件</a><a href="blureffect.html" class="sidebar-link">BlurEffect-高斯模糊控件</a><a href="aeroeffect.html" class="sidebar-link">AeroEffect-透明模糊控件</a><strong class="sidebar-title">能力接口</strong><a href="navigator.html" class="sidebar-link">navigator-导航控制器</a><a href="network.html" class="sidebar-link">network-网络请求</a><a href="storage.html" class="sidebar-link">storage-本地存储</a><a href="popover.html" class="sidebar-link">popover-浮层弹窗</a><a href="animate.html" class="sidebar-link">animate-动画相关</a><a href="notification.html" class="sidebar-link">notification-广播/通知</a><a href="modal.html" class="sidebar-link">modal-模态窗口</a><a href="navbar.html" class="sidebar-link">navbar-导航栏</a><a href="statusbar.html" class="sidebar-link">statusbar-状态栏</a><a href="coordinator.html" class="sidebar-link">coordinator-视图联动</a><a href="notch.html" class="sidebar-link">notch-刘海屏安全区域</a><a href="keyboard.html" class="sidebar-link">keyboard-监听键盘</a><a href="imageDecoder.html" class="sidebar-link">imageDecoder-图片解码</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/doric-pub/Doric/graphs/contributors" rel="external nofollow noreferrer" target="_blank">Zhou Pengfei</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/doric-pub/Doric" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">基础概念</strong><a href="panel.html" class="mobile-nav-link">Panel-页面</a><a href="view.html" class="mobile-nav-link">View-视图基类</a><a href="context.html" class="mobile-nav-link">Context-控制上下文</a><a href="env.html" class="mobile-nav-link">Environment-环境变量</a><strong class="mobile-nav-title">视图组件</strong><a href="text.html" class="mobile-nav-link">Text-文本控件</a><a href="list.html" class="mobile-nav-link current">List-列表控件</a><a href="scroller.html" class="mobile-nav-link">Scroller-滑动控件</a><a href="slider.html" class="mobile-nav-link">Slider-翻页滑动(幻灯片)控件</a><a href="nestedslider.html" class="mobile-nav-link">NestedSlider-嵌套滑动控件</a><a href="flowlayout.html" class="mobile-nav-link">FlowLayout-流式网格布局控件</a><a href="switch.html" class="mobile-nav-link">Switch-开关控件</a><a href="gesture.html" class="mobile-nav-link">Gesture-手势控件</a><a href="refreshable.html" class="mobile-nav-link">Refreshable-刷新控件</a><a href="blureffect.html" class="mobile-nav-link">BlurEffect-高斯模糊控件</a><a href="aeroeffect.html" class="mobile-nav-link">AeroEffect-透明模糊控件</a><strong class="mobile-nav-title">能力接口</strong><a href="navigator.html" class="mobile-nav-link">navigator-导航控制器</a><a href="network.html" class="mobile-nav-link">network-网络请求</a><a href="storage.html" class="mobile-nav-link">storage-本地存储</a><a href="popover.html" class="mobile-nav-link">popover-浮层弹窗</a><a href="animate.html" class="mobile-nav-link">animate-动画相关</a><a href="notification.html" class="mobile-nav-link">notification-广播/通知</a><a href="modal.html" class="mobile-nav-link">modal-模态窗口</a><a href="navbar.html" class="mobile-nav-link">navbar-导航栏</a><a href="statusbar.html" class="mobile-nav-link">statusbar-状态栏</a><a href="coordinator.html" class="mobile-nav-link">coordinator-视图联动</a><a href="notch.html" class="mobile-nav-link">notch-刘海屏安全区域</a><a href="keyboard.html" class="mobile-nav-link">keyboard-监听键盘</a><a href="imageDecoder.html" class="mobile-nav-link">imageDecoder-图片解码</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="api/list.html">
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/js/lang_select.js"></script>
+
+
+<script src="/js/toc.js"></script>
+
+
+<script src="/js/mobile_nav.js"></script>
+
+<!-- endbuild -->
+
+<!-- Algolia -->
+
+
+</body>
+</html>

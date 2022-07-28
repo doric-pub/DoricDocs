@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Doric中的模块化 | Doric</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://doric.pub/docs/modular.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="en" href="https://doric.pub/docs/modular">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Doric">
+</head>
+
+<body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654617376495799"
+     crossorigin="anonymous"></script>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/docs/" class="main-nav-link">文档</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">关于</a>
+      <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Doric中的模块化</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/modular.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>在软件开发中模块化方案可以提高代码复用率,降低项目复杂度,提升测试及维护效率等.<br>在Doric中提供了一套TS层实现的模块化拆解及组装方案,在 version &gt;= <code>v0.8.0</code>版本即可使用.</p>
+<h1 id="API" class="article-heading"><a href="#API" class="headerlink" title="API"></a>API<a class="article-anchor" href="#API" aria-hidden="true"></a></h1><h2 id="基本单元" class="article-heading"><a href="#基本单元" class="headerlink" title="基本单元"></a>基本单元<a class="article-anchor" href="#基本单元" aria-hidden="true"></a></h2><h3 id="Panel" class="article-heading"><a href="#Panel" class="headerlink" title="Panel"></a>Panel<a class="article-anchor" href="#Panel" aria-hidden="true"></a></h3><p>Panel为Doric中的视图控制单元,可作为一个单独的页面运行,也可用于模块化方案中可组装的模块单元.</p>
+<h3 id="Module" class="article-heading"><a href="#Module" class="headerlink" title="Module"></a>Module<a class="article-anchor" href="#Module" aria-hidden="true"></a></h3><p>Module是Panel的子类,在Panel的API之外提供消息通信及数据监听等API.</p>
+<h3 id="ModularPanel" class="article-heading"><a href="#ModularPanel" class="headerlink" title="ModularPanel"></a>ModularPanel<a class="article-anchor" href="#ModularPanel" aria-hidden="true"></a></h3><p>ModularPanel是Module的子类,可作为Module之上的组装体,也可被其他ModularPanel组装嵌套使用.</p>
+<h3 id="Provider" class="article-heading"><a href="#Provider" class="headerlink" title="Provider"></a>Provider<a class="article-anchor" href="#Provider" aria-hidden="true"></a></h3><p>提供全局数据的读写、监听及更新等能力</p>
+<h2 id="UML" class="article-heading"><a href="#UML" class="headerlink" title="UML"></a>UML<a class="article-anchor" href="#UML" aria-hidden="true"></a></h2><iframe id="embed_dom" name="embed_dom" frameborder="0" style="display:block;width:525px; height:800px;" src="https://www.processon.com/embed/60a3680be401fd3995ffc052"></iframe>
+
+<h2 id="模块化框架的使用" class="article-heading"><a href="#模块化框架的使用" class="headerlink" title="模块化框架的使用"></a>模块化框架的使用<a class="article-anchor" href="#模块化框架的使用" aria-hidden="true"></a></h2><ol>
+<li>根据已划分模块分别继承<code>Module</code>实现子类,在该类中实现当前模块的视图及业务处理逻辑</li>
+<li>继承<code>ModularPanel</code>实现子类,通过如下两个方法提供出模块视图的父视图,以及其子模块的清单.该子类可继续嵌入更上层的<code>ModularPanel</code>的子类,也可以直接加上<code>@Entry</code>注解直接展示.<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @returns Class list of current submodules</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">abstract</span> setupModules(): ClassType&lt;Panel&gt;[];</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param root Current module's rootview</span></span><br><span class="line"><span class="comment"> * @returns provided for submodules as their rootview</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">abstract</span> setupShelf(root: Group): Group;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="模块的装载与卸载" class="article-heading"><a href="#模块的装载与卸载" class="headerlink" title="模块的装载与卸载"></a>模块的装载与卸载<a class="article-anchor" href="#模块的装载与卸载" aria-hidden="true"></a></h2><p><code>Module</code>在实例化后会直接装载到当前页面,但也可以通过API卸载或者再次装载进来.</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">mount(): <span class="built_in">void</span>;</span><br><span class="line">unmount(): <span class="built_in">void</span>;</span><br></pre></td></tr></table></figure>
+<p>当模块发生装载或卸载时,整个页面会被重新绘制.<br>而被卸载的模块也会触发如下的回调:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Called when this module is mounted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">onMounted(): <span class="built_in">void</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Called when this module is unmounted</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">onUnmounted(): <span class="built_in">void</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="模块间通信" class="article-heading"><a href="#模块间通信" class="headerlink" title="模块间通信"></a>模块间通信<a class="article-anchor" href="#模块间通信" aria-hidden="true"></a></h2><p>模块化开发应遵循高内聚,低耦合的原则.当需要模块间通信时,我们可以通过Message机制进行消息传递.</p>
+<h3 id="发送Message" class="article-heading"><a href="#发送Message" class="headerlink" title="发送Message"></a>发送Message<a class="article-anchor" href="#发送Message" aria-hidden="true"></a></h3><p>您可以调用<code>Module</code>中接口发送消息给当前视图中所有Module.</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Dispatch message to other modules.</span></span><br><span class="line"><span class="comment">* @param message which is sent out</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">dispatchMessage(message: <span class="built_in">any</span>): <span class="built_in">void</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="接收Message" class="article-heading"><a href="#接收Message" class="headerlink" title="接收Message"></a>接收Message<a class="article-anchor" href="#接收Message" aria-hidden="true"></a></h3><p>您可以在<code>Module</code>中复写下面的方法,实现对已发送消息的处理.</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Dispatched messages can be received by override this method.</span></span><br><span class="line"><span class="comment">* @param message recevied message</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">onMessage(message: <span class="built_in">any</span>): <span class="built_in">void</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>请注意: 已卸载的模块无法接收到<code>Message</code>.</strong></p>
+<h2 id="模块生命周期" class="article-heading"><a href="#模块生命周期" class="headerlink" title="模块生命周期"></a>模块生命周期<a class="article-anchor" href="#模块生命周期" aria-hidden="true"></a></h2><p>一个模块在装载后,可以被当作一个普通的<code>Panel</code>使用.可以接收到页面的生命周期回调.</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">onCreate(): <span class="built_in">void</span>;</span><br><span class="line">onDestroy(): <span class="built_in">void</span>;</span><br><span class="line">onShow(): <span class="built_in">void</span>;</span><br><span class="line">onHidden(): <span class="built_in">void</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>请注意: 已卸载的模块无法触发生命周期回调.</strong></p>
+<h2 id="共享数据Provider的使用" class="article-heading"><a href="#共享数据Provider的使用" class="headerlink" title="共享数据Provider的使用"></a>共享数据Provider的使用<a class="article-anchor" href="#共享数据Provider的使用" aria-hidden="true"></a></h2><p>页面中多个模块间可能共享某一部分数据,这种情况下使用<code>Message</code>会较为繁琐,且较难保持一致性.Doric中提供了<code>Provider</code>类,作为这种情况下的解决方案.</p>
+<h3 id="定义数据类" class="article-heading"><a href="#定义数据类" class="headerlink" title="定义数据类"></a>定义数据类<a class="article-anchor" href="#定义数据类" aria-hidden="true"></a></h3><p>Provider中是根据类名区分数据类型的.所以您需要给数据定义一个Class.</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> ProvidedData &#123;</span><br><span class="line">    received: <span class="built_in">string</span>[] = []</span><br><span class="line">    mounted: Record&lt;<span class="built_in">string</span>, <span class="built_in">boolean</span>&gt; = &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="创建Provider实例" class="article-heading"><a href="#创建Provider实例" class="headerlink" title="创建Provider实例"></a>创建Provider实例<a class="article-anchor" href="#创建Provider实例" aria-hidden="true"></a></h3><p>最上层的<code>Module</code>需要负责初始化Provider实例,该<code>Module</code>下所有子<code>Module</code>都可以访问到同一Provider实例.</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entry</span></span><br><span class="line"><span class="keyword">class</span> ModularDemo <span class="keyword">extends</span> ModularPanel &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>()</span><br><span class="line">        <span class="keyword">this</span>.provider = <span class="keyword">new</span> Provider</span><br><span class="line">        <span class="keyword">this</span>.provider.provide(<span class="keyword">new</span> ReceivedMessage)</span><br><span class="line">    &#125;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="数据更新" class="article-heading"><a href="#数据更新" class="headerlink" title="数据更新"></a>数据更新<a class="article-anchor" href="#数据更新" aria-hidden="true"></a></h3><h4 id="数据更新写入" class="article-heading"><a href="#数据更新写入" class="headerlink" title="数据更新写入"></a>数据更新写入<a class="article-anchor" href="#数据更新写入" aria-hidden="true"></a></h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.provider?.observe(ProvidedData).update(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!data) &#123;</span><br><span class="line">        data = <span class="keyword">new</span> ProvidedData</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>请注意: 该方式会触发数据监听回调.</strong></p>
+<h4 id="添加数据监听" class="article-heading"><a href="#添加数据监听" class="headerlink" title="添加数据监听"></a>添加数据监听<a class="article-anchor" href="#添加数据监听" aria-hidden="true"></a></h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.provider?.observe(ProvidedData).addObserver(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">            loge(<span class="string">"Data changed"</span>, data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="取消数据监听" class="article-heading"><a href="#取消数据监听" class="headerlink" title="取消数据监听"></a>取消数据监听<a class="article-anchor" href="#取消数据监听" aria-hidden="true"></a></h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.provider?.observe(ProvidedData).removeObserver(observer)</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据直接读写" class="article-heading"><a href="#数据直接读写" class="headerlink" title="数据直接读写"></a>数据直接读写<a class="article-anchor" href="#数据直接读写" aria-hidden="true"></a></h3><p>在初始化或回收资源时直接在Provider中添加删除数据</p>
+<h4 id="数据直读" class="article-heading"><a href="#数据直读" class="headerlink" title="数据直读"></a>数据直读<a class="article-anchor" href="#数据直读" aria-hidden="true"></a></h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> providedData = <span class="keyword">this</span>.provider?.acquire(ProvidedData)</span><br></pre></td></tr></table></figure>
+<h4 id="数据直写" class="article-heading"><a href="#数据直写" class="headerlink" title="数据直写"></a>数据直写<a class="article-anchor" href="#数据直写" aria-hidden="true"></a></h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.provider.provide(<span class="keyword">new</span> ReceivedMessage)</span><br></pre></td></tr></table></figure>
+<p><strong>请注意: 该方式下无法触发数据监听回调.</strong></p>
+<h4 id="数据直删" class="article-heading"><a href="#数据直删" class="headerlink" title="数据直删"></a>数据直删<a class="article-anchor" href="#数据直删" aria-hidden="true"></a></h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.provider?.remove(ProvidedData)</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据清空" class="article-heading"><a href="#数据清空" class="headerlink" title="数据清空"></a>数据清空<a class="article-anchor" href="#数据清空" aria-hidden="true"></a></h4><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.provider?.clear()</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Demo" class="article-heading"><a href="#Demo" class="headerlink" title="Demo"></a>Demo<a class="article-anchor" href="#Demo" aria-hidden="true"></a></h1><p>您可以查看这个<a href="https://github.com/doric-pub/Doric/blob/master/doric-demo/src/ModularDemo.ts" target="_blank" rel="noopener external nofollow noreferrer">Demo</a>,这里有具体的用法.</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2021-09-07T07:55:29.780Z" itemprop="dateModified">上次更新：2021-09-07</time>
+                <a href="progressive.html" class="article-footer-prev" title="渐进式框架"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="viewComponent.html" class="article-footer-next" title="Doric中的视图组件"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#API"><span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本单元"><span class="toc-text">基本单元</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Panel"><span class="toc-text">Panel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Module"><span class="toc-text">Module</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ModularPanel"><span class="toc-text">ModularPanel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Provider"><span class="toc-text">Provider</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UML"><span class="toc-text">UML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块化框架的使用"><span class="toc-text">模块化框架的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块的装载与卸载"><span class="toc-text">模块的装载与卸载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块间通信"><span class="toc-text">模块间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发送Message"><span class="toc-text">发送Message</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接收Message"><span class="toc-text">接收Message</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块生命周期"><span class="toc-text">模块生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共享数据Provider的使用"><span class="toc-text">共享数据Provider的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义数据类"><span class="toc-text">定义数据类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建Provider实例"><span class="toc-text">创建Provider实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据更新"><span class="toc-text">数据更新</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据更新写入"><span class="toc-text">数据更新写入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加数据监听"><span class="toc-text">添加数据监听</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#取消数据监听"><span class="toc-text">取消数据监听</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据直接读写"><span class="toc-text">数据直接读写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据直读"><span class="toc-text">数据直读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据直写"><span class="toc-text">数据直写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据直删"><span class="toc-text">数据直删</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据清空"><span class="toc-text">数据清空</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">使用指南</strong><a href="hello.html" class="sidebar-link">你好,Doric</a><strong class="sidebar-title">工具链</strong><a href="commands.html" class="sidebar-link">命令行工具</a><a href="devkit.html" class="sidebar-link">Doric调试工具(Devkit)</a><strong class="sidebar-title">应用接入</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><strong class="sidebar-title">Doric扩展</strong><a href="extensions.html" class="sidebar-link">注册扩展</a><a href="view.html" class="sidebar-link">视图组件</a><a href="plugin.html" class="sidebar-link">能力组件</a><strong class="sidebar-title">其他文档</strong><a href="mvvm.html" class="sidebar-link">Doric中的MVVM</a><a href="layout.html" class="sidebar-link">布局方式与布局容器</a><a href="theory.html" class="sidebar-link">Doric的运行机制</a><a href="progressive.html" class="sidebar-link">渐进式框架</a><a href="modular.html" class="sidebar-link current">Doric中的模块化</a><a href="viewComponent.html" class="sidebar-link">Doric中的视图组件</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/doric-pub/Doric/graphs/contributors" rel="external nofollow noreferrer" target="_blank">Zhou Pengfei</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/doric-pub/Doric" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">使用指南</strong><a href="hello.html" class="mobile-nav-link">你好,Doric</a><strong class="mobile-nav-title">工具链</strong><a href="commands.html" class="mobile-nav-link">命令行工具</a><a href="devkit.html" class="mobile-nav-link">Doric调试工具(Devkit)</a><strong class="mobile-nav-title">应用接入</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><strong class="mobile-nav-title">Doric扩展</strong><a href="extensions.html" class="mobile-nav-link">注册扩展</a><a href="view.html" class="mobile-nav-link">视图组件</a><a href="plugin.html" class="mobile-nav-link">能力组件</a><strong class="mobile-nav-title">其他文档</strong><a href="mvvm.html" class="mobile-nav-link">Doric中的MVVM</a><a href="layout.html" class="mobile-nav-link">布局方式与布局容器</a><a href="theory.html" class="mobile-nav-link">Doric的运行机制</a><a href="progressive.html" class="mobile-nav-link">渐进式框架</a><a href="modular.html" class="mobile-nav-link current">Doric中的模块化</a><a href="viewComponent.html" class="mobile-nav-link">Doric中的视图组件</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/modular.html">
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/js/lang_select.js"></script>
+
+
+<script src="/js/toc.js"></script>
+
+
+<script src="/js/mobile_nav.js"></script>
+
+<!-- endbuild -->
+
+<!-- Algolia -->
+
+
+</body>
+</html>

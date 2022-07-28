@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>新增Doric扩展接口插件 | Doric</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://doric.pub/docs/plugin.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="en" href="https://doric.pub/docs/plugin">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Doric">
+</head>
+
+<body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654617376495799"
+     crossorigin="anonymous"></script>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/docs/" class="main-nav-link">文档</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">关于</a>
+      <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">新增Doric扩展接口插件</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/plugin.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <blockquote>
+<p>本文介绍如何在Android和iOS侧自定义Native插件，并供Doric调用。<br>本文以定义一个原生的加法器举例.</p>
+</blockquote>
+<h1 id="步骤" class="article-heading"><a href="#步骤" class="headerlink" title="步骤"></a>步骤<a class="article-anchor" href="#步骤" aria-hidden="true"></a></h1><ol>
+<li>在Doric TS侧定义好TS语言的API</li>
+<li>在Android和iOS端根据定义的API实现相应功能</li>
+<li>在Doric TS代码中调用TS API</li>
+</ol>
+<h1 id="JS-API" class="article-heading"><a href="#JS-API" class="headerlink" title="JS API"></a>JS API<a class="article-anchor" href="#JS-API" aria-hidden="true"></a></h1><p>首先需要定义JS部分的API，注意此处API定义的名称需要在接下来Android和iOS的开发中保持一致。<br>定义API如下,<code>context</code>参数代表JS环境上下文在调用时直接传入即可。<br><code>nativeAdd</code>参数为<code>first</code>,<code>second</code>，都是<code>number</code>类型，返回值为<code>number</code>类型的<code>Promise</code>。</p>
+<p><code>context.callNative</code>方法参数1为插件名，参数2为插件内方法名，参数3为插件方法接收的参数。</p>
+<p>请注意，对于有返回值的Plugin，其返回值都为<code>Promise</code>类型，即异步返回。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">examplePlugin</span>(<span class="params">context: BridgeContext</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        nativeAdd: <span class="function">(<span class="params">first: <span class="built_in">number</span>, second: <span class="built_in">number</span></span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">/// 参数1examplePlugin为插件名，参数2nativeAdd为插件内方法名，参数3&#123; first, second &#125;为插件方法接收的参数。</span></span><br><span class="line">            <span class="keyword">return</span> context.callNative(<span class="string">"examplePlugin"</span>, <span class="string">"nativeAdd"</span>, &#123; first, second &#125;) <span class="keyword">as</span> <span class="built_in">Promise</span>&lt;<span class="built_in">number</span>&gt;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Android" class="article-heading"><a href="#Android" class="headerlink" title="Android"></a>Android<a class="article-anchor" href="#Android" aria-hidden="true"></a></h1><ol>
+<li>新建Plugin类，如下:<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 此处注解值name对应TS步骤中的插件名</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@DoricPlugin</span>(name = <span class="string">"examplePlugin"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DoricExamplePlugin</span> <span class="keyword">extends</span> <span class="title">DoricJavaPlugin</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DoricExamplePlugin</span><span class="params">(DoricContext doricContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(doricContext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方法名nativeAdd对应TS步骤中的插件方法名，需要加上DoricMethod注解</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> argument  从TS侧传入的插件方法接收参数，即  &#123; first, second &#125;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> promise DoricPromise封装类，用于JS Promise回调。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@DoricMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nativeAdd</span><span class="params">(JSObject argument, DoricPromise promise)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 取值</span></span><br><span class="line">            <span class="keyword">double</span> first = argument.getProperty(<span class="string">"first"</span>).asNumber().toDouble();</span><br><span class="line">            <span class="comment">// 取值</span></span><br><span class="line">            <span class="keyword">double</span> second = argument.getProperty(<span class="string">"second"</span>).asNumber().toDouble();</span><br><span class="line">            <span class="comment">// 返回值</span></span><br><span class="line">            JavaValue returnValue = <span class="keyword">new</span> JavaValue(first + second);</span><br><span class="line">            <span class="comment">// 传回返回值</span></span><br><span class="line">            promise.resolve(returnValue);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// 出错，回调</span></span><br><span class="line">            promise.reject(<span class="keyword">new</span> JavaValue(e.getLocalizedMessage()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在对应的<code>DoricLibrary</code>类中进行注册。<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@DoricComponent</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLibrary</span> <span class="keyword">extends</span> <span class="title">DoricLibrary</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">load</span><span class="params">(DoricRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.registerNativePlugin(DoricExamplePlugin<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>结束Android部分的开发，重新编译代码并安装运行。</li>
+</ol>
+<h1 id="iOS" class="article-heading"><a href="#iOS" class="headerlink" title="iOS"></a>iOS<a class="article-anchor" href="#iOS" aria-hidden="true"></a></h1><ol>
+<li>新建Plugin类，如下:</li>
+</ol>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">DoricExamplePlugin</span> : <span class="title">DoricNativePlugin</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">DoricExamplePlugin</span></span></span><br><span class="line"><span class="comment">// 此处方法名nativeAdd对应TS步骤中的插件方法名, withPromise为固定的名称，如果不需要返回值，可不带。</span></span><br><span class="line">- (<span class="keyword">void</span>)nativeAdd:(<span class="built_in">NSDictionary</span> *)arguments withPromise:(DoricPromise *)promise &#123;</span><br><span class="line">    <span class="comment">// 取值</span></span><br><span class="line">    <span class="built_in">CGFloat</span> first = [arguments[<span class="string">@"first"</span>] floatValue];</span><br><span class="line">    <span class="comment">// 取值</span></span><br><span class="line">    <span class="built_in">CGFloat</span> second = [arguments[<span class="string">@"second"</span>] floatValue];</span><br><span class="line">    <span class="comment">// 返回值</span></span><br><span class="line">    <span class="built_in">NSNumber</span> *returnValue = @(first + second);</span><br><span class="line">    <span class="comment">// 此处的if判断仅为示例，实际不需要</span></span><br><span class="line">    <span class="keyword">if</span> (returnValue) &#123;</span><br><span class="line">        <span class="comment">// 传回返回值</span></span><br><span class="line">        [promise resolve:returnValue];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 出错回调</span></span><br><span class="line">        [promise reject:<span class="string">@"This is just for exampling,should not happen"</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>1.在对应的<code>DoricLibrary</code>类中进行注册。</p>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">DemoLibrary</span></span></span><br><span class="line">- (<span class="keyword">void</span>)load:(DoricRegistry *)registry &#123;</span><br><span class="line">    <span class="comment">///此处withName参数对应TS步骤中的插件名</span></span><br><span class="line">    [registry registerNativePlugin:[DoricExamplePlugin <span class="keyword">class</span>] withName:<span class="string">@"examplePlugin"</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>1.结束iOS部分的开发，重新编译代码并安装运行。</p>
+<h1 id="TypeScript调用" class="article-heading"><a href="#TypeScript调用" class="headerlink" title="TypeScript调用"></a>TypeScript调用<a class="article-anchor" href="#TypeScript调用" aria-hidden="true"></a></h1><p>使用时，调用JS API即可。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">examplePlugin(context).nativeAdd(<span class="number">1</span>,<span class="number">2</span>).then(<span class="function"><span class="params">result</span>=&gt;</span>&#123;</span><br><span class="line">    log(<span class="string">`此处result应为从Native侧传入的参数,值为<span class="subst">$&#123;result&#125;</span>。`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>或者使用<code>await</code>,<code>async</code>方式调用</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">callNativeExamplePlugin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> examplePlugin(context).nativeAdd(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    log(<span class="string">`此处result应为从Native侧传入的参数,值为<span class="subst">$&#123;result&#125;</span>。`</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-07-18T06:18:28.760Z" itemprop="dateModified">上次更新：2022-07-18</time>
+                <a href="view.html" class="article-footer-prev" title="视图组件"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="mvvm.html" class="article-footer-next" title="Doric中的MVVM"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#步骤"><span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS-API"><span class="toc-text">JS API</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Android"><span class="toc-text">Android</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS"><span class="toc-text">iOS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript调用"><span class="toc-text">TypeScript调用</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">使用指南</strong><a href="hello.html" class="sidebar-link">你好,Doric</a><strong class="sidebar-title">工具链</strong><a href="commands.html" class="sidebar-link">命令行工具</a><a href="devkit.html" class="sidebar-link">Doric调试工具(Devkit)</a><strong class="sidebar-title">应用接入</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><strong class="sidebar-title">Doric扩展</strong><a href="extensions.html" class="sidebar-link">注册扩展</a><a href="view.html" class="sidebar-link">视图组件</a><a href="plugin.html" class="sidebar-link current">能力组件</a><strong class="sidebar-title">其他文档</strong><a href="mvvm.html" class="sidebar-link">Doric中的MVVM</a><a href="layout.html" class="sidebar-link">布局方式与布局容器</a><a href="theory.html" class="sidebar-link">Doric的运行机制</a><a href="progressive.html" class="sidebar-link">渐进式框架</a><a href="modular.html" class="sidebar-link">Doric中的模块化</a><a href="viewComponent.html" class="sidebar-link">Doric中的视图组件</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/doric-pub/Doric/graphs/contributors" rel="external nofollow noreferrer" target="_blank">Zhou Pengfei</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/doric-pub/Doric" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">使用指南</strong><a href="hello.html" class="mobile-nav-link">你好,Doric</a><strong class="mobile-nav-title">工具链</strong><a href="commands.html" class="mobile-nav-link">命令行工具</a><a href="devkit.html" class="mobile-nav-link">Doric调试工具(Devkit)</a><strong class="mobile-nav-title">应用接入</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><strong class="mobile-nav-title">Doric扩展</strong><a href="extensions.html" class="mobile-nav-link">注册扩展</a><a href="view.html" class="mobile-nav-link">视图组件</a><a href="plugin.html" class="mobile-nav-link current">能力组件</a><strong class="mobile-nav-title">其他文档</strong><a href="mvvm.html" class="mobile-nav-link">Doric中的MVVM</a><a href="layout.html" class="mobile-nav-link">布局方式与布局容器</a><a href="theory.html" class="mobile-nav-link">Doric的运行机制</a><a href="progressive.html" class="mobile-nav-link">渐进式框架</a><a href="modular.html" class="mobile-nav-link">Doric中的模块化</a><a href="viewComponent.html" class="mobile-nav-link">Doric中的视图组件</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/plugin.html">
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/js/lang_select.js"></script>
+
+
+<script src="/js/toc.js"></script>
+
+
+<script src="/js/mobile_nav.js"></script>
+
+<!-- endbuild -->
+
+<!-- Algolia -->
+
+
+</body>
+</html>

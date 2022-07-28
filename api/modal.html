@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>modal-模态窗口 | Doric</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://doric.pub/api/modal.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="en" href="https://doric.pub/api/modal">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Doric">
+</head>
+
+<body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654617376495799"
+     crossorigin="anonymous"></script>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/docs/" class="main-nav-link">文档</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">关于</a>
+      <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">modal-模态窗口</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/api/modal.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>提供一组模态窗口API</p>
+<h3 id="toast" class="article-heading"><a href="#toast" class="headerlink" title="toast"></a>toast<a class="article-anchor" href="#toast" aria-hidden="true"></a></h3><p>弹出Toast弹窗</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">msg: <span class="built_in">string</span> <span class="comment">///弹窗文本</span></span><br><span class="line">gravity?:Gravity <span class="comment">///弹窗位置，可为上中下，默认为下</span></span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">void</span></span><br></pre></td></tr></table></figure></li>
+<li>使用示例: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">modal(context).toast(<span class="string">"保存成功"</span>);</span><br><span class="line"></span><br><span class="line">modal(context).toast(<span class="string">"保存成功"</span>, Gravity.Center);</span><br></pre></td></tr></table></figure>
+<h3 id="alert" class="article-heading"><a href="#alert" class="headerlink" title="alert"></a>alert<a class="article-anchor" href="#alert" aria-hidden="true"></a></h3>弹出警告弹窗</li>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">arg: <span class="built_in">string</span> | &#123;</span><br><span class="line">            title: <span class="built_in">string</span>; <span class="comment">///弹窗标题</span></span><br><span class="line">            msg: <span class="built_in">string</span>;<span class="comment">///弹窗内容</span></span><br><span class="line">            okLabel?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///确认按钮的文本</span></span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;<span class="comment">/// 点击确认后触发resolve回调</span></span><br></pre></td></tr></table></figure></li>
+<li>使用示例: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">modal(context).alert(<span class="string">'确定删除吗？'</span>)</span><br><span class="line"></span><br><span class="line">modal(context).alert(&#123;title: <span class="string">'提示'</span>, msg: <span class="string">'确定删除吗？'</span>, okLabel:<span class="string">'确认'</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="confirm" class="article-heading"><a href="#confirm" class="headerlink" title="confirm"></a>confirm<a class="article-anchor" href="#confirm" aria-hidden="true"></a></h3><p>弹出确认弹窗</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">arg: <span class="built_in">string</span> | &#123;</span><br><span class="line">            title: <span class="built_in">string</span>;<span class="comment">///弹窗标题</span></span><br><span class="line">            msg: <span class="built_in">string</span>;<span class="comment">///弹窗内容</span></span><br><span class="line">            okLabel?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///确认按钮的文本</span></span><br><span class="line">            cancelLabel?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///取消按钮的文本</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;<span class="comment">/// 点击确认后触发resolve回调，点击取消触发reject回调</span></span><br></pre></td></tr></table></figure></li>
+<li>使用示例: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 方式1</span></span><br><span class="line">modal(context).confirm(<span class="string">'确定删除吗？'</span>)</span><br><span class="line"><span class="comment">// 方式2</span></span><br><span class="line">modal(context).confirm(&#123;title: <span class="string">'提示'</span>, msg: <span class="string">'确定删除吗？'</span>, okLabel:<span class="string">'确认'</span>, cancelLabel: <span class="string">'取消'</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h3 id="prompt" class="article-heading"><a href="#prompt" class="headerlink" title="prompt"></a>prompt<a class="article-anchor" href="#prompt" aria-hidden="true"></a></h3><p>弹出输入弹窗</p>
+<ul>
+<li>参数类型:<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">arg: <span class="built_in">string</span> | &#123;</span><br><span class="line">            title: <span class="built_in">string</span>;<span class="comment">///弹窗标题</span></span><br><span class="line">            msg: <span class="built_in">string</span>;<span class="comment">///弹窗内容</span></span><br><span class="line">            okLabel?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///确认按钮的文本</span></span><br><span class="line">            cancelLabel?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///取消按钮的文本;</span></span><br><span class="line">            text?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///默认填充文本</span></span><br><span class="line">            defaultText?: <span class="built_in">string</span> | <span class="literal">undefined</span>; <span class="comment">///内容为空时的提示文本</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+<li>返回值: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Promise</span>&lt;<span class="built_in">string</span>&gt;<span class="comment">/// 点击确认后触发resolve回调，返回输入值，点击取消触发reject回调</span></span><br></pre></td></tr></table></figure></li>
+<li>使用示例: <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 方式1</span></span><br><span class="line">modal(<span class="keyword">this</span>.context).prompt(&#123;title: <span class="string">'提示'</span>, msg: <span class="string">'请输入手机号'</span>, okLabel:<span class="string">'确认'</span>, cancelLabel: <span class="string">'取消'</span>&#125;).then(<span class="function">(<span class="params">result</span>)=&gt;</span>&#123;</span><br><span class="line">    log(<span class="string">`result = <span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式2</span></span><br><span class="line"><span class="keyword">const</span> result = <span class="keyword">await</span> modal(<span class="keyword">this</span>.context).prompt(&#123;title: <span class="string">'提示'</span>, msg: <span class="string">'请输入手机号'</span>, okLabel:<span class="string">'确认'</span>, cancelLabel: <span class="string">'取消'</span>&#125;);</span><br><span class="line">log(<span class="string">`result = <span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-07-28T10:08:36.471Z" itemprop="dateModified">上次更新：2022-07-28</time>
+                <a href="notification.html" class="article-footer-prev" title="notification-广播/通知"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="navbar.html" class="article-footer-next" title="navbar-导航栏"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#toast"><span class="toc-text">toast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#alert"><span class="toc-text">alert</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#confirm"><span class="toc-text">confirm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prompt"><span class="toc-text">prompt</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">基础概念</strong><a href="panel.html" class="sidebar-link">Panel-页面</a><a href="view.html" class="sidebar-link">View-视图基类</a><a href="context.html" class="sidebar-link">Context-控制上下文</a><a href="env.html" class="sidebar-link">Environment-环境变量</a><strong class="sidebar-title">视图组件</strong><a href="text.html" class="sidebar-link">Text-文本控件</a><a href="list.html" class="sidebar-link">List-列表控件</a><a href="scroller.html" class="sidebar-link">Scroller-滑动控件</a><a href="slider.html" class="sidebar-link">Slider-翻页滑动(幻灯片)控件</a><a href="nestedslider.html" class="sidebar-link">NestedSlider-嵌套滑动控件</a><a href="flowlayout.html" class="sidebar-link">FlowLayout-流式网格布局控件</a><a href="switch.html" class="sidebar-link">Switch-开关控件</a><a href="gesture.html" class="sidebar-link">Gesture-手势控件</a><a href="refreshable.html" class="sidebar-link">Refreshable-刷新控件</a><a href="blureffect.html" class="sidebar-link">BlurEffect-高斯模糊控件</a><a href="aeroeffect.html" class="sidebar-link">AeroEffect-透明模糊控件</a><strong class="sidebar-title">能力接口</strong><a href="navigator.html" class="sidebar-link">navigator-导航控制器</a><a href="network.html" class="sidebar-link">network-网络请求</a><a href="storage.html" class="sidebar-link">storage-本地存储</a><a href="popover.html" class="sidebar-link">popover-浮层弹窗</a><a href="animate.html" class="sidebar-link">animate-动画相关</a><a href="notification.html" class="sidebar-link">notification-广播/通知</a><a href="modal.html" class="sidebar-link current">modal-模态窗口</a><a href="navbar.html" class="sidebar-link">navbar-导航栏</a><a href="statusbar.html" class="sidebar-link">statusbar-状态栏</a><a href="coordinator.html" class="sidebar-link">coordinator-视图联动</a><a href="notch.html" class="sidebar-link">notch-刘海屏安全区域</a><a href="keyboard.html" class="sidebar-link">keyboard-监听键盘</a><a href="imageDecoder.html" class="sidebar-link">imageDecoder-图片解码</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/doric-pub/Doric/graphs/contributors" rel="external nofollow noreferrer" target="_blank">Zhou Pengfei</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/doric-pub/Doric" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">基础概念</strong><a href="panel.html" class="mobile-nav-link">Panel-页面</a><a href="view.html" class="mobile-nav-link">View-视图基类</a><a href="context.html" class="mobile-nav-link">Context-控制上下文</a><a href="env.html" class="mobile-nav-link">Environment-环境变量</a><strong class="mobile-nav-title">视图组件</strong><a href="text.html" class="mobile-nav-link">Text-文本控件</a><a href="list.html" class="mobile-nav-link">List-列表控件</a><a href="scroller.html" class="mobile-nav-link">Scroller-滑动控件</a><a href="slider.html" class="mobile-nav-link">Slider-翻页滑动(幻灯片)控件</a><a href="nestedslider.html" class="mobile-nav-link">NestedSlider-嵌套滑动控件</a><a href="flowlayout.html" class="mobile-nav-link">FlowLayout-流式网格布局控件</a><a href="switch.html" class="mobile-nav-link">Switch-开关控件</a><a href="gesture.html" class="mobile-nav-link">Gesture-手势控件</a><a href="refreshable.html" class="mobile-nav-link">Refreshable-刷新控件</a><a href="blureffect.html" class="mobile-nav-link">BlurEffect-高斯模糊控件</a><a href="aeroeffect.html" class="mobile-nav-link">AeroEffect-透明模糊控件</a><strong class="mobile-nav-title">能力接口</strong><a href="navigator.html" class="mobile-nav-link">navigator-导航控制器</a><a href="network.html" class="mobile-nav-link">network-网络请求</a><a href="storage.html" class="mobile-nav-link">storage-本地存储</a><a href="popover.html" class="mobile-nav-link">popover-浮层弹窗</a><a href="animate.html" class="mobile-nav-link">animate-动画相关</a><a href="notification.html" class="mobile-nav-link">notification-广播/通知</a><a href="modal.html" class="mobile-nav-link current">modal-模态窗口</a><a href="navbar.html" class="mobile-nav-link">navbar-导航栏</a><a href="statusbar.html" class="mobile-nav-link">statusbar-状态栏</a><a href="coordinator.html" class="mobile-nav-link">coordinator-视图联动</a><a href="notch.html" class="mobile-nav-link">notch-刘海屏安全区域</a><a href="keyboard.html" class="mobile-nav-link">keyboard-监听键盘</a><a href="imageDecoder.html" class="mobile-nav-link">imageDecoder-图片解码</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="api/modal.html">
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/js/lang_select.js"></script>
+
+
+<script src="/js/toc.js"></script>
+
+
+<script src="/js/mobile_nav.js"></script>
+
+<!-- endbuild -->
+
+<!-- Algolia -->
+
+
+</body>
+</html>

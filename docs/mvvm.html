@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Doric中的MVVM | Doric</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://doric.pub/docs/mvvm.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="en" href="https://doric.pub/docs/mvvm">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Doric">
+</head>
+
+<body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654617376495799"
+     crossorigin="anonymous"></script>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/docs/" class="main-nav-link">文档</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">关于</a>
+      <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Doric中的MVVM</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/mvvm.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>构建可维护的复杂页面从来都不是简单的事情。<br>在Doric中我们推荐使用MVVM的方式构建复杂页面，通过轻量级的实现维护复杂的数据到视图的映射逻辑.</p>
+<p>本文阐述了Doric中MVVM架构使用,并通过计数器Demo举例说明。</p>
+<p>您可以通过<a href="https://p.doric.pub/play/#example/Counter.ts" target="_blank" rel="noopener external nofollow noreferrer">线上Demo</a> 快速查看本文源码及运行效果.</p>
+<h1 id="MVVM" class="article-heading"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM<a class="article-anchor" href="#MVVM" aria-hidden="true"></a></h1><h2 id="数据驱动视图" class="article-heading"><a href="#数据驱动视图" class="headerlink" title="数据驱动视图"></a>数据驱动视图<a class="article-anchor" href="#数据驱动视图" aria-hidden="true"></a></h2><iframe id="embed_dom" name="embed_dom" frameborder="0" style="display:block;width:525px; height:245px;" src="https://www.processon.com/embed/61370bab5653bb2d6d2decce"></iframe>
+
+<h2 id="例子-一个计数器" class="article-heading"><a href="#例子-一个计数器" class="headerlink" title="例子:一个计数器"></a>例子:一个计数器<a class="article-anchor" href="#例子-一个计数器" aria-hidden="true"></a></h2><p>用MVVM的方式实现一个简单的计数器，点击后数字加一。<br>我们可以将代码按MVVM的方式实现:</p>
+<h3 id="定义状态模型-Model部分" class="article-heading"><a href="#定义状态模型-Model部分" class="headerlink" title="定义状态模型 Model部分"></a>定义状态模型 Model部分<a class="article-anchor" href="#定义状态模型-Model部分" aria-hidden="true"></a></h3><iframe src="https://carbon.now.sh/embed?bg=rgba%28171%2C184%2C195%2C0%29&t=vscode&wt=none&l=application%2Ftypescript&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=0px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=interface%2520CountModel%2520%257B%250A%2520%2520count%253A%2520number%253B%250A%257D" style="width: 100%; height: 128px; border:0; transform: scale(1); overflow:hidden;" sandbox="allow-scripts allow-same-origin">
+</iframe>
+该数据结构存储了计数器的计数状态.
+
+
+<h3 id="创建视图-View部分" class="article-heading"><a href="#创建视图-View部分" class="headerlink" title="创建视图 View部分"></a>创建视图 View部分<a class="article-anchor" href="#创建视图-View部分" aria-hidden="true"></a></h3><iframe src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=vscode&wt=none&l=text%2Ftypescript-jsx&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=2px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520CounterView%2520extends%2520ViewHolder%2520%257B%250A%2520%2520number%21%253A%2520Text%253B%250A%2520%2520counter%21%253A%2520Text%253B%250A%2520%2520build%28root%253A%2520Group%29%2520%257B%250A%2520%2520%2520%2520vlayout%28%250A%2520%2520%2520%2520%2520%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%28this.number%2520%253D%2520text%28%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520textSize%253A%252040%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%29%29%252C%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%28this.counter%2520%253D%2520text%28%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520text%253A%2520%2522Click%2520To%2520Count%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520textSize%253A%252020%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%29%29%252C%250A%2520%2520%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2520%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520layoutConfig%253A%2520layoutConfig%28%29.most%28%29%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520gravity%253A%2520Gravity.Center%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520space%253A%252020%252C%250A%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%29.in%28root%29%253B%250A%2520%2520%257D%250A%257D" style="width: 100%; height: 488px; border:0; transform: scale(1); overflow:hidden;" sandbox="allow-scripts allow-same-origin">
+</iframe>
+
+<p>这一步,创建了计数器的视图结构,并持有关键的视图组件的引用,以待后续的更新.</p>
+<h3 id="关联视图与状态-ViewModel部分" class="article-heading"><a href="#关联视图与状态-ViewModel部分" class="headerlink" title="关联视图与状态 ViewModel部分"></a>关联视图与状态 ViewModel部分<a class="article-anchor" href="#关联视图与状态-ViewModel部分" aria-hidden="true"></a></h3><iframe src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=vscode&wt=none&l=text%2Ftypescript-jsx&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=2px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=class%2520CounterVM%2520extends%2520ViewModel%253CCountModel%252C%2520CounterView%253E%2520%257B%250A%2520%2520onAttached%28s%253A%2520CountModel%252C%2520vh%253A%2520CounterView%29%2520%257B%250A%2520%2520%2520%2520vh.counter.onClick%2520%253D%2520%28%29%2520%253D%253E%2520%257B%250A%2520%2520%2520%2520%2520%2520this.updateState%28%28state%29%2520%253D%253E%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520state.count%252B%252B%250A%2520%2520%2520%2520%2520%2520%257D%29%250A%2520%2520%2520%2520%257D%250A%2520%2520%257D%250A%2520%2520onBind%28s%253A%2520CountModel%252C%2520vh%253A%2520CounterView%29%2520%257B%250A%2520%2520%2520%2520vh.number.text%2520%253D%2520%2560%2524%257Bs.count%257D%2560%250A%2520%2520%257D%250A%257D" style="width: 100%; height: 290px; border:0; transform: scale(1); overflow:hidden;" sandbox="allow-scripts allow-same-origin">
+</iframe>
+
+<p>在VM的<code>onAttached</code>中将点击事件设置为改变计数值,在<code>onBind</code>中将视图<code>text</code>属性设置为计数值,即将计数值与视图进行绑定.<br><code>onAttached</code>只会在初始化时调用一次,以后每次<code>updateState</code>都会触发<code>onBind</code>回调.</p>
+<h3 id="通过VMPanel构建出完整的页面" class="article-heading"><a href="#通过VMPanel构建出完整的页面" class="headerlink" title="通过VMPanel构建出完整的页面."></a>通过VMPanel构建出完整的页面.<a class="article-anchor" href="#通过VMPanel构建出完整的页面" aria-hidden="true"></a></h3><iframe src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=vscode&wt=none&l=text%2Ftypescript-jsx&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=0px&ph=2px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=%2540Entry%250Aclass%2520CounterPanel%2520extends%2520VMPanel%253CCountModel%252C%2520CounterView%253E%257B%250A%250A%250A%2520%2520%2520%2520getViewHolderClass%28%29%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520return%2520CounterView%250A%2520%2520%2520%2520%257D%250A%250A%2520%2520%2520%2520getViewModelClass%28%29%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520return%2520CounterVM%250A%2520%2520%2520%2520%257D%250A%250A%2520%2520%2520%2520getState%28%29%253A%2520CountModel%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520return%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520count%253A%25200%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%257D%250A%257D" style="width: 100%; height: 398px; border:0; transform: scale(1); overflow:hidden;" sandbox="allow-scripts allow-same-origin">
+</iframe>
+
+<p><code>CounterPanel</code>的<code>getState</code>方法返回的是状态初始值,核心逻辑通过VM及VH实现.</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2021-09-07T07:08:58.664Z" itemprop="dateModified">上次更新：2021-09-07</time>
+                <a href="plugin.html" class="article-footer-prev" title="能力组件"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="layout.html" class="article-footer-next" title="布局方式与布局容器"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MVVM"><span class="toc-text">MVVM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据驱动视图"><span class="toc-text">数据驱动视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子-一个计数器"><span class="toc-text">例子:一个计数器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义状态模型-Model部分"><span class="toc-text">定义状态模型 Model部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建视图-View部分"><span class="toc-text">创建视图 View部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关联视图与状态-ViewModel部分"><span class="toc-text">关联视图与状态 ViewModel部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过VMPanel构建出完整的页面"><span class="toc-text">通过VMPanel构建出完整的页面.</span></a></li></ol></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">使用指南</strong><a href="hello.html" class="sidebar-link">你好,Doric</a><strong class="sidebar-title">工具链</strong><a href="commands.html" class="sidebar-link">命令行工具</a><a href="devkit.html" class="sidebar-link">Doric调试工具(Devkit)</a><strong class="sidebar-title">应用接入</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><strong class="sidebar-title">Doric扩展</strong><a href="extensions.html" class="sidebar-link">注册扩展</a><a href="view.html" class="sidebar-link">视图组件</a><a href="plugin.html" class="sidebar-link">能力组件</a><strong class="sidebar-title">其他文档</strong><a href="mvvm.html" class="sidebar-link current">Doric中的MVVM</a><a href="layout.html" class="sidebar-link">布局方式与布局容器</a><a href="theory.html" class="sidebar-link">Doric的运行机制</a><a href="progressive.html" class="sidebar-link">渐进式框架</a><a href="modular.html" class="sidebar-link">Doric中的模块化</a><a href="viewComponent.html" class="sidebar-link">Doric中的视图组件</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/doric-pub/Doric/graphs/contributors" rel="external nofollow noreferrer" target="_blank">Zhou Pengfei</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/doric-pub/Doric" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">使用指南</strong><a href="hello.html" class="mobile-nav-link">你好,Doric</a><strong class="mobile-nav-title">工具链</strong><a href="commands.html" class="mobile-nav-link">命令行工具</a><a href="devkit.html" class="mobile-nav-link">Doric调试工具(Devkit)</a><strong class="mobile-nav-title">应用接入</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><strong class="mobile-nav-title">Doric扩展</strong><a href="extensions.html" class="mobile-nav-link">注册扩展</a><a href="view.html" class="mobile-nav-link">视图组件</a><a href="plugin.html" class="mobile-nav-link">能力组件</a><strong class="mobile-nav-title">其他文档</strong><a href="mvvm.html" class="mobile-nav-link current">Doric中的MVVM</a><a href="layout.html" class="mobile-nav-link">布局方式与布局容器</a><a href="theory.html" class="mobile-nav-link">Doric的运行机制</a><a href="progressive.html" class="mobile-nav-link">渐进式框架</a><a href="modular.html" class="mobile-nav-link">Doric中的模块化</a><a href="viewComponent.html" class="mobile-nav-link">Doric中的视图组件</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/mvvm.html">
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/js/lang_select.js"></script>
+
+
+<script src="/js/toc.js"></script>
+
+
+<script src="/js/mobile_nav.js"></script>
+
+<!-- endbuild -->
+
+<!-- Algolia -->
+
+
+</body>
+</html>

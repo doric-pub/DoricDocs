@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>布局方式与布局容器 | Doric</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://doric.pub/docs/layout.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="en" href="https://doric.pub/docs/layout">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Doric">
+</head>
+
+<body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654617376495799"
+     crossorigin="anonymous"></script>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/docs/" class="main-nav-link">文档</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">关于</a>
+      <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">布局方式与布局容器</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/layout.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>本文讲述在Doric中的布局方式与布局容器</p>
+<h1 id="基础属性" class="article-heading"><a href="#基础属性" class="headerlink" title="基础属性"></a>基础属性<a class="article-anchor" href="#基础属性" aria-hidden="true"></a></h1><p>本节内容列举在<code>View</code>中定义的基础的属性及其含义</p>
+<h2 id="LayoutConfig" class="article-heading"><a href="#LayoutConfig" class="headerlink" title="LayoutConfig"></a>LayoutConfig<a class="article-anchor" href="#LayoutConfig" aria-hidden="true"></a></h2><p>在<code>View</code>的属性中，关于布局的属性最关键的就是<code>layoutConfig</code>这个属性。<br>它的定义如下：</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> LayoutConfig &#123;</span><br><span class="line">        <span class="comment">/// 宽度的描述</span></span><br><span class="line">        widthSpec?: LayoutSpec;</span><br><span class="line">        <span class="comment">/// 高度的描述</span></span><br><span class="line">        heightSpec?: LayoutSpec;</span><br><span class="line">        <span class="comment">/// 外边距</span></span><br><span class="line">        margin?: &#123;</span><br><span class="line">                left?: <span class="built_in">number</span>;</span><br><span class="line">                right?: <span class="built_in">number</span>;</span><br><span class="line">                top?: <span class="built_in">number</span>;</span><br><span class="line">                bottom?: <span class="built_in">number</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">/// 对齐方式</span></span><br><span class="line">        alignment?: Gravity;</span><br><span class="line">        <span class="comment">/// 权重，仅在VLayout与HLayout中生效</span></span><br><span class="line">        weight?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>大家可以注意到这个属性默认是<code>undefined</code>的。如果不设置，其内容相当于 <code>layoutConfig().just()</code>。<br>但是在一般使用声明式布局，如<code>text</code>,<code>vlayout</code>,<code>hlayout</code>等方式进行布局时，默认已经设置了layoutConfig为<code>layoutConfig().fit()</code></p>
+<h2 id="layoutConfig" class="article-heading"><a href="#layoutConfig" class="headerlink" title="layoutConfig()"></a>layoutConfig()<a class="article-anchor" href="#layoutConfig" aria-hidden="true"></a></h2><p>这是一个辅助方法，用于链式调用最终生成您想要的<code>LayoutConfig</code>属性。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">layoutConfig: layoutConfig().just(),</span><br></pre></td></tr></table></figure>
+<p>当然您也可以不使用这个方法，直接声明<code>LayoutConfig</code>对象。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">layoutConfig: &#123;</span><br><span class="line">    widthSpec:LayoutSpec.FIT,</span><br><span class="line">    heightSpec:LayoutSpec.FIT,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>定义如下：</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 宽与高都设置为FIT</span></span><br><span class="line">fit(): <span class="keyword">this</span>;</span><br><span class="line"><span class="comment">// 宽与高都设置为MOST</span></span><br><span class="line">most(): <span class="keyword">this</span>;</span><br><span class="line"><span class="comment">// 宽与高都设置为JUST</span></span><br><span class="line">just(): <span class="keyword">this</span>;</span><br><span class="line"><span class="comment">// 只设置宽的描述</span></span><br><span class="line">configWidth(w: LayoutSpec): <span class="keyword">this</span>;</span><br><span class="line"><span class="comment">// 只设置高的描述</span></span><br><span class="line">configHeight(h: LayoutSpec): <span class="keyword">this</span>;</span><br><span class="line"><span class="comment">// 设置外边距</span></span><br><span class="line">configMargin(m: &#123;</span><br><span class="line">        left?: <span class="built_in">number</span>;</span><br><span class="line">        right?: <span class="built_in">number</span>;</span><br><span class="line">        top?: <span class="built_in">number</span>;</span><br><span class="line">        bottom?: <span class="built_in">number</span>;</span><br><span class="line">&#125;): <span class="keyword">this</span>;</span><br><span class="line"><span class="comment">// 设置与父视图的对齐方式</span></span><br><span class="line">configAlignment(a: Gravity): <span class="keyword">this</span>;</span><br><span class="line"><span class="comment">// 设置权重</span></span><br><span class="line">configWeight(w: <span class="built_in">number</span>): <span class="keyword">this</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="LayoutSpec" class="article-heading"><a href="#LayoutSpec" class="headerlink" title="LayoutSpec"></a>LayoutSpec<a class="article-anchor" href="#LayoutSpec" aria-hidden="true"></a></h3><p>用于描述宽或高两个维度的确定方式。</p>
+<ul>
+<li><code>LayoutSpec.JUST</code><br><code>JUST</code>表示值为固定值，即由View的<code>width</code>或<code>height</code>属性来定义宽或高的值。</li>
+<li><code>LayoutSpec.FIT</code><br><code>FIT</code>表示其当前维度的值由其内容撑开。<br>在<code>Text</code>控件，由其文本内容决定<br>在<code>Image</code>控件，由其图像尺寸决定。<br>在<code>VLayout</code>，<code>HLayout</code>,<code>Stack</code>中，由其子视图内容大小决定。</li>
+<li><code>LayoutSpec.MOST</code><br><code>MOST</code>表示其当前维度的值会最大限度撑开，直到其占满父容器的剩余空间。</li>
+</ul>
+<p><code>widthSpec</code>与<code>heightSpec</code>可分别设置，从而达到您想要的效果。</p>
+<h3 id="Margin" class="article-heading"><a href="#Margin" class="headerlink" title="Margin"></a>Margin<a class="article-anchor" href="#Margin" aria-hidden="true"></a></h3><p>定义控件相对对于其同级视图或父视图的边距。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        left?: <span class="built_in">number</span> | <span class="literal">undefined</span>;</span><br><span class="line">        right?: <span class="built_in">number</span> | <span class="literal">undefined</span>;</span><br><span class="line">        top?: <span class="built_in">number</span> | <span class="literal">undefined</span>;</span><br><span class="line">        bottom?: <span class="built_in">number</span> | <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Alignment" class="article-heading"><a href="#Alignment" class="headerlink" title="Alignment"></a>Alignment<a class="article-anchor" href="#Alignment" aria-hidden="true"></a></h3><p>定义了控件相对于父视图的对齐方式。<br><strong>请注意</strong><br><strong>在<code>VLayout</code>中仅能定义水平方向的对齐方式，在<code>HLayout</code>中仅能定义垂直方向的对齐方式</strong></p>
+<h3 id="Weight" class="article-heading"><a href="#Weight" class="headerlink" title="Weight"></a>Weight<a class="article-anchor" href="#Weight" aria-hidden="true"></a></h3><p>布局权重，仅在<code>VLayout</code>和<code>HLayout</code>中生效。<br>其作用方式为，当所有子视图布局完成后，如果父视图还有剩余空间，则按子视图所定义的<code>weight</code>比例分配。不定义默认为<code>0</code>。</p>
+<h2 id="Width-amp-Height" class="article-heading"><a href="#Width-amp-Height" class="headerlink" title="Width &amp; Height"></a>Width &amp; Height<a class="article-anchor" href="#Width-amp-Height" aria-hidden="true"></a></h2><p>直接设置一个控件的宽或者高。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">view.width = <span class="number">100</span></span><br><span class="line">view.height = <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p><strong>请注意</strong><br><strong><code>width</code>属性生效条件为<code>layoutConfig</code>属性为<code>undeifned</code>或其<code>widthSpec</code>值为<code>LayoutSpec.JUST</code></strong><br><strong><code>height</code>属性生效条件为<code>layoutConfig</code>属性为<code>undeifned</code>或其<code>heightSpec</code>值为<code>LayoutSpec.JUST</code></strong></p>
+<h2 id="Padding" class="article-heading"><a href="#Padding" class="headerlink" title="Padding"></a>Padding<a class="article-anchor" href="#Padding" aria-hidden="true"></a></h2><p>内边距。即控件内子视图或其内容相对于控件的间距。<br>其格式定义为</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        left?: <span class="built_in">number</span>;</span><br><span class="line">        right?: <span class="built_in">number</span>;</span><br><span class="line">        top?: <span class="built_in">number</span>;</span><br><span class="line">        bottom?: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Layout容器" class="article-heading"><a href="#Layout容器" class="headerlink" title="Layout容器"></a>Layout容器<a class="article-anchor" href="#Layout容器" aria-hidden="true"></a></h1><p>在Doric中，定义了三种父视图来进行布局</p>
+<h1 id="Stack" class="article-heading"><a href="#Stack" class="headerlink" title="Stack"></a>Stack<a class="article-anchor" href="#Stack" aria-hidden="true"></a></h1><p><code>Stack</code>是最基本的父视图，子视图按添加顺序覆盖其上。<br>此时子视图的<code>x</code>,<code>y</code>坐标发挥作用，坐标系原点正是父视图的左上角。</p>
+<h2 id="锚点坐标" class="article-heading"><a href="#锚点坐标" class="headerlink" title="锚点坐标"></a>锚点坐标<a class="article-anchor" href="#锚点坐标" aria-hidden="true"></a></h2><p>对于<code>Stack</code>的子视图来说，仅仅通过<code>x</code>,<code>y</code>进行布局略显不便。<br>如果其子视图宽或高为<code>JUST</code>时，可以通过锚点进行快捷的坐标设置。</p>
+<ul>
+<li><code>left</code></li>
+<li><code>right</code></li>
+<li><code>top</code></li>
+<li><code>bottom</code></li>
+<li><code>centerX</code></li>
+<li><code>centerY</code></li>
+</ul>
+<h1 id="VLayout" class="article-heading"><a href="#VLayout" class="headerlink" title="VLayout"></a>VLayout<a class="article-anchor" href="#VLayout" aria-hidden="true"></a></h1><p><code>VLayout</code>是垂直线性布局,子视图从上向下进行布局。</p>
+<h2 id="Gravity" class="article-heading"><a href="#Gravity" class="headerlink" title="Gravity"></a>Gravity<a class="article-anchor" href="#Gravity" aria-hidden="true"></a></h2><p>其<code>gravity</code>属性可控制子视图个体在水平方向上的对齐方式和整体在垂直方向上的对齐方式<br>子视图个体可通过设置其<code>Aligment</code>覆盖改变其水平方向上的对齐方式。</p>
+<h2 id="Space" class="article-heading"><a href="#Space" class="headerlink" title="Space"></a>Space<a class="article-anchor" href="#Space" aria-hidden="true"></a></h2><p>定义子视图之间的间距</p>
+<h1 id="HLayout" class="article-heading"><a href="#HLayout" class="headerlink" title="HLayout"></a>HLayout<a class="article-anchor" href="#HLayout" aria-hidden="true"></a></h1><p><code>HLayout</code>是水平线性布局,子视图从左向右进行布局。</p>
+<h2 id="Gravity-1" class="article-heading"><a href="#Gravity-1" class="headerlink" title="Gravity"></a>Gravity<a class="article-anchor" href="#Gravity-1" aria-hidden="true"></a></h2><p>其<code>gravity</code>属性可控制子视图个体在垂直方向上的对齐方式和整体在水平方向上的对齐方式<br>子视图个体可通过设置其<code>Aligment</code>覆盖改变其垂直方向上的对齐方式。</p>
+<h2 id="Space-1" class="article-heading"><a href="#Space-1" class="headerlink" title="Space"></a>Space<a class="article-anchor" href="#Space-1" aria-hidden="true"></a></h2><p>定义子视图之间的间距</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2021-09-07T07:12:02.579Z" itemprop="dateModified">上次更新：2021-09-07</time>
+                <a href="mvvm.html" class="article-footer-prev" title="Doric中的MVVM"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="theory.html" class="article-footer-next" title="Doric的运行机制"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础属性"><span class="toc-text">基础属性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LayoutConfig"><span class="toc-text">LayoutConfig</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#layoutConfig"><span class="toc-text">layoutConfig()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LayoutSpec"><span class="toc-text">LayoutSpec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Margin"><span class="toc-text">Margin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Alignment"><span class="toc-text">Alignment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Weight"><span class="toc-text">Weight</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Width-amp-Height"><span class="toc-text">Width &amp; Height</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Padding"><span class="toc-text">Padding</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Layout容器"><span class="toc-text">Layout容器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Stack"><span class="toc-text">Stack</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#锚点坐标"><span class="toc-text">锚点坐标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#VLayout"><span class="toc-text">VLayout</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gravity"><span class="toc-text">Gravity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Space"><span class="toc-text">Space</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HLayout"><span class="toc-text">HLayout</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gravity-1"><span class="toc-text">Gravity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Space-1"><span class="toc-text">Space</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">使用指南</strong><a href="hello.html" class="sidebar-link">你好,Doric</a><strong class="sidebar-title">工具链</strong><a href="commands.html" class="sidebar-link">命令行工具</a><a href="devkit.html" class="sidebar-link">Doric调试工具(Devkit)</a><strong class="sidebar-title">应用接入</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><strong class="sidebar-title">Doric扩展</strong><a href="extensions.html" class="sidebar-link">注册扩展</a><a href="view.html" class="sidebar-link">视图组件</a><a href="plugin.html" class="sidebar-link">能力组件</a><strong class="sidebar-title">其他文档</strong><a href="mvvm.html" class="sidebar-link">Doric中的MVVM</a><a href="layout.html" class="sidebar-link current">布局方式与布局容器</a><a href="theory.html" class="sidebar-link">Doric的运行机制</a><a href="progressive.html" class="sidebar-link">渐进式框架</a><a href="modular.html" class="sidebar-link">Doric中的模块化</a><a href="viewComponent.html" class="sidebar-link">Doric中的视图组件</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/doric-pub/Doric/graphs/contributors" rel="external nofollow noreferrer" target="_blank">Zhou Pengfei</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/doric-pub/Doric" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">使用指南</strong><a href="hello.html" class="mobile-nav-link">你好,Doric</a><strong class="mobile-nav-title">工具链</strong><a href="commands.html" class="mobile-nav-link">命令行工具</a><a href="devkit.html" class="mobile-nav-link">Doric调试工具(Devkit)</a><strong class="mobile-nav-title">应用接入</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><strong class="mobile-nav-title">Doric扩展</strong><a href="extensions.html" class="mobile-nav-link">注册扩展</a><a href="view.html" class="mobile-nav-link">视图组件</a><a href="plugin.html" class="mobile-nav-link">能力组件</a><strong class="mobile-nav-title">其他文档</strong><a href="mvvm.html" class="mobile-nav-link">Doric中的MVVM</a><a href="layout.html" class="mobile-nav-link current">布局方式与布局容器</a><a href="theory.html" class="mobile-nav-link">Doric的运行机制</a><a href="progressive.html" class="mobile-nav-link">渐进式框架</a><a href="modular.html" class="mobile-nav-link">Doric中的模块化</a><a href="viewComponent.html" class="mobile-nav-link">Doric中的视图组件</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/layout.html">
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/js/lang_select.js"></script>
+
+
+<script src="/js/toc.js"></script>
+
+
+<script src="/js/mobile_nav.js"></script>
+
+<!-- endbuild -->
+
+<!-- Algolia -->
+
+
+</body>
+</html>

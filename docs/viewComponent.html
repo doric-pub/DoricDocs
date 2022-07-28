@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Doric中的视图组件 | Doric</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://doric.pub/docs/viewComponent.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="en" href="https://doric.pub/docs/viewComponent">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Doric">
+</head>
+
+<body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654617376495799"
+     crossorigin="anonymous"></script>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/docs/" class="main-nav-link">文档</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">关于</a>
+      <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Doric中的视图组件</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/viewComponent.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>Doric SDK中提供了一系列基础的视图单元,也提供了插件机制用于拓展,可以方便地将平台原生视图加入到Doric体系中来.<br>在Doric version &gt;= <code>v0.8.0</code>版本中提供了自定义视图组件机制,可以在TS层将基础视图单元组合成复杂的视图组件.</p>
+<h1 id="用法" class="article-heading"><a href="#用法" class="headerlink" title="用法"></a>用法<a class="article-anchor" href="#用法" aria-hidden="true"></a></h1><p><strong>您需要继承Doric中已实现的视图单元类来实现子类,并在该子类上添加<code>ViewComponent</code>注解.</strong></p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="meta">@ViewComponent</span>  </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> RichTitleView <span class="keyword">extends</span> HLayout &#123;</span><br><span class="line">    title: Text</span><br><span class="line">    subTitle: Text</span><br><span class="line">    icon: Image</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>()</span><br><span class="line">        <span class="keyword">this</span>.title = text(&#123;</span><br><span class="line">            textSize: <span class="number">30</span>,</span><br><span class="line">            textColor: Color.WHITE,</span><br><span class="line">            textAlignment: Gravity.Center,</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">this</span>.subTitle = text(&#123;</span><br><span class="line">            textColor: Color.WHITE,</span><br><span class="line">            textSize: <span class="number">12</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">this</span>.icon = image(&#123;</span><br><span class="line">            layoutConfig: layoutConfig().just(),</span><br><span class="line">            width: <span class="number">80</span>,</span><br><span class="line">            height: <span class="number">80</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">this</span>.addChild(<span class="keyword">this</span>.icon)</span><br><span class="line">        <span class="keyword">this</span>.addChild(</span><br><span class="line">            vlayout(</span><br><span class="line">                [</span><br><span class="line">                    <span class="keyword">this</span>.title,</span><br><span class="line">                    <span class="keyword">this</span>.subTitle,</span><br><span class="line">                ],</span><br><span class="line">                &#123;</span><br><span class="line">                    gravity: Gravity.Center,</span><br><span class="line">                    space: <span class="number">10</span>,</span><br><span class="line">                &#125;))</span><br><span class="line">        <span class="keyword">this</span>.gravity = Gravity.Center</span><br><span class="line">        <span class="keyword">this</span>.space = <span class="number">10</span></span><br><span class="line">        <span class="keyword">this</span>.layoutConfig = &#123;</span><br><span class="line">            widthSpec: LayoutSpec.MOST,</span><br><span class="line">            heightSpec: LayoutSpec.FIT,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.padding = &#123;</span><br><span class="line">            top: <span class="number">10</span>,</span><br><span class="line">            bottom: <span class="number">10</span>,</span><br><span class="line">            left: <span class="number">10</span>,</span><br><span class="line">            right: <span class="number">10</span>,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.backgroundColor = colors[<span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    applyChild(config: &#123;</span><br><span class="line">        title?: Partial&lt;Text&gt;,</span><br><span class="line">        subTitle?: Partial&lt;Text&gt;,</span><br><span class="line">        icon?: Partial&lt;Image&gt;,</span><br><span class="line">    &#125;) &#123;</span><br><span class="line">        <span class="keyword">this</span>.title.hidden = !!!config.title?.text</span><br><span class="line">        <span class="keyword">this</span>.subTitle.hidden = !!!config.subTitle?.text</span><br><span class="line">        <span class="keyword">this</span>.icon.hidden = !!!config.icon</span><br><span class="line">        <span class="keyword">if</span> (config.title) &#123;</span><br><span class="line">            <span class="keyword">this</span>.title.apply(config.title)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (config.subTitle) &#123;</span><br><span class="line">            <span class="keyword">this</span>.subTitle.apply(config.subTitle)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (config.icon) &#123;</span><br><span class="line">            <span class="keyword">this</span>.icon.apply(config.icon)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Demo" class="article-heading"><a href="#Demo" class="headerlink" title="Demo"></a>Demo<a class="article-anchor" href="#Demo" aria-hidden="true"></a></h1><p>您可以查看这个<a href="https://github.com/doric-pub/Doric/blob/master/doric-demo/src/ComponetDemo.ts" target="_blank" rel="noopener external nofollow noreferrer">Demo</a>,这里有具体的用法.</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2021-09-07T03:39:45.343Z" itemprop="dateModified">上次更新：2021-09-07</time>
+                <a href="modular.html" class="article-footer-prev" title="Doric中的模块化"><i class="fa fa-chevron-left"></i><span>上一页</span></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#用法"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">使用指南</strong><a href="hello.html" class="sidebar-link">你好,Doric</a><strong class="sidebar-title">工具链</strong><a href="commands.html" class="sidebar-link">命令行工具</a><a href="devkit.html" class="sidebar-link">Doric调试工具(Devkit)</a><strong class="sidebar-title">应用接入</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><strong class="sidebar-title">Doric扩展</strong><a href="extensions.html" class="sidebar-link">注册扩展</a><a href="view.html" class="sidebar-link">视图组件</a><a href="plugin.html" class="sidebar-link">能力组件</a><strong class="sidebar-title">其他文档</strong><a href="mvvm.html" class="sidebar-link">Doric中的MVVM</a><a href="layout.html" class="sidebar-link">布局方式与布局容器</a><a href="theory.html" class="sidebar-link">Doric的运行机制</a><a href="progressive.html" class="sidebar-link">渐进式框架</a><a href="modular.html" class="sidebar-link">Doric中的模块化</a><a href="viewComponent.html" class="sidebar-link current">Doric中的视图组件</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/doric-pub/Doric/graphs/contributors" rel="external nofollow noreferrer" target="_blank">Zhou Pengfei</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/doric-pub/Doric" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">使用指南</strong><a href="hello.html" class="mobile-nav-link">你好,Doric</a><strong class="mobile-nav-title">工具链</strong><a href="commands.html" class="mobile-nav-link">命令行工具</a><a href="devkit.html" class="mobile-nav-link">Doric调试工具(Devkit)</a><strong class="mobile-nav-title">应用接入</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><strong class="mobile-nav-title">Doric扩展</strong><a href="extensions.html" class="mobile-nav-link">注册扩展</a><a href="view.html" class="mobile-nav-link">视图组件</a><a href="plugin.html" class="mobile-nav-link">能力组件</a><strong class="mobile-nav-title">其他文档</strong><a href="mvvm.html" class="mobile-nav-link">Doric中的MVVM</a><a href="layout.html" class="mobile-nav-link">布局方式与布局容器</a><a href="theory.html" class="mobile-nav-link">Doric的运行机制</a><a href="progressive.html" class="mobile-nav-link">渐进式框架</a><a href="modular.html" class="mobile-nav-link">Doric中的模块化</a><a href="viewComponent.html" class="mobile-nav-link current">Doric中的视图组件</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/viewComponent.html">
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/js/lang_select.js"></script>
+
+
+<script src="/js/toc.js"></script>
+
+
+<script src="/js/mobile_nav.js"></script>
+
+<!-- endbuild -->
+
+<!-- Algolia -->
+
+
+</body>
+</html>
