@@ -25,6 +25,11 @@ api:
     context: context.html
     env: env.html
   views:
+    input: input.html
+    image: image.html
+    vLayout: vLayout.html
+    hLayout: hLayout.html
+    stack: stack.html
     text: text.html
     list: list.html
     scroller: scroller.html

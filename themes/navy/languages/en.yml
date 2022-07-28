@@ -52,6 +52,11 @@ sidebar:
     context: Context-控制上下文
     env: Environment-环境变量
     views: 视图组件
+    input: Input-文本输入或编辑
+    image: Image-图片控件
+    vLayout: VLayout-垂直线性布局组件
+    hLayout: HLayout-水平线性布局容器控件
+    stack: stack- 层叠布局容器控件
     text: Text-文本控件
     list: List-列表控件
     scroller: Scroller-滑动控件
