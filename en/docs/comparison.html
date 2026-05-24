@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Doric vs. Mainstream Cross-platform Frameworks | Doric</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://doric.pub/en/docs/comparison.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="en" href="https://doric.pub/en/docs/comparison">
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://doric.pub/docs/comparison">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Doric">
+</head>
+
+<body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654617376495799"
+     crossorigin="anonymous"></script>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/en/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/en/docs/" class="main-nav-link">Docs</a><a href="/en/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">Extensions</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">About</a>
+      <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="lang-select-wrap">
+        <label id="lang-select-label" for="lang-select"><i class="fa fa-globe"></i></label>
+        <select id="lang-select" data-canonical="docs/comparison.html">
+          
+            <option value="en" selected>English</option>
+          
+            <option value="zh-cn">简体中文</option>
+          
+        </select>
+      </div>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Doric vs. Mainstream Cross-platform Frameworks</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/en/docs/comparison.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="Improve this page"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>This document compares Doric with React Native, Flutter, Ionic/Capacitor, and Tauri/Electron from a frontend architecture and technology selection perspective. The goal is not to claim that one framework replaces another, but to clarify where Doric fits best.</p>
+<h2 id="Generation-Notice" class="article-heading"><a href="#Generation-Notice" class="headerlink" title="Generation Notice"></a>Generation Notice<a class="article-anchor" href="#Generation-Notice" aria-hidden="true"></a></h2><p>This document was assisted by Codex, a programming assistant based on GPT-5. It is based on:</p>
+<ul>
+<li>The current Doric source tree and DoricDocs documentation, including <code>doric-js</code>, <code>doric-cli</code>, <code>doric-web</code>, <code>doric-android</code>, <code>doric-iOS</code>, and <code>doric-demo</code>.</li>
+<li>Official documentation from React Native, Flutter, Capacitor, Tauri, and Electron.</li>
+<li>Common frontend architecture evaluation dimensions, including rendering model, dynamic delivery, native integration, ecosystem maturity, team cost, and suitable scenarios.</li>
+</ul>
+<p>This is an architectural analysis and selection guide. It is not an official roadmap, benchmark report, or statement on behalf of any external framework.</p>
+<h2 id="Short-Summary" class="article-heading"><a href="#Short-Summary" class="headerlink" title="Short Summary"></a>Short Summary<a class="article-anchor" href="#Short-Summary" aria-hidden="true"></a></h2><p>Doric is best understood as a lightweight TypeScript cross-platform page runtime. Pages are written in TS/TSX, compiled into JavaScript bundles, and rendered by host runtimes into native views or Web nodes. It is well suited for dynamic pages, embedded business panels, cards, and gradual adoption inside existing apps.</p>
+<p>React Native is a React-based native app framework. It maps React components to platform native components and has a mature ecosystem.</p>
+<p>Flutter is a complete UI toolkit with its own rendering engine. It uses Dart and paints UI through Flutter Engine, which provides strong cross-platform consistency.</p>
+<p>Ionic/Capacitor packages Web applications into native containers. UI is rendered by WebView, while native capabilities are accessed through plugins.</p>
+<p>Tauri and Electron are mainly desktop app containers. They are not direct competitors to Doric in mobile page-runtime scenarios.</p>
+<h2 id="Comparison-Matrix" class="article-heading"><a href="#Comparison-Matrix" class="headerlink" title="Comparison Matrix"></a>Comparison Matrix<a class="article-anchor" href="#Comparison-Matrix" aria-hidden="true"></a></h2><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Doric</th>
+<th>React Native</th>
+<th>Flutter</th>
+<th>Ionic/Capacitor</th>
+<th>Tauri/Electron</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Main language</td>
+<td>TypeScript/TSX</td>
+<td>JavaScript/TypeScript + React</td>
+<td>Dart</td>
+<td>HTML/CSS/JS</td>
+<td>HTML/CSS/JS + Rust/Node</td>
+</tr>
+<tr>
+<td>Rendering</td>
+<td>View model mapped to native/Web nodes</td>
+<td>React components mapped to native components</td>
+<td>Flutter Engine rendering</td>
+<td>WebView</td>
+<td>WebView/Chromium</td>
+</tr>
+<tr>
+<td>Native feel</td>
+<td>High</td>
+<td>High</td>
+<td>Medium-high, but not system-native widgets</td>
+<td>Medium-low</td>
+<td>Desktop Web style</td>
+</tr>
+<tr>
+<td>UI consistency</td>
+<td>Medium-high</td>
+<td>Medium-high</td>
+<td>High</td>
+<td>High</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Dynamic delivery</td>
+<td>Strong</td>
+<td>Possible, but policy-sensitive</td>
+<td>Weaker due to AOT and review constraints</td>
+<td>Strong</td>
+<td>Depends on desktop update model</td>
+</tr>
+<tr>
+<td>Progressive adoption</td>
+<td>Strong</td>
+<td>Medium</td>
+<td>Medium-low</td>
+<td>Medium</td>
+<td>Container-level</td>
+</tr>
+<tr>
+<td>Ecosystem</td>
+<td>Small</td>
+<td>Large</td>
+<td>Large</td>
+<td>Large Web ecosystem</td>
+<td>Mature desktop ecosystem</td>
+</tr>
+</tbody></table>
+<h2 id="Doric-Characteristics" class="article-heading"><a href="#Doric-Characteristics" class="headerlink" title="Doric Characteristics"></a>Doric Characteristics<a class="article-anchor" href="#Doric-Characteristics" aria-hidden="true"></a></h2><p>Doric pages are written as <code>Panel</code> classes:</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Panel, Group, text &#125; <span class="keyword">from</span> <span class="string">"doric"</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Entry</span></span><br><span class="line"><span class="keyword">class</span> Home <span class="keyword">extends</span> Panel &#123;</span><br><span class="line">    build(root: Group) &#123;</span><br><span class="line">        text(&#123; text: <span class="string">"Hello Doric"</span> &#125;).in(root);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Important Doric concepts:</p>
+<ul>
+<li><code>Panel</code> is the page controller.</li>
+<li><code>View</code> property changes are collected as dirty props.</li>
+<li>Layout is built with <code>layoutConfig</code>, <code>stack</code>, <code>vlayout</code>, <code>hlayout</code>, and <code>flexlayout</code>.</li>
+<li>Native capabilities are called through <code>context.callNative(plugin, method, args)</code>.</li>
+<li>Android, iOS, and Web integration can happen at page level or embedded view level.</li>
+<li>Extensions are registered through <code>DoricLibrary</code>, Native Plugin, and ViewNode.</li>
+</ul>
+<h2 id="Doric-vs-React-Native" class="article-heading"><a href="#Doric-vs-React-Native" class="headerlink" title="Doric vs. React Native"></a>Doric vs. React Native<a class="article-anchor" href="#Doric-vs-React-Native" aria-hidden="true"></a></h2><p>React Native uses React as its programming model. UI updates are driven by React reconciliation and synchronized to native components. Its advantages include a large ecosystem, many community components, strong tooling, and a broad talent pool.</p>
+<p>Doric is smaller and more direct. It does not include React hooks, React state management, or React reconciler. State changes are usually expressed by directly changing Doric view properties.</p>
+<p>Choose React Native when:</p>
+<ul>
+<li>The team already uses React heavily.</li>
+<li>You are building a full mobile application.</li>
+<li>You need mature community packages and long-term ecosystem support.</li>
+<li>Complex state management and large frontend architecture are required.</li>
+</ul>
+<p>Choose Doric when:</p>
+<ul>
+<li>You already have native Android/iOS apps.</li>
+<li>You only need to reuse selected pages or embedded areas.</li>
+<li>Dynamic JavaScript bundle delivery is important.</li>
+<li>The host app should keep strong control over native containers and plugins.</li>
+</ul>
+<h2 id="Doric-vs-Flutter" class="article-heading"><a href="#Doric-vs-Flutter" class="headerlink" title="Doric vs. Flutter"></a>Doric vs. Flutter<a class="article-anchor" href="#Doric-vs-Flutter" aria-hidden="true"></a></h2><p>Flutter uses Dart and renders UI with Flutter Engine. Because it owns the rendering pipeline, it provides strong visual consistency and excellent custom drawing and animation capabilities.</p>
+<p>Doric maps view models to platform runtimes. This gives Doric better native-host integration and lighter page-level embedding, but less uniform rendering than Flutter.</p>
+<p>Choose Flutter when:</p>
+<ul>
+<li>You need highly consistent UI and animation across platforms.</li>
+<li>The team accepts Dart and Flutter’s engineering model.</li>
+<li>The application needs complex custom drawing or a unified design system.</li>
+</ul>
+<p>Choose Doric when:</p>
+<ul>
+<li>You need gradual adoption inside an existing app.</li>
+<li>You want to keep native navigation and native page containers.</li>
+<li>Page complexity is moderate and does not require extensive custom rendering.</li>
+</ul>
+<h2 id="Doric-vs-Ionic-Capacitor" class="article-heading"><a href="#Doric-vs-Ionic-Capacitor" class="headerlink" title="Doric vs. Ionic/Capacitor"></a>Doric vs. Ionic/Capacitor<a class="article-anchor" href="#Doric-vs-Ionic-Capacitor" aria-hidden="true"></a></h2><p>Ionic/Capacitor is closest to Web application packaging. UI is rendered by WebView and native capabilities are accessed through Capacitor plugins. This is very friendly to Web teams and existing Web projects.</p>
+<p>Doric does not directly reuse DOM or CSS. It uses TypeScript to describe Doric views and lets each runtime render native or platform-specific nodes.</p>
+<p>Choose Ionic/Capacitor when:</p>
+<ul>
+<li>You already have a Web app.</li>
+<li>You want to reuse HTML/CSS/browser ecosystem directly.</li>
+<li>Native look and feel is not the highest priority.</li>
+</ul>
+<p>Choose Doric when:</p>
+<ul>
+<li>You do not want the main UI to run inside WebView.</li>
+<li>Native rendering and host integration are important.</li>
+<li>Native teams can provide plugins and ViewNode implementations.</li>
+</ul>
+<h2 id="Doric-vs-Tauri-Electron" class="article-heading"><a href="#Doric-vs-Tauri-Electron" class="headerlink" title="Doric vs. Tauri/Electron"></a>Doric vs. Tauri/Electron<a class="article-anchor" href="#Doric-vs-Tauri-Electron" aria-hidden="true"></a></h2><p>Tauri and Electron are mainly desktop application containers. Electron uses Chromium and Node.js, while Tauri uses system WebView plus Rust. They are suitable for desktop tools and enterprise desktop clients.</p>
+<p>Doric focuses on cross-platform page rendering inside Android, iOS, Web, and Qt runtimes. It is closer to a page runtime than a desktop application shell.</p>
+<h2 id="Doric-Strengths" class="article-heading"><a href="#Doric-Strengths" class="headerlink" title="Doric Strengths"></a>Doric Strengths<a class="article-anchor" href="#Doric-Strengths" aria-hidden="true"></a></h2><ul>
+<li>Low-cost progressive adoption.</li>
+<li>Lightweight runtime boundary.</li>
+<li>TypeScript-friendly development.</li>
+<li>Good native host integration.</li>
+<li>Natural JavaScript bundle dynamic delivery.</li>
+</ul>
+<h2 id="Doric-Limitations" class="article-heading"><a href="#Doric-Limitations" class="headerlink" title="Doric Limitations"></a>Doric Limitations<a class="article-anchor" href="#Doric-Limitations" aria-hidden="true"></a></h2><ul>
+<li>Smaller ecosystem than React Native and Flutter.</li>
+<li>Existing Web pages cannot be reused directly as DOM/CSS.</li>
+<li>Cross-platform consistency depends on each runtime implementation.</li>
+<li>Large-scale app architecture requires team-defined conventions.</li>
+<li>Complex custom rendering may be better served by Flutter or native code.</li>
+</ul>
+<h2 id="Scenario-Recommendations" class="article-heading"><a href="#Scenario-Recommendations" class="headerlink" title="Scenario Recommendations"></a>Scenario Recommendations<a class="article-anchor" href="#Scenario-Recommendations" aria-hidden="true"></a></h2><table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Recommended choice</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dynamic business pages in an existing app</td>
+<td>Doric</td>
+</tr>
+<tr>
+<td>Embedded cross-platform cards or panels</td>
+<td>Doric</td>
+</tr>
+<tr>
+<td>Full app with React team and ecosystem needs</td>
+<td>React Native</td>
+</tr>
+<tr>
+<td>Highly consistent custom UI and animations</td>
+<td>Flutter</td>
+</tr>
+<tr>
+<td>Existing Web app packaged for mobile</td>
+<td>Ionic/Capacitor</td>
+</tr>
+<tr>
+<td>Desktop tool or enterprise desktop app</td>
+<td>Tauri/Electron</td>
+</tr>
+</tbody></table>
+<h2 id="References" class="article-heading"><a href="#References" class="headerlink" title="References"></a>References<a class="article-anchor" href="#References" aria-hidden="true"></a></h2><ul>
+<li><a href="https://reactnative.dev/docs/0.79/intro-react-native-components" target="_blank" rel="noopener external nofollow noreferrer">React Native - Core Components and Native Components</a></li>
+<li><a href="https://reactnative.dev/architecture/overview" target="_blank" rel="noopener external nofollow noreferrer">React Native - Architecture Overview</a></li>
+<li><a href="https://docs.flutter.dev/resources/architectural-overview" target="_blank" rel="noopener external nofollow noreferrer">Flutter architectural overview</a></li>
+<li><a href="https://capacitorjs.com/docs/next" target="_blank" rel="noopener external nofollow noreferrer">Capacitor documentation</a></li>
+<li><a href="https://v2.tauri.app/concept/architecture/" target="_blank" rel="noopener external nofollow noreferrer">Tauri Architecture</a></li>
+<li><a href="https://www.electronjs.org/docs/latest" target="_blank" rel="noopener external nofollow noreferrer">Electron Introduction</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2026-05-24T10:11:17.977Z" itemprop="dateModified">Last updated: 2026-05-24</time>
+                <a href="plugin.html" class="article-footer-prev" title="Native Plugin"><i class="fa fa-chevron-left"></i><span>Previous</span></a><a href="mvvm.html" class="article-footer-next" title="MVVM in Doric"><span>Next</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Generation-Notice"><span class="toc-text">Generation Notice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Short-Summary"><span class="toc-text">Short Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comparison-Matrix"><span class="toc-text">Comparison Matrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doric-Characteristics"><span class="toc-text">Doric Characteristics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doric-vs-React-Native"><span class="toc-text">Doric vs. React Native</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doric-vs-Flutter"><span class="toc-text">Doric vs. Flutter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doric-vs-Ionic-Capacitor"><span class="toc-text">Doric vs. Ionic&#x2F;Capacitor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doric-vs-Tauri-Electron"><span class="toc-text">Doric vs. Tauri&#x2F;Electron</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doric-Strengths"><span class="toc-text">Doric Strengths</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doric-Limitations"><span class="toc-text">Doric Limitations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scenario-Recommendations"><span class="toc-text">Scenario Recommendations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol>
+              <a href="#" id="article-toc-top">Back to top</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">Getting Started</strong><a href="hello.html" class="sidebar-link">Hello, Doric</a><a href="usage.html" class="sidebar-link">Complete Usage Guide</a><strong class="sidebar-title">Tooling</strong><a href="commands.html" class="sidebar-link">CLI</a><a href="devkit.html" class="sidebar-link">Devkit</a><strong class="sidebar-title">App Integration</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><a href="web.html" class="sidebar-link">Web</a><strong class="sidebar-title">Extensions</strong><a href="extensions.html" class="sidebar-link">Register Extensions</a><a href="view.html" class="sidebar-link">Custom ViewNode</a><a href="plugin.html" class="sidebar-link">Native Plugin</a><strong class="sidebar-title">More</strong><a href="comparison.html" class="sidebar-link current">Cross-platform Framework Comparison</a><a href="mvvm.html" class="sidebar-link">MVVM in Doric</a><a href="layout.html" class="sidebar-link">Layout and Containers</a><a href="theory.html" class="sidebar-link">Runtime Architecture</a><a href="progressive.html" class="sidebar-link">Progressive Adoption</a><a href="modular.html" class="sidebar-link">Modularization</a><a href="viewComponent.html" class="sidebar-link">View Components</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2026 <a href="https://github.com/doric-pub/Doric/graphs/contributors" rel="external nofollow noreferrer" target="_blank">Zhou Pengfei</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/doric-pub/Doric" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/en/docs/" class="mobile-nav-link">Docs</a><a href="/en/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">Extensions</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">About</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">Getting Started</strong><a href="hello.html" class="mobile-nav-link">Hello, Doric</a><a href="usage.html" class="mobile-nav-link">Complete Usage Guide</a><strong class="mobile-nav-title">Tooling</strong><a href="commands.html" class="mobile-nav-link">CLI</a><a href="devkit.html" class="mobile-nav-link">Devkit</a><strong class="mobile-nav-title">App Integration</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><a href="web.html" class="mobile-nav-link">Web</a><strong class="mobile-nav-title">Extensions</strong><a href="extensions.html" class="mobile-nav-link">Register Extensions</a><a href="view.html" class="mobile-nav-link">Custom ViewNode</a><a href="plugin.html" class="mobile-nav-link">Native Plugin</a><strong class="mobile-nav-title">More</strong><a href="comparison.html" class="mobile-nav-link current">Cross-platform Framework Comparison</a><a href="mvvm.html" class="mobile-nav-link">MVVM in Doric</a><a href="layout.html" class="mobile-nav-link">Layout and Containers</a><a href="theory.html" class="mobile-nav-link">Runtime Architecture</a><a href="progressive.html" class="mobile-nav-link">Progressive Adoption</a><a href="modular.html" class="mobile-nav-link">Modularization</a><a href="viewComponent.html" class="mobile-nav-link">View Components</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/comparison.html">
+      
+        <option value="en" selected>English</option>
+      
+        <option value="zh-cn">简体中文</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/js/lang_select.js"></script>
+
+
+<script src="/js/toc.js"></script>
+
+
+<script src="/js/mobile_nav.js"></script>
+
+<!-- endbuild -->
+
+<!-- Algolia -->
+
+
+</body>
+</html>
