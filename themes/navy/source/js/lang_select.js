@@ -13,6 +13,9 @@
     location.href = path + canonical;
   }
 
-  document.getElementById('lang-select').addEventListener('change', changeLang);
-  document.getElementById('mobile-lang-select').addEventListener('change', changeLang);
+  var langSelect = document.getElementById('lang-select');
+  var mobileLangSelect = document.getElementById('mobile-lang-select');
+
+  if (langSelect) langSelect.addEventListener('change', changeLang);
+  if (mobileLangSelect) mobileLangSelect.addEventListener('change', changeLang);
 }());

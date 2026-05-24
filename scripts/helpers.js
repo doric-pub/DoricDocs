@@ -81,7 +81,7 @@ hexo.extend.helper.register('header_menu', function (className) {
 });
 
 hexo.extend.helper.register('canonical_url', function (lang) {
-  let path = this.page.path;
+  let path = this.page.canonical_path || this.page.path;
   if (lang && lang !== 'en') path = lang + '/' + path;
 
   return full_url_for(path);
@@ -161,4 +161,3 @@ hexo.extend.helper.register('disqus_lang', function () {
 hexo.extend.helper.register('hexo_version', function () {
   return this.env.version;
 });
-

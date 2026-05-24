@@ -1,52 +1,24 @@
 ---
-title: AeroEffect - 透明模糊控件
+title: AeroEffect
 ---
 
-### 属性
+`AeroEffect` renders translucent blur effects.
 
-属性 |类型 | 描述
---- | --- | ---
-effectiveRect|{ x: number, y: number, width: number, height: number }|产生效果的区域范围，默认全区域
-style|`"light" \| "dark" \| "extraLight"`|模糊样式，默认值"light"
+## Usage
 
-### 用法示例
-#### 基础用法
+Import APIs from `doric` and use them inside a `Panel` or helper module.
+
 ```typescript
-        aeroEffect(
-            image({
-                width: 300,
-                height: 300,
-                layoutConfig: layoutConfig().just(),
-                image: new AssetsResource("The_Parthenon_in_Athens.jpeg"),
-            }),
-            {
-                style: "extraLight",
-                effectiveRect: {
-                    x: 0,
-                    y: 0,
-                    width: 300,
-                    height: 300
-                }
-            }
-        ),
+import { Panel, Group } from "doric";
 ```
 
-#### tsx写法
-```tsx
-        <AeroEffect
-            style={"extraLight"}
-            effectiveRect={{
-                x: 0,
-                y: 0,
-                width: 300,
-                height: 300
-            }}
-        >
-            <Image
-                width={300}
-                height={300}
-                layoutConfig={layoutConfig().just()}
-                image={new AssetsResource("The_Parthenon_in_Athens.jpeg")}
-            />
-        </AeroEffect>
-```
+## Notes
+
+- APIs that call native capabilities usually require `this.context`.
+- View components should be attached to a parent view.
+- Platform-specific behavior depends on the runtime implementation.
+
+## Related
+
+- [Complete Usage Guide](../docs/usage.html)
+- [Runtime Architecture](../docs/theory.html)

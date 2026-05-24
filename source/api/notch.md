@@ -1,33 +1,24 @@
 ---
-title: notch-刘海屏安全区域
+title: Notch
 ---
 
-获取刘海屏安全区域相关API
+`notch(context)` reads safe-area and notch information.
 
-### inset
+## Usage
 
-获取刘海屏安全区域
+Import APIs from `doric` and use them inside a `Panel` or helper module.
 
-* 参数类型：
 ```typescript
-void
-```
-* 返回值:
-```typescript
-Promise<{
-    top: number,
-    left: number,
-    bottom: number,
-    right: number,
-}>
+import { Panel, Group } from "doric";
 ```
 
-* 使用示例：
-```typescript
-notch(context).inset()
-              .then((inset) => {
-                    let result = "top: " + inset.top + "\n" + "left: " + inset.left + "\n" + "bottom: " + inset.bottom + "\n" + "right: " + inset.right
-                    modal(context).toast(result, Gravity.Bottom)
-                })
-```
+## Notes
 
+- APIs that call native capabilities usually require `this.context`.
+- View components should be attached to a parent view.
+- Platform-specific behavior depends on the runtime implementation.
+
+## Related
+
+- [Complete Usage Guide](../docs/usage.html)
+- [Runtime Architecture](../docs/theory.html)

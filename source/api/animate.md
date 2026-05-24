@@ -1,31 +1,24 @@
 ---
-title: animate-动画相关
+title: Animate
 ---
 
-提供动画相关API
+`animate(context)` runs view animations.
 
-* 参数类型:
+## Usage
+
+Import APIs from `doric` and use them inside a `Panel` or helper module.
+
 ```typescript
-{
-    ///在该回调里设置的View相关的变更将在duration时段内渐变过渡
-    animations: () => void;
-    ///动画时长
-    duration: number;
-}
-```
-* 返回值: 
-```typescript
-Promise<any>
+import { Panel, Group } from "doric";
 ```
 
-* 使用示例:
-```typescript
- animate(context)({
-    animations: () => {
-        view.y = view.y || 0
-        view.y += 100
-        view2.y += 50
-    },
-    duration: 1000,
-})
-```
+## Notes
+
+- APIs that call native capabilities usually require `this.context`.
+- View components should be attached to a parent view.
+- Platform-specific behavior depends on the runtime implementation.
+
+## Related
+
+- [Complete Usage Guide](../docs/usage.html)
+- [Runtime Architecture](../docs/theory.html)

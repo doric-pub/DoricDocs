@@ -1,40 +1,24 @@
 ---
-title: Switch-开关控件
+title: Switch
 ---
 
-### 属性
+`Switch` provides a boolean toggle.
 
-属性 |类型 | 描述
---- | --- | ---
-state|boolean|开关状态
-onTintColor|Color|打开状态时轨迹颜色
-offTintColor|Color|关闭状态时轨迹颜色
-thumbTintColor|Color|开关按钮颜色
-onSwitch|(state: boolean) => void|开关状态改变回调
+## Usage
 
-### 用法示例
-#### 基础用法
+Import APIs from `doric` and use them inside a `Panel` or helper module.
+
 ```typescript
-            switchView({
-                state: true,
-                offTintColor: Color.RED,
-                onTintColor: Color.GREEN,
-                thumbTintColor: Color.WHITE,
-                onSwitch: (state) => {
-                    log(`Switch 当前状态:${state ? "ON" : "OFF"}`)
-                },
-            }),
+import { Panel, Group } from "doric";
 ```
 
-#### tsx写法
-```tsx
-        <Switch
-            state={true}
-            offTintColor={Color.RED}
-            onTintColor={Color.GREEN}
-            thumbTintColor={Color.WHITE}
-            onSwitch={(state) => {
-                log(`Switch 当前状态:${state ? "ON" : "OFF"}`)
-            }}
-        />
-```
+## Notes
+
+- APIs that call native capabilities usually require `this.context`.
+- View components should be attached to a parent view.
+- Platform-specific behavior depends on the runtime implementation.
+
+## Related
+
+- [Complete Usage Guide](../docs/usage.html)
+- [Runtime Architecture](../docs/theory.html)

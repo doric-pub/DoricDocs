@@ -1,87 +1,87 @@
 menu:
-  docs: 文档
+  docs: Docs
   api: API
-  news: 新闻
-  extension: 扩展插件
-  about: 关于
-  search: 搜索
+  news: News
+  extension: Extensions
+  about: About
+  search: Search
   playground: Playground
 
 index:
-  get_started: 开始使用
+  get_started: Get Started
 
 page:
-  contents: 目录
-  back_to_top: 回到顶部
-  improve: 改进本文
-  prev: 上一页
-  next: 下一页
-  last_updated: 上次更新：%s
+  contents: Contents
+  back_to_top: Back to top
+  improve: Improve this page
+  prev: Previous
+  next: Next
+  last_updated: "Last updated: %s"
 
 sidebar:
   docs:
-    quick_start: 使用指南
-    overview: 准备环境
-    commands: 命令行工具
-    basic_usage: 基础用法
-    writing: 写作
-    hello: 你好,Doric
-    usage: 完整使用说明
-    advanced: 进阶
-    theory: Doric的运行机制
-    mvvm: Doric中的MVVM
-    layout: 布局方式与布局容器
-    progressive: 渐进式框架
-    modular: Doric中的模块化
-    viewComponent: Doric中的视图组件
-    diagram: Doric架构
-    devkit: Doric调试工具(Devkit)
-    extend: Doric扩展
-    extensions: 注册扩展
-    view: 视图组件
-    plugin: 能力组件
-    bringin: 接入
+    quick_start: Getting Started
+    overview: Environment
+    commands: CLI
+    basic_usage: Basic Usage
+    writing: Writing
+    hello: Hello, Doric
+    usage: Complete Usage Guide
+    advanced: Advanced
+    theory: Runtime Architecture
+    mvvm: MVVM in Doric
+    layout: Layout and Containers
+    progressive: Progressive Adoption
+    modular: Modularization
+    viewComponent: View Components
+    diagram: Architecture Diagram
+    devkit: Devkit
+    extend: Extensions
+    extensions: Register Extensions
+    view: Custom ViewNode
+    plugin: Native Plugin
+    bringin: Integration
     android: Android
     iOS: iOS
     web: Web
-    tool: 工具链
-    use: 应用接入
-    else: 其他文档
-    comparison: 跨端框架比较
+    tool: Tooling
+    use: App Integration
+    else: More
+    comparison: Cross-platform Framework Comparison
   api:
-    core: 基础概念
-    panel: Panel-页面
-    view: View-视图基类
-    context: Context-控制上下文
-    env: Environment-环境变量
-    views: 视图组件
-    input: Input-文本输入或编辑
-    image: Image-图片控件
-    vLayout: VLayout-垂直线性布局组件
-    hLayout: HLayout-水平线性布局容器控件
-    stack: stack- 层叠布局容器控件
-    text: Text-文本控件
-    list: List-列表控件
-    scroller: Scroller-滑动控件
-    slider: Slider-翻页滑动(幻灯片)控件
-    nestedslider: NestedSlider-嵌套滑动控件
-    flowlayout: FlowLayout-流式网格布局控件
-    switch: Switch-开关控件
-    gesture: Gesture-手势控件
-    refreshable: Refreshable-刷新控件
-    blureffect: BlurEffect-高斯模糊控件
-    aeroeffect: AeroEffect-透明模糊控件
-    plugins: 能力接口
-    modal: modal-模态窗口
-    navbar: navbar-导航栏
-    navigator: navigator-导航控制器
-    network: network-网络请求
-    storage: storage-本地存储
-    popover: popover-浮层弹窗
-    animate: animate-动画相关
-    notification: notification-广播/通知
-    statusbar: statusbar-状态栏
-    coordinator: coordinator-视图联动
-    notch: notch-刘海屏安全区域
-    keyboard: keyboard-监听键盘
-    imageDecoder: imageDecoder-图片解码
+    core: Core Concepts
+    panel: Panel
+    view: View
+    context: Context
+    env: Environment
+    views: View Components
+    input: Input
+    image: Image
+    vLayout: VLayout
+    hLayout: HLayout
+    stack: Stack
+    text: Text
+    list: List
+    scroller: Scroller
+    slider: Slider
+    nestedslider: NestedSlider
+    flowlayout: FlowLayout
+    switch: Switch
+    gesture: Gesture
+    refreshable: Refreshable
+    blureffect: BlurEffect
+    aeroeffect: AeroEffect
+    plugins: Native APIs
+    modal: Modal
+    navbar: Navbar
+    navigator: Navigator
+    network: Network
+    storage: Storage
+    popover: Popover
+    animate: Animation
+    notification: Notification
+    statusbar: StatusBar
+    coordinator: Coordinator
+    notch: Notch
+    keyboard: Keyboard
+    imageDecoder: ImageDecoder

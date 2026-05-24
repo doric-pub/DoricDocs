@@ -1,74 +1,24 @@
 ---
-title: storage-本地存储
+title: Storage
 ---
 
-提供本地存储API 
+`storage(context)` provides key-value persistence.
 
-### setItem
-写入本地存储
-* 参数类型:
+## Usage
+
+Import APIs from `doric` and use them inside a `Panel` or helper module.
+
 ```typescript
-key: string,  /// 写入的Key值
-value: string, ///写入的值
-zone?: string | undefined ///标识存储区域，如不传则为全局，建议传入。
+import { Panel, Group } from "doric";
 ```
 
-* 返回值: 
-```typescript
-Promise<any>
-```
+## Notes
 
-### getItem
-读取本地存储
-* 参数类型:
-```typescript
-key: string,  /// 存储Key值
-zone?: string | undefined ///标识存储区域，如不传则为全局，建议传入。
-```
+- APIs that call native capabilities usually require `this.context`.
+- View components should be attached to a parent view.
+- Platform-specific behavior depends on the runtime implementation.
 
-* 返回值: 
-```typescript
-Promise<string> ///读取的值
-```
+## Related
 
-### remove
-删除某个值
-* 参数类型:
-```typescript
-key: string,  /// 待删除的Key值
-zone?: string | undefined ///标识存储区域，如不传则为全局，建议传入。
-```
-
-* 返回值: 
-```typescript
-Promise<any>
-```
-### clear
-清空某个存储区域内的所有值
-* 参数类型:
-```typescript
-zone: string ///标识存储区域，如不传则为全局，建议传入。
-```
-
-* 返回值: 
-```typescript
-Promise<any>
-```
-
-**使用示例：**
-```typescript
-const storedKey = "StoredKey"
-const zone = "StorageDemo"
-
-storage(context).setItem(storedKey, 'Jack', zone)
-
-storage(context).getItem(storedKey, zone).then((e) => {
-    this.nameLabel.text = e || "";
-})
-
-storage(context).remove(storedKey, zone)
-
-storage(context).clear(zone).then((e) => {
-    this.update();
-})
-```
+- [Complete Usage Guide](../docs/usage.html)
+- [Runtime Architecture](../docs/theory.html)
