@@ -2,7 +2,7 @@
 <html lang="en">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>完整使用说明 | Doric</title>
+  <title>Complete Usage Guide | Doric</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
@@ -11,6 +11,8 @@
   
     
       <link rel="alternative" hreflang="en" href="https://doric.pub/docs/usage">
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://doric.pub/zh-cn/docs/usage">
     
   
   <!-- Icon -->
@@ -52,7 +54,7 @@
       <a href="/" id="logo">Hexo</a>
     </h1>
     <nav id="main-nav">
-      <a href="/docs/" class="main-nav-link">文档</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">关于</a>
+      <a href="/docs/" class="main-nav-link">Docs</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">Extensions</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">About</a>
       <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
       <div id="search-input-wrap">
         <div id="search-input-icon">
@@ -77,543 +79,53 @@
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name">完整使用说明</h1>
-                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/usage.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+                <h1 class="article-title" itemprop="name">Complete Usage Guide</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/usage.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="Improve this page"><i class="fa fa-pencil"></i></a>
               </header>
               <div class="article-content" itemprop="articleBody">
-                <p>本文基于当前 Doric 主仓库整理，按 DoricDocs 的文档站结构说明如何创建项目、编写页面、调试构建，以及在 Android、iOS、Web 中接入 Doric。</p>
-<h2 id="Doric-项目组成" class="article-heading"><a href="#Doric-项目组成" class="headerlink" title="Doric 项目组成"></a>Doric 项目组成<a class="article-anchor" href="#Doric-项目组成" aria-hidden="true"></a></h2><p>Doric 是一套使用 TypeScript/TSX 编写 UI 的跨平台开发框架。业务代码运行在 JS 侧，通过 Doric Runtime 渲染到 Android、iOS、Qt 或 Web 的原生组件/节点上。</p>
-<p>主仓库主要目录如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Doric&#x2F;</span><br><span class="line">├── doric-js&#x2F;        # JS Framework，导出 Panel、View、Widget、Native API、工具类</span><br><span class="line">├── doric-cli&#x2F;       # 命令行工具，提供 create&#x2F;dev&#x2F;build&#x2F;run&#x2F;clean&#x2F;createLib 等命令</span><br><span class="line">├── doric-demo&#x2F;      # 示例面板与资源</span><br><span class="line">├── doric-web&#x2F;       # Web Runtime，提供 &lt;doric-div&gt;、&lt;doric-navigation&gt;</span><br><span class="line">├── doric-android&#x2F;   # Android SDK、DevKit、示例 App、JSE 模块</span><br><span class="line">├── doric-iOS&#x2F;       # iOS SDK 与 Example</span><br><span class="line">└── doric-Qt&#x2F;        # Qt Runtime</span><br></pre></td></tr></table></figure>
-
-<p>常用包与命令：</p>
-<table>
-<thead>
-<tr>
-<th>包</th>
-<th>作用</th>
-<th>常用命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>doric-js</code></td>
-<td>Doric TypeScript 框架核心</td>
-<td><code>npm run build</code>, <code>npm run dev</code></td>
-</tr>
-<tr>
-<td><code>doric-cli</code></td>
-<td>脚手架、调试、构建工具</td>
-<td><code>npm run build</code></td>
-</tr>
-<tr>
-<td><code>doric-demo</code></td>
-<td>示例页面集合</td>
-<td><code>npm run build</code>, <code>npm run dev</code></td>
-</tr>
-<tr>
-<td><code>doric-web</code></td>
-<td>Web 端渲染 Runtime</td>
-<td><code>npm run build</code></td>
-</tr>
-<tr>
-<td><code>doric-android</code></td>
-<td>Android 原生运行时</td>
-<td><code>./gradlew assemble</code></td>
-</tr>
-</tbody></table>
-<h2 id="环境准备" class="article-heading"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备<a class="article-anchor" href="#环境准备" aria-hidden="true"></a></h2><p>基础环境：</p>
-<ul>
-<li>Node.js 与 npm。</li>
-<li>TypeScript 相关依赖由各 package 的 <code>package.json</code> 安装。</li>
-<li>Android Studio、Android SDK、<code>ANDROID_HOME</code> 或 <code>ANDROID_SDK_ROOT</code>，用于 Android 构建和运行。</li>
-<li>Xcode、CocoaPods、可选 <code>ios-deploy</code>，用于 iOS 构建和真机安装。</li>
+                <p>This guide summarizes the Doric project structure, workflow, page authoring, runtime model, and platform integration.</p>
+<h2 id="Project-Structure" class="article-heading"><a href="#Project-Structure" class="headerlink" title="Project Structure"></a>Project Structure<a class="article-anchor" href="#Project-Structure" aria-hidden="true"></a></h2><ul>
+<li><code>doric-js</code>: framework APIs.</li>
+<li><code>doric-cli</code>: command line tooling.</li>
+<li><code>doric-web</code>: Web runtime.</li>
+<li><code>doric-android</code> and <code>doric-iOS</code>: native runtimes.</li>
+<li><code>doric-demo</code>: examples.</li>
 </ul>
-<p>从主仓库开发时，可以执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./setup.sh</span><br></pre></td></tr></table></figure>
-
-<p>也可以按包分别安装与构建：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> doric-js</span><br><span class="line">npm install</span><br><span class="line">npm run build</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ../doric-cli</span><br><span class="line">npm install</span><br><span class="line">npm run build</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ../doric-demo</span><br><span class="line">npm install</span><br><span class="line">npm run build</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ../doric-web</span><br><span class="line">npm install</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建-Doric-应用" class="article-heading"><a href="#创建-Doric-应用" class="headerlink" title="创建 Doric 应用"></a>创建 Doric 应用<a class="article-anchor" href="#创建-Doric-应用" aria-hidden="true"></a></h2><p>安装或构建 CLI 后，可以使用 <code>doric create</code> 创建应用：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric create MyApp</span><br></pre></td></tr></table></figure>
-
-<p>等价命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric new MyApp</span><br></pre></td></tr></table></figure>
-
-<p>脚手架会生成：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MyApp&#x2F;</span><br><span class="line">├── assets&#x2F;             # JS 侧可访问资源</span><br><span class="line">├── src&#x2F;MyApp.ts        # 默认入口 Panel</span><br><span class="line">├── index.ts            # 导出入口列表</span><br><span class="line">├── package.json</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── rollup.config.js</span><br><span class="line">├── android&#x2F;            # Android 示例工程</span><br><span class="line">└── iOS&#x2F;                # iOS 示例工程</span><br></pre></td></tr></table></figure>
-
-<p>模板默认脚本：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"build"</span>: <span class="string">"doric build"</span>,</span><br><span class="line">    <span class="attr">"dev"</span>: <span class="string">"doric dev"</span>,</span><br><span class="line">    <span class="attr">"clean"</span>: <span class="string">"doric clean"</span>,</span><br><span class="line">    <span class="attr">"android"</span>: <span class="string">"doric run android"</span>,</span><br><span class="line">    <span class="attr">"ios"</span>: <span class="string">"doric run iOS"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果需要创建插件库：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric createLib MyLibrary</span><br></pre></td></tr></table></figure>
-
-<p>插件库模板包含 JS 入口、Android Library、iOS Pod 和 <code>example/</code> 示例工程。</p>
-<h2 id="编写-Panel" class="article-heading"><a href="#编写-Panel" class="headerlink" title="编写 Panel"></a>编写 Panel<a class="article-anchor" href="#编写-Panel" aria-hidden="true"></a></h2><p>Doric 页面以继承 <code>Panel</code> 的类为入口，并使用 <code>@Entry</code> 标记。必须实现 <code>build(rootView: Group)</code>。</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">    Panel,</span><br><span class="line">    Group,</span><br><span class="line">    vlayout,</span><br><span class="line">    text,</span><br><span class="line">    image,</span><br><span class="line">    layoutConfig,</span><br><span class="line">    Gravity,</span><br><span class="line">    Color,</span><br><span class="line">    AssetsResource,</span><br><span class="line">    navbar,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">"doric"</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Entry</span></span><br><span class="line"><span class="keyword">class</span> HelloDoric <span class="keyword">extends</span> Panel &#123;</span><br><span class="line">    onShow() &#123;</span><br><span class="line">        navbar(<span class="keyword">this</span>.context).setTitle(<span class="string">"HelloDoric"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    build(rootView: Group): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">const</span> <span class="built_in">number</span> = text(&#123;</span><br><span class="line">            text: <span class="string">"0"</span>,</span><br><span class="line">            textSize: <span class="number">40</span>,</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        vlayout([</span><br><span class="line">            image(&#123;</span><br><span class="line">                image: <span class="keyword">new</span> AssetsResource(<span class="string">"logo_doric.png"</span>),</span><br><span class="line">            &#125;),</span><br><span class="line">            <span class="built_in">number</span>,</span><br><span class="line">            text(&#123;</span><br><span class="line">                text: <span class="string">"Click to count"</span>,</span><br><span class="line">                textSize: <span class="number">20</span>,</span><br><span class="line">                textColor: Color.WHITE,</span><br><span class="line">                backgroundColor: Color.parse(<span class="string">"#70a1ff"</span>),</span><br><span class="line">                width: <span class="number">200</span>,</span><br><span class="line">                height: <span class="number">50</span>,</span><br><span class="line">                layoutConfig: layoutConfig().just(),</span><br><span class="line">                onClick: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                    <span class="built_in">number</span>.text = <span class="string">`<span class="subst">$&#123;++count&#125;</span>`</span>;</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;),</span><br><span class="line">        ], &#123;</span><br><span class="line">            width: <span class="number">200</span>,</span><br><span class="line">            height: <span class="number">200</span>,</span><br><span class="line">            space: <span class="number">20</span>,</span><br><span class="line">            gravity: Gravity.Center,</span><br><span class="line">            layoutConfig: layoutConfig().just().configAlignment(Gravity.Center),</span><br><span class="line">        &#125;).in(rootView);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Panel</code> 常用生命周期：</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>触发时机</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>onCreate()</code></td>
-<td>Panel 创建后</td>
-</tr>
-<tr>
-<td><code>build(rootView)</code></td>
-<td>根据宿主视图尺寸构建或重建 UI</td>
-</tr>
-<tr>
-<td><code>onShow()</code></td>
-<td>页面显示或宿主生命周期恢复</td>
-</tr>
-<tr>
-<td><code>onHidden()</code></td>
-<td>页面隐藏或宿主生命周期暂停</td>
-</tr>
-<tr>
-<td><code>onDestroy()</code></td>
-<td>页面销毁</td>
-</tr>
-<tr>
-<td><code>onEnvChanged()</code></td>
-<td>环境变化，默认清空根视图并重新执行 <code>build</code></td>
-</tr>
-</tbody></table>
-<p>初始化数据通过宿主端传入 JSON 字符串，JS 侧调用：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initData = <span class="keyword">this</span>.getInitData();</span><br></pre></td></tr></table></figure>
-
-<h2 id="TSX-写法" class="article-heading"><a href="#TSX-写法" class="headerlink" title="TSX 写法"></a>TSX 写法<a class="article-anchor" href="#TSX-写法" aria-hidden="true"></a></h2><p>Doric 支持 TSX。使用 TSX 时需要从 <code>doric</code> 引入 <code>jsx</code>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &#123;</span><br><span class="line">    jsx,</span><br><span class="line">    Panel,</span><br><span class="line">    Group,</span><br><span class="line">    VLayout,</span><br><span class="line">    Text,</span><br><span class="line">    layoutConfig,</span><br><span class="line">    Gravity,</span><br><span class="line">    Color,</span><br><span class="line">    createRef,</span><br><span class="line">&#125; from &quot;doric&quot;;</span><br><span class="line"></span><br><span class="line">@Entry</span><br><span class="line">class CounterPanel extends Panel &#123;</span><br><span class="line">    build(root: Group) &#123;</span><br><span class="line">        const numberRef &#x3D; createRef&lt;Text&gt;();</span><br><span class="line">        let count &#x3D; 0;</span><br><span class="line"></span><br><span class="line">        &lt;VLayout</span><br><span class="line">            space&#x3D;&#123;12&#125;</span><br><span class="line">            gravity&#x3D;&#123;Gravity.Center&#125;</span><br><span class="line">            layoutConfig&#x3D;&#123;layoutConfig().fit().configAlignment(Gravity.Center)&#125;</span><br><span class="line">            parent&#x3D;&#123;root&#125;</span><br><span class="line">        &gt;</span><br><span class="line">            &lt;Text ref&#x3D;&#123;numberRef&#125; textSize&#x3D;&#123;40&#125; textColor&#x3D;&#123;Color.BLACK&#125;&gt;</span><br><span class="line">                0</span><br><span class="line">            &lt;&#x2F;Text&gt;</span><br><span class="line">            &lt;Text</span><br><span class="line">                textSize&#x3D;&#123;18&#125;</span><br><span class="line">                textColor&#x3D;&#123;Color.WHITE&#125;</span><br><span class="line">                backgroundColor&#x3D;&#123;Color.parse(&quot;#70a1ff&quot;)&#125;</span><br><span class="line">                width&#x3D;&#123;160&#125;</span><br><span class="line">                height&#x3D;&#123;48&#125;</span><br><span class="line">                layoutConfig&#x3D;&#123;layoutConfig().just()&#125;</span><br><span class="line">                onClick&#x3D;&#123;() &#x3D;&gt; &#123;</span><br><span class="line">                    numberRef.current.text &#x3D; &#96;$&#123;++count&#125;&#96;;</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            &gt;</span><br><span class="line">                Click</span><br><span class="line">            &lt;&#x2F;Text&gt;</span><br><span class="line">        &lt;&#x2F;VLayout&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>更多示例可参考主仓库 <code>doric-demo/src/TSXDemo.tsx</code>。</p>
-<h2 id="布局系统" class="article-heading"><a href="#布局系统" class="headerlink" title="布局系统"></a>布局系统<a class="article-anchor" href="#布局系统" aria-hidden="true"></a></h2><p>常用容器：</p>
-<table>
-<thead>
-<tr>
-<th>容器</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>Stack</code></td>
-<td>子 View 可层叠，适合绝对定位、遮罩、组合控件</td>
-</tr>
-<tr>
-<td><code>VLayout</code></td>
-<td>纵向线性布局，支持 <code>space</code>、<code>gravity</code></td>
-</tr>
-<tr>
-<td><code>HLayout</code></td>
-<td>横向线性布局，支持 <code>space</code>、<code>gravity</code></td>
-</tr>
-<tr>
-<td><code>FlexLayout</code></td>
-<td>Flex 布局，子 View 可配置 <code>flexConfig</code></td>
-</tr>
-<tr>
-<td><code>Root</code></td>
-<td>根容器，由 Runtime 创建，一般不手动 new</td>
-</tr>
-</tbody></table>
-<p>通过 <code>layoutConfig()</code> 创建布局配置：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line">layoutConfig().fit();       <span class="comment">// 宽高由内容决定</span></span><br><span class="line">layoutConfig().most();      <span class="comment">// 尽可能占满父容器</span></span><br><span class="line">layoutConfig().just();      <span class="comment">// 使用 View 的 width/height</span></span><br><span class="line">layoutConfig().fitWidth();</span><br><span class="line">layoutConfig().fitHeight();</span><br><span class="line">layoutConfig().mostWidth();</span><br><span class="line">layoutConfig().mostHeight();</span><br><span class="line">layoutConfig().justWidth();</span><br><span class="line">layoutConfig().justHeight();</span><br></pre></td></tr></table></figure>
-
-<p>常用链式配置：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line">layoutConfig()</span><br><span class="line">    .fit()</span><br><span class="line">    .configMargin(&#123; left: <span class="number">12</span>, top: <span class="number">8</span>, right: <span class="number">12</span>, bottom: <span class="number">8</span> &#125;)</span><br><span class="line">    .configAlignment(Gravity.Center)</span><br><span class="line">    .configWeight(<span class="number">1</span>)</span><br><span class="line">    .configMinWidth(<span class="number">100</span>)</span><br><span class="line">    .configMaxHeight(<span class="number">300</span>);</span><br></pre></td></tr></table></figure>
-
-<p><code>LayoutSpec</code> 含义：</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>JUST</code></td>
-<td>使用明确设置的 <code>width</code> 或 <code>height</code></td>
-</tr>
-<tr>
-<td><code>FIT</code></td>
-<td>根据内容决定大小</td>
-</tr>
-<tr>
-<td><code>MOST</code></td>
-<td>在父容器允许范围内尽可能占满</td>
-</tr>
-</tbody></table>
-<h2 id="常用-View-与-Widget" class="article-heading"><a href="#常用-View-与-Widget" class="headerlink" title="常用 View 与 Widget"></a>常用 View 与 Widget<a class="article-anchor" href="#常用-View-与-Widget" aria-hidden="true"></a></h2><p>所有 <code>View</code> 都支持一组通用属性：</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>width</code>, <code>height</code></td>
-<td>指定尺寸，通常配合 <code>layoutConfig().just()</code></td>
-</tr>
-<tr>
-<td><code>x</code>, <code>y</code></td>
-<td>位置</td>
-</tr>
-<tr>
-<td><code>backgroundColor</code></td>
-<td>背景色，支持 <code>Color</code> 或渐变色</td>
-</tr>
-<tr>
-<td><code>corners</code></td>
-<td>圆角，可传数字或四角对象</td>
-</tr>
-<tr>
-<td><code>border</code></td>
-<td>边框 <code>{ width, color }</code></td>
-</tr>
-<tr>
-<td><code>shadow</code></td>
-<td>阴影 <code>{ color, opacity, radius, offsetX, offsetY }</code></td>
-</tr>
-<tr>
-<td><code>alpha</code></td>
-<td>透明度，范围通常为 <code>0..1</code></td>
-</tr>
-<tr>
-<td><code>hidden</code></td>
-<td>是否隐藏</td>
-</tr>
-<tr>
-<td><code>layoutConfig</code></td>
-<td>布局规则</td>
-</tr>
-<tr>
-<td><code>onClick</code></td>
-<td>点击回调</td>
-</tr>
-<tr>
-<td><code>tag</code></td>
-<td>业务标记，可通过 <code>findViewByTag</code> 查找</td>
-</tr>
-</tbody></table>
-<p>当前 <code>doric-js</code> 导出的常用 Widget 包括：</p>
-<ul>
-<li><code>text</code></li>
-<li><code>image</code></li>
-<li><code>list</code></li>
-<li><code>slider</code></li>
-<li><code>scroller</code></li>
-<li><code>refreshable</code></li>
-<li><code>flowlayout</code></li>
-<li><code>input</code></li>
-<li><code>nestedSlider</code></li>
-<li><code>draggable</code></li>
-<li><code>switch</code></li>
-<li><code>gesture</code></li>
-<li><code>effect</code></li>
-<li><code>horizontalList</code></li>
+<h2 id="Workflow" class="article-heading"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow<a class="article-anchor" href="#Workflow" aria-hidden="true"></a></h2><ul>
+<li>Create a project with <code>doric create</code>.</li>
+<li>Write pages as <code>Panel</code> classes marked with <code>@Entry</code>.</li>
+<li>Build bundles with <code>doric build</code>.</li>
+<li>Develop with <code>doric dev</code>.</li>
+<li>Integrate bundles through Android, iOS, or Web containers.</li>
 </ul>
-<p>文本示例：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line">text(&#123;</span><br><span class="line">    text: <span class="string">"Hello"</span>,</span><br><span class="line">    textSize: <span class="number">16</span>,</span><br><span class="line">    textColor: Color.parse(<span class="string">"#333333"</span>),</span><br><span class="line">    maxLines: <span class="number">1</span>,</span><br><span class="line">    fontStyle: <span class="string">"bold"</span>,</span><br><span class="line">    textAlignment: Gravity.Center,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>图片示例：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line">image(&#123;</span><br><span class="line">    imageUrl: <span class="string">"https://example.com/a.png"</span>,</span><br><span class="line">    scaleType: ScaleType.ScaleAspectFill,</span><br><span class="line">    placeHolderColor: Color.GRAY,</span><br><span class="line">    errorColor: Color.RED,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>图片来源支持：</p>
-<ul>
-<li><code>image</code>: Doric <code>Resource</code>，如 <code>AssetsResource</code></li>
-<li><code>imageUrl</code>: 网络图片</li>
-<li><code>imageFilePath</code>: 本地文件系统路径</li>
-<li><code>imagePath</code>: 原生本地路径</li>
-<li><code>imageRes</code>: 原生资源名</li>
-<li><code>imageBase64</code>: Base64 图片</li>
-<li><code>imagePixels</code>: 直接传像素数据</li>
-</ul>
-<h2 id="Native-API" class="article-heading"><a href="#Native-API" class="headerlink" title="Native API"></a>Native API<a class="article-anchor" href="#Native-API" aria-hidden="true"></a></h2><p>当前 <code>doric-js</code> 导出的 Native API 包括：</p>
-<ul>
-<li><code>modal</code></li>
-<li><code>navbar</code></li>
-<li><code>navigator</code></li>
-<li><code>network</code></li>
-<li><code>storage</code></li>
-<li><code>popover</code></li>
-<li><code>animate</code></li>
-<li><code>notification</code></li>
-<li><code>statusbar</code></li>
-<li><code>coordinator</code></li>
-<li><code>notch</code></li>
-<li><code>keyboard</code></li>
-<li><code>resourceLoader</code></li>
-<li><code>imageDecoder</code></li>
-</ul>
-<p>示例：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; navbar, statusbar &#125; <span class="keyword">from</span> <span class="string">"doric"</span>;</span><br><span class="line"></span><br><span class="line">navbar(<span class="keyword">this</span>.context).setTitle(<span class="string">"Home"</span>);</span><br><span class="line">navbar(<span class="keyword">this</span>.context).setHidden(<span class="literal">false</span>);</span><br><span class="line">statusbar(<span class="keyword">this</span>.context).setHidden(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-
-<p>也可以直接调用自定义原生插件：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.context.callNative(<span class="string">"cp_introduce_view"</span>, <span class="string">"showRule"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>插件名和方法名需要由 Android/iOS/Web Runtime 注册对应实现。</p>
-<h2 id="Ref-与状态更新" class="article-heading"><a href="#Ref-与状态更新" class="headerlink" title="Ref 与状态更新"></a>Ref 与状态更新<a class="article-anchor" href="#Ref-与状态更新" aria-hidden="true"></a></h2><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> titleRef = createRef&lt;Text&gt;();</span><br><span class="line"></span><br><span class="line">text(&#123;</span><br><span class="line">    ref: titleRef,</span><br><span class="line">    text: <span class="string">"Old"</span>,</span><br><span class="line">&#125;).in(rootView);</span><br><span class="line"></span><br><span class="line">titleRef.current.text = <span class="string">"New"</span>;</span><br><span class="line">titleRef.apply(&#123;</span><br><span class="line">    textColor: Color.RED,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>Doric 的 <code>View</code> 使用 <code>@Property</code> 标记可同步属性。当属性变化时会被记录到 dirty props 中，Native 调用结束后由 <code>Panel</code> 汇总并渲染脏数据。开发时直接修改 View 属性即可：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="built_in">number</span>.text = <span class="string">`<span class="subst">$&#123;count&#125;</span>`</span>;</span><br><span class="line">button.hidden = <span class="literal">true</span>;</span><br><span class="line">container.backgroundColor = Color.WHITE;</span><br></pre></td></tr></table></figure>
-
-<p>如需在首次布局完成后读取原生尺寸：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.addOnRenderFinishedCallback(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> width = <span class="keyword">await</span> rootView.getWidth(<span class="keyword">this</span>.context);</span><br><span class="line">    <span class="built_in">console</span>.log(width);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="构建与开发调试" class="article-heading"><a href="#构建与开发调试" class="headerlink" title="构建与开发调试"></a>构建与开发调试<a class="article-anchor" href="#构建与开发调试" aria-hidden="true"></a></h2><p>在 Doric 应用目录执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-
-<p>底层命令是：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric build</span><br></pre></td></tr></table></figure>
-
-<p>执行流程：</p>
-<ol>
-<li><code>node_modules/.bin/tsc -p .</code></li>
-<li><code>node_modules/.bin/rollup -c</code></li>
-<li>合并 <code>bundle/**/*.js.map</code> 与 <code>.dxx/</code> 下的 SourceMap。</li>
-<li>如果存在 <code>assets/</code>，复制到 <code>bundle/assets/</code>。</li>
-</ol>
-<p>输出目录通常为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bundle&#x2F;</span><br><span class="line">├── src&#x2F;*.js</span><br><span class="line">├── src&#x2F;*.js.map</span><br><span class="line">└── assets&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>开发模式：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-<p>底层命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric dev</span><br></pre></td></tr></table></figure>
-
-<p>默认端口：</p>
-<ul>
-<li>WebSocket 调试/热重载服务：<code>7777</code></li>
-<li>资源服务：<code>7778</code></li>
-</ul>
-<p>开发模式会监听 <code>bundle/</code> 下 JS 文件变化，同时启动 <code>tsc -w -p .</code> 和 <code>rollup -c -w</code>。Bundle 变化后，服务端会向连接的客户端发送 <code>RELOAD</code>。按 <code>Ctrl + R</code> 可重新打印本机 IP 与二维码。</p>
-<p>清理构建产物：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric clean</span><br></pre></td></tr></table></figure>
-
-<p>会删除：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">build&#x2F;</span><br><span class="line">bundle&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>SSR 构建：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric ssr build</span><br></pre></td></tr></table></figure>
-
-<h2 id="Android-运行与接入" class="article-heading"><a href="#Android-运行与接入" class="headerlink" title="Android 运行与接入"></a>Android 运行与接入<a class="article-anchor" href="#Android-运行与接入" aria-hidden="true"></a></h2><p>运行脚手架 Android 工程：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run android</span><br></pre></td></tr></table></figure>
-
-<p>底层命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric run android</span><br></pre></td></tr></table></figure>
-
-<p>要求：</p>
-<ul>
-<li>当前目录存在 <code>android/</code>。</li>
-<li>设置 <code>ANDROID_HOME</code> 或 <code>ANDROID_SDK_ROOT</code>。</li>
-<li>已连接 Android 设备或启动模拟器。</li>
-</ul>
-<p>接入现有 Android 应用时，在 <code>Application</code> 中初始化：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pub.doric.Doric;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        Doric.init(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用 <code>DoricActivity</code>：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, DoricActivity<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">intent.putExtra(<span class="string">"source"</span>, <span class="string">"assets://src/HelloDoric.js"</span>);</span><br><span class="line">intent.putExtra(<span class="string">"alias"</span>, <span class="string">"HelloDoric"</span>);</span><br><span class="line">intent.putExtra(<span class="string">"extra"</span>, <span class="string">"&#123;\"userId\":\"10001\"&#125;"</span>);</span><br><span class="line">startActivity(intent);</span><br></pre></td></tr></table></figure>
-
-<p>嵌入 <code>DoricPanel</code>：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">DoricPanel panel = <span class="keyword">new</span> DoricPanel(<span class="keyword">this</span>);</span><br><span class="line">panel.config(scriptContent, <span class="string">"HelloDoric"</span>, <span class="string">"&#123;\"from\":\"android\"&#125;"</span>);</span><br><span class="line">container.addView(panel, <span class="keyword">new</span> FrameLayout.LayoutParams(</span><br><span class="line">        FrameLayout.LayoutParams.MATCH_PARENT,</span><br><span class="line">        FrameLayout.LayoutParams.MATCH_PARENT</span><br><span class="line">));</span><br></pre></td></tr></table></figure>
-
-<p>注册 JS Loader：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Doric.addJSLoader(customLoader);</span><br></pre></td></tr></table></figure>
-
-<p>注册插件库：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Doric.registerLibrary(<span class="keyword">new</span> DoricLibrary() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">load</span><span class="params">(DoricRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// registry.registerNativePlugin(...)</span></span><br><span class="line">        <span class="comment">// registry.registerViewNode(...)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>更完整的 Android 接入说明请查看 <a href="./android.html">Android 应用中使用 Doric</a>。</p>
-<h2 id="iOS-运行与接入" class="article-heading"><a href="#iOS-运行与接入" class="headerlink" title="iOS 运行与接入"></a>iOS 运行与接入<a class="article-anchor" href="#iOS-运行与接入" aria-hidden="true"></a></h2><p>运行脚手架 iOS 工程：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run ios</span><br></pre></td></tr></table></figure>
-
-<p>底层命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric run iOS</span><br></pre></td></tr></table></figure>
-
-<p>要求：</p>
-<ul>
-<li>当前目录存在 <code>iOS/</code>。</li>
-<li>安装 Xcode 与 CocoaPods。</li>
-<li>真机运行需要 <code>ios-deploy</code>。</li>
-</ul>
-<p>使用 <code>DoricViewController</code>：</p>
-<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Doric/Doric.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">DoricViewController *vc = [[DoricViewController alloc]</span><br><span class="line">    initWithSource:<span class="string">@"assets://src/HelloDoric.js"</span></span><br><span class="line">    alias:<span class="string">@"HelloDoric"</span></span><br><span class="line">    extra:<span class="string">@"&#123;\"from\":\"ios\"&#125;"</span>];</span><br><span class="line">[<span class="keyword">self</span>.navigationController pushViewController:vc animated:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure>
-
-<p>嵌入 <code>DoricPanel</code>：</p>
-<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line">DoricPanel *panel = [DoricPanel new];</span><br><span class="line">[panel config:script alias:<span class="string">@"HelloDoric"</span> extra:<span class="string">@"&#123;\"from\":\"ios\"&#125;"</span>];</span><br><span class="line">[<span class="keyword">self</span> addChildViewController:panel];</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:panel.view];</span><br></pre></td></tr></table></figure>
-
-<p>注册 JS Loader：</p>
-<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line">[Doric addJSLoader:loader];</span><br></pre></td></tr></table></figure>
-
-<p>注册插件库：</p>
-<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line">[Doric registerLibrary:library];</span><br></pre></td></tr></table></figure>
-
-<p>更完整的 iOS 接入说明请查看 <a href="./ios.html">iOS 应用中使用 Doric</a>。</p>
-<h2 id="Web-端使用" class="article-heading"><a href="#Web-端使用" class="headerlink" title="Web 端使用"></a>Web 端使用<a class="article-anchor" href="#Web-端使用" aria-hidden="true"></a></h2><p><code>doric-web</code> 构建后会注册两个自定义元素：</p>
-<ul>
-<li><code>&lt;doric-div&gt;</code>：加载并渲染单个 Doric Bundle。</li>
-<li><code>&lt;doric-navigation&gt;</code>：提供导航容器能力。</li>
-</ul>
-<p>构建 Web Runtime：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> doric-web</span><br><span class="line">npm install</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-
-<p>在 HTML 中使用：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">doric-div</span></span></span><br><span class="line"><span class="tag">    <span class="attr">src</span>=<span class="string">"../doric-demo/bundle/src/NavigatorDemo.js"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">alias</span>=<span class="string">"NavigatorDemo"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">data</span>=<span class="string">'&#123;"from":"web"&#125;'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">doric-div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./dist/index.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;doric-div&gt;</code> 属性：</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>src</code></td>
-<td>JS Bundle 地址</td>
-</tr>
-<tr>
-<td><code>alias</code></td>
-<td>页面别名，主要用于错误提示</td>
-</tr>
-<tr>
-<td><code>data</code></td>
-<td>初始化数据，JS 侧通过 <code>getInitData()</code> 获取</td>
-</tr>
-</tbody></table>
-<p>可以通过 <code>registerDoricJSLoader</code> 自定义 Bundle 加载逻辑：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; registerDoricJSLoader &#125; <span class="keyword">from</span> <span class="string">"doric-web"</span>;</span><br><span class="line"></span><br><span class="line">registerDoricJSLoader(&#123;</span><br><span class="line">    filter: <span class="function">(<span class="params">source</span>) =&gt;</span> source.startsWith(<span class="string">"assets://"</span>),</span><br><span class="line">    request: <span class="keyword">async</span> (source) =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> url = source.replace(<span class="string">"assets://"</span>, <span class="string">"/bundle/"</span>);</span><br><span class="line">        <span class="keyword">const</span> ret = <span class="keyword">await</span> fetch(url);</span><br><span class="line">        <span class="keyword">return</span> ret.text();</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="资源使用" class="article-heading"><a href="#资源使用" class="headerlink" title="资源使用"></a>资源使用<a class="article-anchor" href="#资源使用" aria-hidden="true"></a></h2><p>脚手架项目默认包含 <code>assets/</code>。构建时 <code>doric build</code> 会复制：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">assets&#x2F; -&gt; bundle&#x2F;assets&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>JS 侧可使用：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line">image(&#123;</span><br><span class="line">    image: <span class="keyword">new</span> AssetsResource(<span class="string">"logo_doric.png"</span>),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>也可以使用原生资源：</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line">image(&#123;</span><br><span class="line">    imageRes: <span class="string">"icon_name"</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>Android 会尝试读取 drawable；iOS 会尝试读取 Image Assets。</p>
-<h2 id="示例工程" class="article-heading"><a href="#示例工程" class="headerlink" title="示例工程"></a>示例工程<a class="article-anchor" href="#示例工程" aria-hidden="true"></a></h2><p>主仓库 <code>doric-demo/src</code> 下包含大量示例：</p>
-<table>
-<thead>
-<tr>
-<th>示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>SimpleDemo.ts</code></td>
-<td>基础布局、图片、点击事件</td>
-</tr>
-<tr>
-<td><code>TSXDemo.tsx</code></td>
-<td>TSX、Ref、渲染完成回调</td>
-</tr>
-<tr>
-<td><code>ListDemo.ts</code></td>
-<td>列表</td>
-</tr>
-<tr>
-<td><code>FlowLayoutDemo.ts</code></td>
-<td>流式布局</td>
-</tr>
-<tr>
-<td><code>SliderDemo.ts</code></td>
-<td>轮播/分页</td>
-</tr>
-<tr>
-<td><code>RefreshableDemo.ts</code></td>
-<td>下拉刷新</td>
-</tr>
-<tr>
-<td><code>ModalDemo.ts</code></td>
-<td>弹窗</td>
-</tr>
-<tr>
-<td><code>NavigatorDemo.ts</code></td>
-<td>页面导航</td>
-</tr>
-<tr>
-<td><code>NetworkDemo.ts</code></td>
-<td>网络请求</td>
-</tr>
-<tr>
-<td><code>StorageDemo.ts</code></td>
-<td>本地存储</td>
-</tr>
-<tr>
-<td><code>ImageProcessorDemo.tsx</code></td>
-<td>图片处理</td>
-</tr>
-<tr>
-<td><code>KeyboardDemo.ts</code></td>
-<td>键盘能力</td>
-</tr>
-<tr>
-<td><code>StatusBarDemo.ts</code></td>
-<td>状态栏能力</td>
-</tr>
-</tbody></table>
-<p>构建 demo：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> doric-demo</span><br><span class="line">npm install</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-
-<p>开发模式：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-<h2 id="常见问题" class="article-heading"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题<a class="article-anchor" href="#常见问题" aria-hidden="true"></a></h2><h3 id="doric-run-android-提示找不到-Android-Project" class="article-heading"><a href="#doric-run-android-提示找不到-Android-Project" class="headerlink" title="doric run android 提示找不到 Android Project"></a><code>doric run android</code> 提示找不到 Android Project<a class="article-anchor" href="#doric-run-android-提示找不到-Android-Project" aria-hidden="true"></a></h3><p>确保当前目录是脚手架生成的应用根目录，并且包含 <code>android/</code>。</p>
-<h3 id="doric-run-android-提示缺少-ANDROID-HOME-或-ANDROID-SDK-ROOT" class="article-heading"><a href="#doric-run-android-提示缺少-ANDROID-HOME-或-ANDROID-SDK-ROOT" class="headerlink" title="doric run android 提示缺少 ANDROID_HOME 或 ANDROID_SDK_ROOT"></a><code>doric run android</code> 提示缺少 <code>ANDROID_HOME</code> 或 <code>ANDROID_SDK_ROOT</code><a class="article-anchor" href="#doric-run-android-提示缺少-ANDROID-HOME-或-ANDROID-SDK-ROOT" aria-hidden="true"></a></h3><p>配置 Android SDK 环境变量：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> ANDROID_HOME=/path/to/Android/sdk</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$ANDROID_HOME</span>/platform-tools:<span class="variable">$PATH</span>"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="doric-run-iOS-找不到工程" class="article-heading"><a href="#doric-run-iOS-找不到工程" class="headerlink" title="doric run iOS 找不到工程"></a><code>doric run iOS</code> 找不到工程<a class="article-anchor" href="#doric-run-iOS-找不到工程" aria-hidden="true"></a></h3><p>确保当前目录包含 <code>iOS/</code>，并且 <code>pod install</code> 后能生成唯一的 <code>*.xcworkspace</code>。</p>
-<h3 id="修改资源后没有加载新文件" class="article-heading"><a href="#修改资源后没有加载新文件" class="headerlink" title="修改资源后没有加载新文件"></a>修改资源后没有加载新文件<a class="article-anchor" href="#修改资源后没有加载新文件" aria-hidden="true"></a></h3><p>重新执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric build</span><br></pre></td></tr></table></figure>
-
-<p>确认资源已复制到：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bundle&#x2F;assets&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Web-加载-Bundle-失败" class="article-heading"><a href="#Web-加载-Bundle-失败" class="headerlink" title="Web 加载 Bundle 失败"></a>Web 加载 Bundle 失败<a class="article-anchor" href="#Web-加载-Bundle-失败" aria-hidden="true"></a></h3><p>检查：</p>
-<ul>
-<li><code>&lt;doric-div src=&quot;...&quot;&gt;</code> 地址是否能被浏览器访问。</li>
-<li>是否存在跨域限制。</li>
-<li>是否需要通过 <code>registerDoricJSLoader</code> 自定义加载逻辑。</li>
-</ul>
-<h3 id="布局尺寸异常" class="article-heading"><a href="#布局尺寸异常" class="headerlink" title="布局尺寸异常"></a>布局尺寸异常<a class="article-anchor" href="#布局尺寸异常" aria-hidden="true"></a></h3><p>优先检查：</p>
-<ul>
-<li><code>layoutConfig().just()</code> 是否同时设置了 <code>width</code> 和 <code>height</code>。</li>
-<li><code>layoutConfig().fit()</code> 是否依赖内容尺寸。</li>
-<li><code>layoutConfig().most()</code> 的父容器是否有明确尺寸。</li>
-<li><code>VLayout/HLayout</code> 中是否需要设置 <code>weight</code>。</li>
+<h2 id="Core-Concepts" class="article-heading"><a href="#Core-Concepts" class="headerlink" title="Core Concepts"></a>Core Concepts<a class="article-anchor" href="#Core-Concepts" aria-hidden="true"></a></h2><ul>
+<li>Panel lifecycle.</li>
+<li>View dirty props.</li>
+<li>LayoutConfig.</li>
+<li>Native Plugin calls through <code>context.callNative</code>.</li>
+<li>Custom ViewNode and DoricLibrary extensions.</li>
 </ul>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-05-24T05:17:25.043Z" itemprop="dateModified">上次更新：2026-05-24</time>
-                <a href="hello.html" class="article-footer-prev" title="你好,Doric"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="commands.html" class="article-footer-next" title="命令行工具"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+                <time class="article-footer-updated" datetime="2026-05-24T09:16:04.681Z" itemprop="dateModified">Last updated: 2026-05-24</time>
+                <a href="hello.html" class="article-footer-prev" title="Hello, Doric"><i class="fa fa-chevron-left"></i><span>Previous</span></a><a href="commands.html" class="article-footer-next" title="CLI"><span>Next</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
             </div>
           </div>
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
-              <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Doric-项目组成"><span class="toc-text">Doric 项目组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境准备"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-Doric-应用"><span class="toc-text">创建 Doric 应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写-Panel"><span class="toc-text">编写 Panel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TSX-写法"><span class="toc-text">TSX 写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布局系统"><span class="toc-text">布局系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用-View-与-Widget"><span class="toc-text">常用 View 与 Widget</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Native-API"><span class="toc-text">Native API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ref-与状态更新"><span class="toc-text">Ref 与状态更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建与开发调试"><span class="toc-text">构建与开发调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Android-运行与接入"><span class="toc-text">Android 运行与接入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-运行与接入"><span class="toc-text">iOS 运行与接入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-端使用"><span class="toc-text">Web 端使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资源使用"><span class="toc-text">资源使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例工程"><span class="toc-text">示例工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#doric-run-android-提示找不到-Android-Project"><span class="toc-text">doric run android 提示找不到 Android Project</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#doric-run-android-提示缺少-ANDROID-HOME-或-ANDROID-SDK-ROOT"><span class="toc-text">doric run android 提示缺少 ANDROID_HOME 或 ANDROID_SDK_ROOT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#doric-run-iOS-找不到工程"><span class="toc-text">doric run iOS 找不到工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改资源后没有加载新文件"><span class="toc-text">修改资源后没有加载新文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-加载-Bundle-失败"><span class="toc-text">Web 加载 Bundle 失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布局尺寸异常"><span class="toc-text">布局尺寸异常</span></a></li></ol></li></ol>
-              <a href="#" id="article-toc-top">回到顶部</a>
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-Structure"><span class="toc-text">Project Structure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Workflow"><span class="toc-text">Workflow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Core-Concepts"><span class="toc-text">Core Concepts</span></a></li></ol>
+              <a href="#" id="article-toc-top">Back to top</a>
             </div>
           </aside>
         </div>
       </article>
       <aside id="sidebar" role="navigation">
   <div class="inner">
-    <strong class="sidebar-title">使用指南</strong><a href="hello.html" class="sidebar-link">你好,Doric</a><a href="usage.html" class="sidebar-link current">完整使用说明</a><strong class="sidebar-title">工具链</strong><a href="commands.html" class="sidebar-link">命令行工具</a><a href="devkit.html" class="sidebar-link">Doric调试工具(Devkit)</a><strong class="sidebar-title">应用接入</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><a href="web.html" class="sidebar-link">Web</a><strong class="sidebar-title">Doric扩展</strong><a href="extensions.html" class="sidebar-link">注册扩展</a><a href="view.html" class="sidebar-link">视图组件</a><a href="plugin.html" class="sidebar-link">能力组件</a><strong class="sidebar-title">其他文档</strong><a href="comparison.html" class="sidebar-link">跨端框架比较</a><a href="mvvm.html" class="sidebar-link">Doric中的MVVM</a><a href="layout.html" class="sidebar-link">布局方式与布局容器</a><a href="theory.html" class="sidebar-link">Doric的运行机制</a><a href="progressive.html" class="sidebar-link">渐进式框架</a><a href="modular.html" class="sidebar-link">Doric中的模块化</a><a href="viewComponent.html" class="sidebar-link">Doric中的视图组件</a>
+    <strong class="sidebar-title">Getting Started</strong><a href="hello.html" class="sidebar-link">Hello, Doric</a><a href="usage.html" class="sidebar-link current">Complete Usage Guide</a><strong class="sidebar-title">Tooling</strong><a href="commands.html" class="sidebar-link">CLI</a><a href="devkit.html" class="sidebar-link">Devkit</a><strong class="sidebar-title">App Integration</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><a href="web.html" class="sidebar-link">Web</a><strong class="sidebar-title">Extensions</strong><a href="extensions.html" class="sidebar-link">Register Extensions</a><a href="view.html" class="sidebar-link">Custom ViewNode</a><a href="plugin.html" class="sidebar-link">Native Plugin</a><strong class="sidebar-title">More</strong><a href="comparison.html" class="sidebar-link">Cross-platform Framework Comparison</a><a href="mvvm.html" class="sidebar-link">MVVM in Doric</a><a href="layout.html" class="sidebar-link">Layout and Containers</a><a href="theory.html" class="sidebar-link">Runtime Architecture</a><a href="progressive.html" class="sidebar-link">Progressive Adoption</a><a href="modular.html" class="sidebar-link">Modularization</a><a href="viewComponent.html" class="sidebar-link">View Components</a>
   </div>
 </aside>
     </div>
@@ -637,13 +149,13 @@
   <nav id="mobile-nav">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
-      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">关于</a>
+      <a href="/docs/" class="mobile-nav-link">Docs</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">Extensions</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">About</a>
       <li class="mobile-nav-item">
         <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
       </li>
     </ul>
     
-      <strong class="mobile-nav-title">使用指南</strong><a href="hello.html" class="mobile-nav-link">你好,Doric</a><a href="usage.html" class="mobile-nav-link current">完整使用说明</a><strong class="mobile-nav-title">工具链</strong><a href="commands.html" class="mobile-nav-link">命令行工具</a><a href="devkit.html" class="mobile-nav-link">Doric调试工具(Devkit)</a><strong class="mobile-nav-title">应用接入</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><a href="web.html" class="mobile-nav-link">Web</a><strong class="mobile-nav-title">Doric扩展</strong><a href="extensions.html" class="mobile-nav-link">注册扩展</a><a href="view.html" class="mobile-nav-link">视图组件</a><a href="plugin.html" class="mobile-nav-link">能力组件</a><strong class="mobile-nav-title">其他文档</strong><a href="comparison.html" class="mobile-nav-link">跨端框架比较</a><a href="mvvm.html" class="mobile-nav-link">Doric中的MVVM</a><a href="layout.html" class="mobile-nav-link">布局方式与布局容器</a><a href="theory.html" class="mobile-nav-link">Doric的运行机制</a><a href="progressive.html" class="mobile-nav-link">渐进式框架</a><a href="modular.html" class="mobile-nav-link">Doric中的模块化</a><a href="viewComponent.html" class="mobile-nav-link">Doric中的视图组件</a>
+      <strong class="mobile-nav-title">Getting Started</strong><a href="hello.html" class="mobile-nav-link">Hello, Doric</a><a href="usage.html" class="mobile-nav-link current">Complete Usage Guide</a><strong class="mobile-nav-title">Tooling</strong><a href="commands.html" class="mobile-nav-link">CLI</a><a href="devkit.html" class="mobile-nav-link">Devkit</a><strong class="mobile-nav-title">App Integration</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><a href="web.html" class="mobile-nav-link">Web</a><strong class="mobile-nav-title">Extensions</strong><a href="extensions.html" class="mobile-nav-link">Register Extensions</a><a href="view.html" class="mobile-nav-link">Custom ViewNode</a><a href="plugin.html" class="mobile-nav-link">Native Plugin</a><strong class="mobile-nav-title">More</strong><a href="comparison.html" class="mobile-nav-link">Cross-platform Framework Comparison</a><a href="mvvm.html" class="mobile-nav-link">MVVM in Doric</a><a href="layout.html" class="mobile-nav-link">Layout and Containers</a><a href="theory.html" class="mobile-nav-link">Runtime Architecture</a><a href="progressive.html" class="mobile-nav-link">Progressive Adoption</a><a href="modular.html" class="mobile-nav-link">Modularization</a><a href="viewComponent.html" class="mobile-nav-link">View Components</a>
     
   </div>
   <div id="mobile-lang-select-wrap">
@@ -651,6 +163,8 @@
     <select id="mobile-lang-select" data-canonical="docs/usage.html">
       
         <option value="en" selected>English</option>
+      
+        <option value="zh-cn">简体中文</option>
       
     </select>
   </div>

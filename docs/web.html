@@ -2,7 +2,7 @@
 <html lang="en">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>Web 中使用 Doric | Doric</title>
+  <title>Using Doric on Web | Doric</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
@@ -11,6 +11,8 @@
   
     
       <link rel="alternative" hreflang="en" href="https://doric.pub/docs/web">
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://doric.pub/zh-cn/docs/web">
     
   
   <!-- Icon -->
@@ -52,7 +54,7 @@
       <a href="/" id="logo">Hexo</a>
     </h1>
     <nav id="main-nav">
-      <a href="/docs/" class="main-nav-link">文档</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">关于</a>
+      <a href="/docs/" class="main-nav-link">Docs</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">Extensions</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">About</a>
       <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
       <div id="search-input-wrap">
         <div id="search-input-icon">
@@ -77,101 +79,37 @@
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name">Web 中使用 Doric</h1>
-                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/web.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+                <h1 class="article-title" itemprop="name">Using Doric on Web</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/web.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="Improve this page"><i class="fa fa-pencil"></i></a>
               </header>
               <div class="article-content" itemprop="articleBody">
-                <p>本文介绍如何在 Web 页面中使用 Doric Runtime 加载并渲染 Doric JS Bundle。</p>
-<h2 id="构建-Web-Runtime" class="article-heading"><a href="#构建-Web-Runtime" class="headerlink" title="构建 Web Runtime"></a>构建 Web Runtime<a class="article-anchor" href="#构建-Web-Runtime" aria-hidden="true"></a></h2><p>Web Runtime 位于主仓库 <code>doric-web</code> 目录。开发或验证时可执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> doric-web</span><br><span class="line">$ npm install</span><br><span class="line">$ npm run build</span><br></pre></td></tr></table></figure>
+                <p><code>doric-web</code> loads and renders Doric JavaScript bundles in browsers.</p>
+<h2 id="Build-Runtime" class="article-heading"><a href="#Build-Runtime" class="headerlink" title="Build Runtime"></a>Build Runtime<a class="article-anchor" href="#Build-Runtime" aria-hidden="true"></a></h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> doric-web</span><br><span class="line">npm install</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure>
 
-<p>构建产物默认输出到：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">doric-web&#x2F;dist&#x2F;index.js</span><br></pre></td></tr></table></figure>
+<h2 id="Render-Bundle" class="article-heading"><a href="#Render-Bundle" class="headerlink" title="Render Bundle"></a>Render Bundle<a class="article-anchor" href="#Render-Bundle" aria-hidden="true"></a></h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">doric-div</span> <span class="attr">src</span>=<span class="string">"/bundle/src/Home.js"</span> <span class="attr">alias</span>=<span class="string">"Home"</span> <span class="attr">data</span>=<span class="string">'&#123;"from":"web"&#125;'</span>&gt;</span><span class="tag">&lt;/<span class="name">doric-div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./dist/index.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>该文件会注册两个自定义元素：</p>
-<table>
-<thead>
-<tr>
-<th>元素</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;doric-div&gt;</code></td>
-<td>加载并渲染单个 Doric Bundle</td>
-</tr>
-<tr>
-<td><code>&lt;doric-navigation&gt;</code></td>
-<td>提供导航容器能力</td>
-</tr>
-</tbody></table>
-<h2 id="渲染-Doric-Bundle" class="article-heading"><a href="#渲染-Doric-Bundle" class="headerlink" title="渲染 Doric Bundle"></a>渲染 Doric Bundle<a class="article-anchor" href="#渲染-Doric-Bundle" aria-hidden="true"></a></h2><p>在 HTML 中引入 Web Runtime，并使用 <code>&lt;doric-div&gt;</code> 指定 bundle 地址：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Doric Web<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">doric-div</span></span></span><br><span class="line"><span class="tag">        <span class="attr">src</span>=<span class="string">"../doric-demo/bundle/src/NavigatorDemo.js"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">alias</span>=<span class="string">"NavigatorDemo"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">data</span>=<span class="string">'&#123;"from":"web"&#125;'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">doric-div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./dist/index.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;doric-div&gt;</code> 常用属性：</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>src</code></td>
-<td>JS Bundle 地址</td>
-</tr>
-<tr>
-<td><code>alias</code></td>
-<td>页面别名，主要用于错误提示</td>
-</tr>
-<tr>
-<td><code>data</code></td>
-<td>初始化数据，JS 侧可通过 <code>getInitData()</code> 获取</td>
-</tr>
-</tbody></table>
-<p>当元素被插入页面后，Runtime 会加载 <code>src</code> 对应的 JS 内容，创建 <code>DoricContext</code>，执行 <code>init</code>、<code>onCreate</code>、<code>build</code> 和 <code>onShow</code>。</p>
-<h2 id="使用-Navigation-容器" class="article-heading"><a href="#使用-Navigation-容器" class="headerlink" title="使用 Navigation 容器"></a>使用 Navigation 容器<a class="article-anchor" href="#使用-Navigation-容器" aria-hidden="true"></a></h2><p>如果页面需要导航能力，可以使用 <code>&lt;doric-navigation&gt;</code> 包裹 <code>&lt;doric-div&gt;</code>：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">doric-navigation</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">doric-div</span></span></span><br><span class="line"><span class="tag">        <span class="attr">src</span>=<span class="string">"../doric-demo/bundle/src/NavigatorDemo.js"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">alias</span>=<span class="string">"NavigatorDemo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">doric-div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">doric-navigation</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./dist/index.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;doric-navigation&gt;</code> 会配合 Doric 的 <code>navigator</code> API 管理页面栈。</p>
-<h2 id="自定义-Bundle-Loader" class="article-heading"><a href="#自定义-Bundle-Loader" class="headerlink" title="自定义 Bundle Loader"></a>自定义 Bundle Loader<a class="article-anchor" href="#自定义-Bundle-Loader" aria-hidden="true"></a></h2><p>默认 loader 会通过 HTTP 请求加载 <code>src</code>。如果业务需要支持自定义协议，可以注册 <code>DoricJSLoader</code>：</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; registerDoricJSLoader &#125; <span class="keyword">from</span> <span class="string">"doric-web"</span>;</span><br><span class="line"></span><br><span class="line">registerDoricJSLoader(&#123;</span><br><span class="line">    filter: <span class="function">(<span class="params">source</span>) =&gt;</span> source.startsWith(<span class="string">"assets://"</span>),</span><br><span class="line">    request: <span class="keyword">async</span> (source) =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> url = source.replace(<span class="string">"assets://"</span>, <span class="string">"/bundle/"</span>);</span><br><span class="line">        <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(url);</span><br><span class="line">        <span class="keyword">return</span> response.text();</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>多个 loader 同时匹配时，后注册的 loader 优先。</p>
-<h2 id="销毁页面" class="article-heading"><a href="#销毁页面" class="headerlink" title="销毁页面"></a>销毁页面<a class="article-anchor" href="#销毁页面" aria-hidden="true"></a></h2><p>如果需要手动销毁 Doric 页面：</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.querySelector(<span class="string">"doric-div"</span>) <span class="keyword">as</span> <span class="built_in">any</span>;</span><br><span class="line">element.onDestroy();</span><br></pre></td></tr></table></figure>
-
-<p>销毁时会调用 <code>context.onDestroy()</code> 和 <code>context.teardown()</code>。</p>
-<h2 id="常见问题" class="article-heading"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题<a class="article-anchor" href="#常见问题" aria-hidden="true"></a></h2><h3 id="页面空白" class="article-heading"><a href="#页面空白" class="headerlink" title="页面空白"></a>页面空白<a class="article-anchor" href="#页面空白" aria-hidden="true"></a></h3><p>优先检查：</p>
-<ul>
-<li><code>src</code> 地址是否能被浏览器直接访问。</li>
-<li>Bundle 是否已经通过 <code>doric build</code> 生成。</li>
-<li>页面容器是否有明确宽高。</li>
-<li>浏览器控制台是否存在加载失败或跨域错误。</li>
-</ul>
-<h3 id="初始化数据读取不到" class="article-heading"><a href="#初始化数据读取不到" class="headerlink" title="初始化数据读取不到"></a>初始化数据读取不到<a class="article-anchor" href="#初始化数据读取不到" aria-hidden="true"></a></h3><p>确认 <code>data</code> 属性是合法 JSON 字符串，并在 JS 侧通过 <code>this.getInitData()</code> 获取。</p>
-<h3 id="自定义协议加载失败" class="article-heading"><a href="#自定义协议加载失败" class="headerlink" title="自定义协议加载失败"></a>自定义协议加载失败<a class="article-anchor" href="#自定义协议加载失败" aria-hidden="true"></a></h3><p>确认已经在 <code>&lt;doric-div&gt;</code> 开始加载前调用 <code>registerDoricJSLoader</code>，且 <code>filter(source)</code> 能正确匹配 <code>src</code>。</p>
+<h2 id="Custom-Loader" class="article-heading"><a href="#Custom-Loader" class="headerlink" title="Custom Loader"></a>Custom Loader<a class="article-anchor" href="#Custom-Loader" aria-hidden="true"></a></h2><p>Register <code>DoricJSLoader</code> through <code>registerDoricJSLoader</code> when you need custom bundle protocols such as <code>assets://</code>.</p>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-05-24T06:02:33.111Z" itemprop="dateModified">上次更新：2026-05-24</time>
-                <a href="ios.html" class="article-footer-prev" title="iOS"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="extensions.html" class="article-footer-next" title="注册扩展"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+                <time class="article-footer-updated" datetime="2026-05-24T09:16:04.681Z" itemprop="dateModified">Last updated: 2026-05-24</time>
+                <a href="ios.html" class="article-footer-prev" title="iOS"><i class="fa fa-chevron-left"></i><span>Previous</span></a><a href="extensions.html" class="article-footer-next" title="Register Extensions"><span>Next</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
             </div>
           </div>
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
-              <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#构建-Web-Runtime"><span class="toc-text">构建 Web Runtime</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渲染-Doric-Bundle"><span class="toc-text">渲染 Doric Bundle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-Navigation-容器"><span class="toc-text">使用 Navigation 容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义-Bundle-Loader"><span class="toc-text">自定义 Bundle Loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#销毁页面"><span class="toc-text">销毁页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#页面空白"><span class="toc-text">页面空白</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化数据读取不到"><span class="toc-text">初始化数据读取不到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义协议加载失败"><span class="toc-text">自定义协议加载失败</span></a></li></ol></li></ol>
-              <a href="#" id="article-toc-top">回到顶部</a>
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Build-Runtime"><span class="toc-text">Build Runtime</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Render-Bundle"><span class="toc-text">Render Bundle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Custom-Loader"><span class="toc-text">Custom Loader</span></a></li></ol>
+              <a href="#" id="article-toc-top">Back to top</a>
             </div>
           </aside>
         </div>
       </article>
       <aside id="sidebar" role="navigation">
   <div class="inner">
-    <strong class="sidebar-title">使用指南</strong><a href="hello.html" class="sidebar-link">你好,Doric</a><a href="usage.html" class="sidebar-link">完整使用说明</a><strong class="sidebar-title">工具链</strong><a href="commands.html" class="sidebar-link">命令行工具</a><a href="devkit.html" class="sidebar-link">Doric调试工具(Devkit)</a><strong class="sidebar-title">应用接入</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><a href="web.html" class="sidebar-link current">Web</a><strong class="sidebar-title">Doric扩展</strong><a href="extensions.html" class="sidebar-link">注册扩展</a><a href="view.html" class="sidebar-link">视图组件</a><a href="plugin.html" class="sidebar-link">能力组件</a><strong class="sidebar-title">其他文档</strong><a href="comparison.html" class="sidebar-link">跨端框架比较</a><a href="mvvm.html" class="sidebar-link">Doric中的MVVM</a><a href="layout.html" class="sidebar-link">布局方式与布局容器</a><a href="theory.html" class="sidebar-link">Doric的运行机制</a><a href="progressive.html" class="sidebar-link">渐进式框架</a><a href="modular.html" class="sidebar-link">Doric中的模块化</a><a href="viewComponent.html" class="sidebar-link">Doric中的视图组件</a>
+    <strong class="sidebar-title">Getting Started</strong><a href="hello.html" class="sidebar-link">Hello, Doric</a><a href="usage.html" class="sidebar-link">Complete Usage Guide</a><strong class="sidebar-title">Tooling</strong><a href="commands.html" class="sidebar-link">CLI</a><a href="devkit.html" class="sidebar-link">Devkit</a><strong class="sidebar-title">App Integration</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><a href="web.html" class="sidebar-link current">Web</a><strong class="sidebar-title">Extensions</strong><a href="extensions.html" class="sidebar-link">Register Extensions</a><a href="view.html" class="sidebar-link">Custom ViewNode</a><a href="plugin.html" class="sidebar-link">Native Plugin</a><strong class="sidebar-title">More</strong><a href="comparison.html" class="sidebar-link">Cross-platform Framework Comparison</a><a href="mvvm.html" class="sidebar-link">MVVM in Doric</a><a href="layout.html" class="sidebar-link">Layout and Containers</a><a href="theory.html" class="sidebar-link">Runtime Architecture</a><a href="progressive.html" class="sidebar-link">Progressive Adoption</a><a href="modular.html" class="sidebar-link">Modularization</a><a href="viewComponent.html" class="sidebar-link">View Components</a>
   </div>
 </aside>
     </div>
@@ -195,13 +133,13 @@
   <nav id="mobile-nav">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
-      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">关于</a>
+      <a href="/docs/" class="mobile-nav-link">Docs</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">Extensions</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">About</a>
       <li class="mobile-nav-item">
         <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
       </li>
     </ul>
     
-      <strong class="mobile-nav-title">使用指南</strong><a href="hello.html" class="mobile-nav-link">你好,Doric</a><a href="usage.html" class="mobile-nav-link">完整使用说明</a><strong class="mobile-nav-title">工具链</strong><a href="commands.html" class="mobile-nav-link">命令行工具</a><a href="devkit.html" class="mobile-nav-link">Doric调试工具(Devkit)</a><strong class="mobile-nav-title">应用接入</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><a href="web.html" class="mobile-nav-link current">Web</a><strong class="mobile-nav-title">Doric扩展</strong><a href="extensions.html" class="mobile-nav-link">注册扩展</a><a href="view.html" class="mobile-nav-link">视图组件</a><a href="plugin.html" class="mobile-nav-link">能力组件</a><strong class="mobile-nav-title">其他文档</strong><a href="comparison.html" class="mobile-nav-link">跨端框架比较</a><a href="mvvm.html" class="mobile-nav-link">Doric中的MVVM</a><a href="layout.html" class="mobile-nav-link">布局方式与布局容器</a><a href="theory.html" class="mobile-nav-link">Doric的运行机制</a><a href="progressive.html" class="mobile-nav-link">渐进式框架</a><a href="modular.html" class="mobile-nav-link">Doric中的模块化</a><a href="viewComponent.html" class="mobile-nav-link">Doric中的视图组件</a>
+      <strong class="mobile-nav-title">Getting Started</strong><a href="hello.html" class="mobile-nav-link">Hello, Doric</a><a href="usage.html" class="mobile-nav-link">Complete Usage Guide</a><strong class="mobile-nav-title">Tooling</strong><a href="commands.html" class="mobile-nav-link">CLI</a><a href="devkit.html" class="mobile-nav-link">Devkit</a><strong class="mobile-nav-title">App Integration</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><a href="web.html" class="mobile-nav-link current">Web</a><strong class="mobile-nav-title">Extensions</strong><a href="extensions.html" class="mobile-nav-link">Register Extensions</a><a href="view.html" class="mobile-nav-link">Custom ViewNode</a><a href="plugin.html" class="mobile-nav-link">Native Plugin</a><strong class="mobile-nav-title">More</strong><a href="comparison.html" class="mobile-nav-link">Cross-platform Framework Comparison</a><a href="mvvm.html" class="mobile-nav-link">MVVM in Doric</a><a href="layout.html" class="mobile-nav-link">Layout and Containers</a><a href="theory.html" class="mobile-nav-link">Runtime Architecture</a><a href="progressive.html" class="mobile-nav-link">Progressive Adoption</a><a href="modular.html" class="mobile-nav-link">Modularization</a><a href="viewComponent.html" class="mobile-nav-link">View Components</a>
     
   </div>
   <div id="mobile-lang-select-wrap">
@@ -209,6 +147,8 @@
     <select id="mobile-lang-select" data-canonical="docs/web.html">
       
         <option value="en" selected>English</option>
+      
+        <option value="zh-cn">简体中文</option>
       
     </select>
   </div>

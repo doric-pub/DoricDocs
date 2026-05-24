@@ -2,7 +2,7 @@
 <html lang="en">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>注册Doric拓展 | Doric</title>
+  <title>Register Doric Extensions | Doric</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
@@ -11,6 +11,8 @@
   
     
       <link rel="alternative" hreflang="en" href="https://doric.pub/docs/extensions">
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://doric.pub/zh-cn/docs/extensions">
     
   
   <!-- Icon -->
@@ -52,7 +54,7 @@
       <a href="/" id="logo">Hexo</a>
     </h1>
     <nav id="main-nav">
-      <a href="/docs/" class="main-nav-link">文档</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">关于</a>
+      <a href="/docs/" class="main-nav-link">Docs</a><a href="/api/" class="main-nav-link">API</a><a href="/extensions/" class="main-nav-link">Extensions</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link">Playground</a><a href="/about/" class="main-nav-link">About</a>
       <a href="https://github.com/doric-pub/Doric" target="_blank" rel="noopener external nofollow noreferrer" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
       <div id="search-input-wrap">
         <div id="search-input-icon">
@@ -77,92 +79,38 @@
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name">注册Doric拓展</h1>
-                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/extensions.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+                <h1 class="article-title" itemprop="name">Register Doric Extensions</h1>
+                <a href="https://github.com/doric-pub/DoricDocs/edit/master/source/docs/extensions.md" target="_blank" rel="noopener external nofollow noreferrer" class="article-edit-link" title="Improve this page"><i class="fa fa-pencil"></i></a>
               </header>
               <div class="article-content" itemprop="articleBody">
-                <blockquote>
-<p>当您需要在Doric中使用已有的原生组件或接口能力时，您可以选择针对Doric SDK进行拓展。<br>本文讲解在Doric中如何进行注册原生组件或接口。</p>
-</blockquote>
-<p>Doric 扩展主要分为两类：</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>用途</th>
-<th>文档</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Native Plugin</td>
-<td>扩展原生能力，例如定位、扫码、加密、业务 SDK 调用</td>
-<td><a href="./plugin.html">能力组件</a></td>
-</tr>
-<tr>
-<td>ViewNode</td>
-<td>扩展原生视图，例如自定义播放器、地图、复杂图表</td>
-<td><a href="./view.html">视图组件</a></td>
-</tr>
-</tbody></table>
-<p>如果需要创建同时包含 JS、Android、iOS 模板的扩展库，可以使用 CLI：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric createLib MyLibrary</span><br></pre></td></tr></table></figure>
-
-<p>生成的扩展库通常包含：</p>
-<ul>
-<li>JS API 与类型定义。</li>
-<li>Android Library 模板。</li>
-<li>iOS Pod 模板。</li>
-<li><code>example/</code> 示例工程。</li>
+                <p>Doric extensions add native capabilities or native view components.</p>
+<h2 id="Extension-Types" class="article-heading"><a href="#Extension-Types" class="headerlink" title="Extension Types"></a>Extension Types<a class="article-anchor" href="#Extension-Types" aria-hidden="true"></a></h2><ul>
+<li>Native Plugin: exposes non-UI native capability.</li>
+<li>ViewNode: exposes custom native UI.</li>
 </ul>
-<h1 id="Doric-Library" class="article-heading"><a href="#Doric-Library" class="headerlink" title="Doric Library"></a>Doric Library<a class="article-anchor" href="#Doric-Library" aria-hidden="true"></a></h1><p><code>DoricLibrary</code> 用于集中注册扩展能力。建议一个业务或三方能力包对应一个 Library，便于统一安装、注册和维护。</p>
-<ol>
-<li>您可以实现您自己的<code>DoricLibrary</code>，并在其中管理您的拓展组件或接口插件。<br>在Android中:<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@DoricComponent</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLibrary</span> <span class="keyword">extends</span> <span class="title">DoricLibrary</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">load</span><span class="params">(DoricRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="comment">///注册一个原生插件</span></span><br><span class="line">        registry.registerNativePlugin(DemoPlugin<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="comment">///注册一个原生视图</span></span><br><span class="line">        registry.registerViewNode(DemoViewNode<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-在iOS中:<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">MyLibrary</span> : <span class="title">DoricLibrary</span></span></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">MyLibrary</span></span></span><br><span class="line">- (<span class="keyword">void</span>)load:(DoricRegistry *)registry &#123;</span><br><span class="line">    <span class="comment">///注册一个原生插件</span></span><br><span class="line">    [registry registerNativePlugin:[DoricDemoPlugin <span class="keyword">class</span>] withName:<span class="string">@"demo"</span>];</span><br><span class="line">    <span class="comment">///注册一个原生视图</span></span><br><span class="line">    [registry registerViewNode:[DoricDemoViewNode <span class="keyword">class</span>] withName:<span class="string">@"DemoView"</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure></li>
-<li>在Doric初始化之前的时机，注册您创建的Library<br>Android:<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Doric.registerLibrary(<span class="keyword">new</span> DemoLibrary());</span><br></pre></td></tr></table></figure>
-iOS:<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line">[Doric registerLibrary:[DemoLibrary new]];</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>注册时机通常放在应用初始化阶段，且需要早于 Doric 页面加载。</p>
-<p><strong>关于如何定义原生插件，请查看<a href="./plugin.html">文档</a></strong></p>
-<p><strong>关于如何定义原生视图，请查看<a href="./view.html">文档</a></strong></p>
-<h1 id="JS-API-导出" class="article-heading"><a href="#JS-API-导出" class="headerlink" title="JS API 导出"></a>JS API 导出<a class="article-anchor" href="#JS-API-导出" aria-hidden="true"></a></h1><p>扩展库除了注册原生实现，还需要提供 JS 侧 API，供业务页面以类型安全的方式调用。</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; BridgeContext &#125; <span class="keyword">from</span> <span class="string">"doric"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params">context: BridgeContext</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        add: <span class="function">(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> context.callNative(<span class="string">"demo"</span>, <span class="string">"add"</span>, &#123; a, b &#125;) <span class="keyword">as</span> <span class="built_in">Promise</span>&lt;<span class="built_in">number</span>&gt;;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对于视图组件，需要在 JS 侧声明对应 View 类，并确保 Native 注册名与 JS <code>viewType</code> 一致。</p>
-<h1 id="调试建议" class="article-heading"><a href="#调试建议" class="headerlink" title="调试建议"></a>调试建议<a class="article-anchor" href="#调试建议" aria-hidden="true"></a></h1><p>扩展开发时建议使用 <code>createLib</code> 生成的 <code>example/</code> 工程验证：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> MyLibrary/example</span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-<p>常见检查项：</p>
-<ul>
-<li>JS 侧插件名与 Native 注册名是否一致。</li>
-<li>JS 方法名与 Native 方法名是否一致。</li>
-<li>Android 方法是否加了 <code>@DoricMethod</code>。</li>
-<li>iOS 方法签名是否符合 Doric Promise 约定。</li>
-<li>ViewNode 名称是否与 JS 侧 View 类型一致。</li>
-<li>扩展库是否在 Doric 初始化前完成注册。</li>
-</ul>
+<h2 id="Library" class="article-heading"><a href="#Library" class="headerlink" title="Library"></a>Library<a class="article-anchor" href="#Library" aria-hidden="true"></a></h2><p>Use <code>DoricLibrary</code> to register plugins and view nodes before loading Doric pages.</p>
+<h2 id="CLI" class="article-heading"><a href="#CLI" class="headerlink" title="CLI"></a>CLI<a class="article-anchor" href="#CLI" aria-hidden="true"></a></h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">doric createLib MyLibrary</span><br></pre></td></tr></table></figure>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-05-24T06:06:05.605Z" itemprop="dateModified">上次更新：2026-05-24</time>
-                <a href="web.html" class="article-footer-prev" title="Web"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="view.html" class="article-footer-next" title="视图组件"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+                <time class="article-footer-updated" datetime="2026-05-24T09:16:04.682Z" itemprop="dateModified">Last updated: 2026-05-24</time>
+                <a href="web.html" class="article-footer-prev" title="Web"><i class="fa fa-chevron-left"></i><span>Previous</span></a><a href="view.html" class="article-footer-next" title="Custom ViewNode"><span>Next</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
             </div>
           </div>
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
-              <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Doric-Library"><span class="toc-text">Doric Library</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS-API-导出"><span class="toc-text">JS API 导出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#调试建议"><span class="toc-text">调试建议</span></a></li></ol>
-              <a href="#" id="article-toc-top">回到顶部</a>
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Extension-Types"><span class="toc-text">Extension Types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Library"><span class="toc-text">Library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CLI"><span class="toc-text">CLI</span></a></li></ol>
+              <a href="#" id="article-toc-top">Back to top</a>
             </div>
           </aside>
         </div>
       </article>
       <aside id="sidebar" role="navigation">
   <div class="inner">
-    <strong class="sidebar-title">使用指南</strong><a href="hello.html" class="sidebar-link">你好,Doric</a><a href="usage.html" class="sidebar-link">完整使用说明</a><strong class="sidebar-title">工具链</strong><a href="commands.html" class="sidebar-link">命令行工具</a><a href="devkit.html" class="sidebar-link">Doric调试工具(Devkit)</a><strong class="sidebar-title">应用接入</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><a href="web.html" class="sidebar-link">Web</a><strong class="sidebar-title">Doric扩展</strong><a href="extensions.html" class="sidebar-link current">注册扩展</a><a href="view.html" class="sidebar-link">视图组件</a><a href="plugin.html" class="sidebar-link">能力组件</a><strong class="sidebar-title">其他文档</strong><a href="comparison.html" class="sidebar-link">跨端框架比较</a><a href="mvvm.html" class="sidebar-link">Doric中的MVVM</a><a href="layout.html" class="sidebar-link">布局方式与布局容器</a><a href="theory.html" class="sidebar-link">Doric的运行机制</a><a href="progressive.html" class="sidebar-link">渐进式框架</a><a href="modular.html" class="sidebar-link">Doric中的模块化</a><a href="viewComponent.html" class="sidebar-link">Doric中的视图组件</a>
+    <strong class="sidebar-title">Getting Started</strong><a href="hello.html" class="sidebar-link">Hello, Doric</a><a href="usage.html" class="sidebar-link">Complete Usage Guide</a><strong class="sidebar-title">Tooling</strong><a href="commands.html" class="sidebar-link">CLI</a><a href="devkit.html" class="sidebar-link">Devkit</a><strong class="sidebar-title">App Integration</strong><a href="android.html" class="sidebar-link">Android</a><a href="ios.html" class="sidebar-link">iOS</a><a href="web.html" class="sidebar-link">Web</a><strong class="sidebar-title">Extensions</strong><a href="extensions.html" class="sidebar-link current">Register Extensions</a><a href="view.html" class="sidebar-link">Custom ViewNode</a><a href="plugin.html" class="sidebar-link">Native Plugin</a><strong class="sidebar-title">More</strong><a href="comparison.html" class="sidebar-link">Cross-platform Framework Comparison</a><a href="mvvm.html" class="sidebar-link">MVVM in Doric</a><a href="layout.html" class="sidebar-link">Layout and Containers</a><a href="theory.html" class="sidebar-link">Runtime Architecture</a><a href="progressive.html" class="sidebar-link">Progressive Adoption</a><a href="modular.html" class="sidebar-link">Modularization</a><a href="viewComponent.html" class="sidebar-link">View Components</a>
   </div>
 </aside>
     </div>
@@ -186,13 +134,13 @@ iOS:<figure class="highlight objectivec"><table><tr><td class="code"><pre><span 
   <nav id="mobile-nav">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
-      <a href="/docs/" class="mobile-nav-link">文档</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">扩展插件</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">关于</a>
+      <a href="/docs/" class="mobile-nav-link">Docs</a><a href="/api/" class="mobile-nav-link">API</a><a href="/extensions/" class="mobile-nav-link">Extensions</a><a href="https://p.doric.pub/play/#example/Gobang.ts" target="_blank" rel="noopener external nofollow noreferrer" class="mobile-nav-link">Playground</a><a href="/about/" class="mobile-nav-link">About</a>
       <li class="mobile-nav-item">
         <a href="https://github.com/doric-pub/Doric" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
       </li>
     </ul>
     
-      <strong class="mobile-nav-title">使用指南</strong><a href="hello.html" class="mobile-nav-link">你好,Doric</a><a href="usage.html" class="mobile-nav-link">完整使用说明</a><strong class="mobile-nav-title">工具链</strong><a href="commands.html" class="mobile-nav-link">命令行工具</a><a href="devkit.html" class="mobile-nav-link">Doric调试工具(Devkit)</a><strong class="mobile-nav-title">应用接入</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><a href="web.html" class="mobile-nav-link">Web</a><strong class="mobile-nav-title">Doric扩展</strong><a href="extensions.html" class="mobile-nav-link current">注册扩展</a><a href="view.html" class="mobile-nav-link">视图组件</a><a href="plugin.html" class="mobile-nav-link">能力组件</a><strong class="mobile-nav-title">其他文档</strong><a href="comparison.html" class="mobile-nav-link">跨端框架比较</a><a href="mvvm.html" class="mobile-nav-link">Doric中的MVVM</a><a href="layout.html" class="mobile-nav-link">布局方式与布局容器</a><a href="theory.html" class="mobile-nav-link">Doric的运行机制</a><a href="progressive.html" class="mobile-nav-link">渐进式框架</a><a href="modular.html" class="mobile-nav-link">Doric中的模块化</a><a href="viewComponent.html" class="mobile-nav-link">Doric中的视图组件</a>
+      <strong class="mobile-nav-title">Getting Started</strong><a href="hello.html" class="mobile-nav-link">Hello, Doric</a><a href="usage.html" class="mobile-nav-link">Complete Usage Guide</a><strong class="mobile-nav-title">Tooling</strong><a href="commands.html" class="mobile-nav-link">CLI</a><a href="devkit.html" class="mobile-nav-link">Devkit</a><strong class="mobile-nav-title">App Integration</strong><a href="android.html" class="mobile-nav-link">Android</a><a href="ios.html" class="mobile-nav-link">iOS</a><a href="web.html" class="mobile-nav-link">Web</a><strong class="mobile-nav-title">Extensions</strong><a href="extensions.html" class="mobile-nav-link current">Register Extensions</a><a href="view.html" class="mobile-nav-link">Custom ViewNode</a><a href="plugin.html" class="mobile-nav-link">Native Plugin</a><strong class="mobile-nav-title">More</strong><a href="comparison.html" class="mobile-nav-link">Cross-platform Framework Comparison</a><a href="mvvm.html" class="mobile-nav-link">MVVM in Doric</a><a href="layout.html" class="mobile-nav-link">Layout and Containers</a><a href="theory.html" class="mobile-nav-link">Runtime Architecture</a><a href="progressive.html" class="mobile-nav-link">Progressive Adoption</a><a href="modular.html" class="mobile-nav-link">Modularization</a><a href="viewComponent.html" class="mobile-nav-link">View Components</a>
     
   </div>
   <div id="mobile-lang-select-wrap">
@@ -200,6 +148,8 @@ iOS:<figure class="highlight objectivec"><table><tr><td class="code"><pre><span 
     <select id="mobile-lang-select" data-canonical="docs/extensions.html">
       
         <option value="en" selected>English</option>
+      
+        <option value="zh-cn">简体中文</option>
       
     </select>
   </div>
