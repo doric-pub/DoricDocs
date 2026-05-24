@@ -44,3 +44,6 @@ npm install -g doric-cli
 
 ## 开发与调试
 请查看文档[Doric 开发与调试](./devkit.html)
+
+## 完整使用说明
+如果需要按当前项目结构了解 Doric 的创建项目、编写 Panel、布局、Widget、Native API、构建调试以及 Android/iOS/Web 接入，请查看[完整使用说明](./usage.html)。

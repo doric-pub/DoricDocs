@@ -26,6 +26,7 @@ sidebar:
     basic_usage: 基础用法
     writing: 写作
     hello: 你好,Doric
+    usage: 完整使用说明
     advanced: 进阶
     theory: Doric的运行机制
     mvvm: Doric中的MVVM
@@ -42,9 +43,11 @@ sidebar:
     bringin: 接入
     android: Android
     iOS: iOS
+    web: Web
     tool: 工具链
     use: 应用接入
     else: 其他文档
+    comparison: 跨端框架比较
   api:
     core: 基础概念
     panel: Panel-页面
@@ -82,4 +85,3 @@ sidebar:
     notch: notch-刘海屏安全区域
     keyboard: keyboard-监听键盘
     imageDecoder: imageDecoder-图片解码
-

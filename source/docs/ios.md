@@ -15,6 +15,24 @@ title: iOS应用中使用Doric
     ```bash
     $ pod install
     ```
+
+# 初始化与注册
+
+如果业务有自定义插件或视图，需要在加载 Doric 页面前注册：
+
+```objectivec
+[Doric registerLibrary:[MyLibrary new]];
+```
+
+可选配置：
+
+```objectivec
+[Doric enablePerformance:YES];
+[Doric enableRenderSnapshot:YES];
+[Doric setLegacyMode:NO];
+[Doric setEnvironmentValue:@{@"channel": @"AppStore"}];
+```
+
 # 常用参数说明
 本小节内容解释Doric SDK参数名词及意义。
 ## `source`
@@ -23,6 +41,18 @@ title: iOS应用中使用Doric
 用于标识Doric运行时，用于热重载调试。可为空。
 ## `extra`
 初始化DoricJS时传入的额外数据,在`Panel`中，可通过`getInitData`获取。为JSON格式的字符串。可传空。
+
+示例：
+
+```objectivec
+NSString *extra = @"{\"userId\":\"10001\"}";
+```
+
+JS 侧读取：
+
+```typescript
+const initData = this.getInitData();
+```
 
 # Doric容器
 Doric容器可以接收Doric JS bundle并运行。
@@ -123,3 +153,26 @@ NSString *alias = @"HelloDoric";
 ```objectivec
     [Doric addJSLoader:[DoricHttpJSLoader new]];
 ```
+
+# 运行脚手架 iOS 工程
+
+通过 `doric create` 创建的项目可以直接运行：
+
+```bash
+$ npm run ios
+```
+
+该命令会执行：
+
+1. 使用 `xcrun xctrace list devices` 列出设备与模拟器。
+2. 选择目标设备。
+3. 在 `iOS/` 下执行 `pod install`。
+4. 使用 `xcodebuild` 构建。
+5. 模拟器使用 `xcrun simctl install/launch`。
+6. 真机使用 `ios-deploy` 安装并启动。
+
+运行前请确认：
+
+- 已安装 Xcode 与 CocoaPods。
+- 真机运行时已安装或允许安装 `ios-deploy`。
+- 当前目录是 Doric 应用根目录。

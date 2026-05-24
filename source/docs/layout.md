@@ -3,6 +3,8 @@ title: 布局方式与布局容器
 ---
 本文讲述在Doric中的布局方式与布局容器
 
+> 如果您是第一次接触 Doric，建议先阅读 [Hello, Doric](./hello.html)，再回到本文理解布局规则。
+
 # 基础属性
 本节内容列举在`View`中定义的基础的属性及其含义
 ## LayoutConfig
@@ -45,10 +47,22 @@ export interface LayoutConfig {
 ```typescript
 // 宽与高都设置为FIT
 fit(): this;
+// 只设置宽为FIT
+fitWidth(): this;
+// 只设置高为FIT
+fitHeight(): this;
 // 宽与高都设置为MOST
 most(): this;
+// 只设置宽为MOST
+mostWidth(): this;
+// 只设置高为MOST
+mostHeight(): this;
 // 宽与高都设置为JUST
 just(): this;
+// 只设置宽为JUST
+justWidth(): this;
+// 只设置高为JUST
+justHeight(): this;
 // 只设置宽的描述
 configWidth(w: LayoutSpec): this;
 // 只设置高的描述
@@ -64,6 +78,11 @@ configMargin(m: {
 configAlignment(a: Gravity): this;
 // 设置权重
 configWeight(w: number): this;
+// 设置最小/最大尺寸
+configMinWidth(v: number): this;
+configMinHeight(v: number): this;
+configMaxWidth(v: number): this;
+configMaxHeight(v: number): this;
 ```
 ### LayoutSpec
 用于描述宽或高两个维度的确定方式。
@@ -120,8 +139,36 @@ view.height = 100
 }
 ```
 
+## 示例
+
+```typescript
+vlayout([
+    text({
+        text: "Title",
+        textSize: 20,
+        layoutConfig: layoutConfig().fit(),
+    }),
+    text({
+        text: "Content",
+        textSize: 14,
+        layoutConfig: layoutConfig()
+            .fit()
+            .configMargin({ top: 8 }),
+    }),
+], {
+    layoutConfig: layoutConfig().most(),
+    padding: {
+        left: 16,
+        right: 16,
+        top: 16,
+        bottom: 16,
+    },
+}).in(rootView);
+```
+
 # Layout容器
-在Doric中，定义了三种父视图来进行布局
+在 Doric 中，常用父视图包括 `Stack`、`VLayout`、`HLayout` 和 `FlexLayout`。
+
 # Stack
 `Stack`是最基本的父视图，子视图按添加顺序覆盖其上。
 此时子视图的`x`,`y`坐标发挥作用，坐标系原点正是父视图的左上角。
@@ -142,6 +189,71 @@ view.height = 100
 子视图个体可通过设置其`Aligment`覆盖改变其水平方向上的对齐方式。
 ## Space
 定义子视图之间的间距
+
+# FlexLayout
+`FlexLayout` 用于处理更灵活的自适应布局。其子视图可通过 `flexConfig` 设置伸缩、换行、排列等规则。
+
+```typescript
+flexlayout([
+    text({
+        text: "A",
+        flexConfig: {
+            flex: 1,
+        },
+    }),
+    text({
+        text: "B",
+        flexConfig: {
+            flex: 2,
+        },
+    }),
+], {
+    layoutConfig: layoutConfig().most(),
+}).in(rootView);
+```
+
+当页面需要更接近 CSS Flexbox 的排布方式时，可以优先考虑 `FlexLayout`；如果只是简单的纵向或横向排列，使用 `VLayout` 与 `HLayout` 更直接。
+
+# 常见问题
+
+## 设置了 width 或 height 但没有生效
+
+请检查对应维度的 `LayoutSpec`。只有当该维度为 `JUST` 时，`width` 或 `height` 才作为最终尺寸使用。
+
+```typescript
+text({
+    text: "Fixed",
+    width: 100,
+    height: 40,
+    layoutConfig: layoutConfig().just(),
+});
+```
+
+## fit 内容尺寸不符合预期
+
+`FIT` 表示由内容撑开。对于 `Text` 是文本内容，对于 `Image` 是图片尺寸，对于容器则由子视图决定。如果容器没有子视图或子视图也没有可计算尺寸，最终尺寸可能为 0。
+
+## most 没有占满屏幕
+
+`MOST` 依赖父容器提供可用空间。若父容器本身没有明确尺寸，子视图无法计算“最大可用空间”。在根视图下通常可使用 `layoutConfig().most()`；在自定义容器内部需要确保父容器尺寸明确。
+
+## VLayout/HLayout 中权重不生效
+
+`weight` 仅在 `VLayout` 和 `HLayout` 中生效，并且只有父容器有剩余空间时才会分配。通常需要父容器在主轴方向为 `MOST` 或有明确尺寸。
+
+```typescript
+vlayout([
+    text({
+        text: "Top",
+        layoutConfig: layoutConfig().fit(),
+    }),
+    stack([], {
+        layoutConfig: layoutConfig().mostWidth().mostHeight().configWeight(1),
+    }),
+], {
+    layoutConfig: layoutConfig().most(),
+}).in(rootView);
+```
 # HLayout
 `HLayout`是水平线性布局,子视图从左向右进行布局。
 ## Gravity

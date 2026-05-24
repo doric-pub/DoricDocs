@@ -1,17 +1,20 @@
 docs:
   quick_start:
     hello: hello.html
+    usage: usage.html
   tool:
     commands: commands.html
     devkit: devkit.html
   use:
     android: android.html
     iOS: ios.html
+    web: web.html
   extend:
     extensions: extensions.html
     view: view.html
     plugin: plugin.html
   else:
+    comparison: comparison.html
     mvvm: mvvm.html
     layout: layout.html
     theory: theory.html
@@ -55,4 +58,3 @@ api:
     notch: notch.html
     keyboard: keyboard.html
     imageDecoder: imageDecoder.html
-

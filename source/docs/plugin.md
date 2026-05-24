@@ -6,7 +6,10 @@ title: 新增Doric扩展接口插件
 # 步骤
 1. 在Doric TS侧定义好TS语言的API
 1. 在Android和iOS端根据定义的API实现相应功能
+1. 在`DoricLibrary`中注册原生插件
 1. 在Doric TS代码中调用TS API
+
+插件名、方法名、参数结构需要在 JS、Android、iOS 之间保持一致。建议先定义 JS API，再按 API 契约实现各端。
 
 # JS API
 首先需要定义JS部分的API，注意此处API定义的名称需要在接下来Android和iOS的开发中保持一致。
@@ -74,6 +77,14 @@ public class MyLibrary extends DoricLibrary {
 ```
 1.结束Android部分的开发，重新编译代码并安装运行。
 
+## Android 注意事项
+
+- 插件类需要继承 `DoricJavaPlugin`。
+- 插件类需要使用 `@DoricPlugin(name = "...")` 标记插件名。
+- 可被 JS 调用的方法需要使用 `@DoricMethod` 标记。
+- 有返回值或异步结果时，通过 `DoricPromise` 回调。
+- 出错时应调用 `promise.reject(...)`，不要静默失败。
+
 # iOS
 1. 新建Plugin类，如下:
 
@@ -113,6 +124,14 @@ public class MyLibrary extends DoricLibrary {
 ```
 1.结束iOS部分的开发，重新编译代码并安装运行。
 
+## iOS 注意事项
+
+- 插件类需要继承 `DoricNativePlugin`。
+- 注册时通过 `withName` 指定插件名。
+- 带 Promise 的方法签名通常为 `methodName:(NSDictionary *)arguments withPromise:(DoricPromise *)promise`。
+- 无返回值方法可以不带 Promise，但需要根据业务确认 JS 侧是否等待结果。
+- 出错时应调用 `[promise reject:...]`。
+
 # TypeScript调用
 使用时，调用JS API即可。
 ```typescript
@@ -127,3 +146,23 @@ async function callNativeExamplePlugin() {
     log(`此处result应为从Native侧传入的参数,值为${result}。`)
 }
 ```
+
+# 常见问题
+
+## JS 调用后没有进入 Native 方法
+
+优先检查：
+
+- `context.callNative` 的第一个参数是否与 Native 注册的插件名一致。
+- 第二个参数是否与 Native 方法名一致。
+- Android 方法是否添加 `@DoricMethod`。
+- iOS 注册 `withName` 是否正确。
+- Library 是否已经在 Doric 初始化前注册。
+
+## Promise 一直不返回
+
+检查 Native 方法中是否所有分支都会调用 `promise.resolve` 或 `promise.reject`。如果方法内部有异步逻辑，需要确保异步回调仍能持有并正确使用 `DoricPromise`。
+
+## 参数类型不符合预期
+
+建议 JS API 层固定参数结构，Native 侧只按该结构解析。避免直接在业务代码中到处写 `context.callNative`，否则不同调用处容易出现字段名不一致。
