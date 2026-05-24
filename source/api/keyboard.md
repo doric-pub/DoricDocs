@@ -1,24 +1,52 @@
 ---
-title: Keyboard
+title: keyboard-监听键盘
 ---
 
-`keyboard(context)` observes keyboard events.
+监听键盘frame变化相关API
 
-## Usage
+### subscribe
 
-Import APIs from `doric` and use them inside a `Panel` or helper module.
+监听键盘frame变化
 
+* 参数类型：
 ```typescript
-import { Panel, Group } from "doric";
+callback: (data: { 
+    oldBottomMargin: number, /// 键盘起始位置时离底部间距
+    oldHeight: number,  /// 键盘起始位置时的高度
+    bottomMargin: number,  /// 键盘最终位置时离底部间距
+    height: number }  /// 键盘最终位置时的高度
+```
+* 返回值:
+```typescript
+Promise<string>  /// 返回一个订阅id
 ```
 
-## Notes
+* 使用示例：
+```typescript
+keyboard(context).subscribe(data => {
+                    bottomView.translationY = - (data.bottomMargin + data.height)
+                }).then(e => {
+                    this.subscribeId = e
+                })
+```
 
-- APIs that call native capabilities usually require `this.context`.
-- View components should be attached to a parent view.
-- Platform-specific behavior depends on the runtime implementation.
+### unsubscribe
 
-## Related
+监听键盘frame变化
 
-- [Complete Usage Guide](../docs/usage.html)
-- [Runtime Architecture](../docs/theory.html)
+* 参数类型：
+```typescript
+subscribeId: string   /// 订阅id
+```
+* 返回值:
+```typescript
+Promise<any>
+```
+
+* 使用示例：
+```typescript
+keyboard(context).unsubscribe(this.subscribeId)
+                 .then(e => {
+                      this.subscribeId = undefined
+                })
+```

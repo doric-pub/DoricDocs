@@ -1,24 +1,36 @@
 ---
-title: StatusBar
+title: statusbar-状态栏
 ---
 
-`statusbar(context)` controls status bar visibility and mode.
+提供状态栏设置API
 
-## Usage
-
-Import APIs from `doric` and use them inside a `Panel` or helper module.
-
+### setHidden
+设置隐藏或显示导航栏
+* 参数类型:
 ```typescript
-import { Panel, Group } from "doric";
+boolean
+```
+* 返回值: 
+```typescript
+Promise<any>
 ```
 
-## Notes
-
-- APIs that call native capabilities usually require `this.context`.
-- View components should be attached to a parent view.
-- Platform-specific behavior depends on the runtime implementation.
-
-## Related
-
-- [Complete Usage Guide](../docs/usage.html)
-- [Runtime Architecture](../docs/theory.html)
+### setMode
+设置导航栏模式为深色或浅色
+* 参数类型:
+```typescript
+enum StatusBarMode {
+        LIGHT = 0,
+        DARK = 1
+}
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+**使用示例：**
+```typescript
+statusbar(context).setHidden(false)
+statusbar(context).setColor(Color.DKGRAY)
+statusbar(context).setMode(StatusBarMode.DARK)
+```

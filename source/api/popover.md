@@ -1,24 +1,48 @@
 ---
-title: Popover
+title: popover-浮层弹窗
 ---
 
-`popover(context)` displays floating panels.
+提供浮层弹窗API
 
-## Usage
-
-Import APIs from `doric` and use them inside a `Panel` or helper module.
-
+### show
+显示浮层
+* 参数类型:
 ```typescript
-import { Panel, Group } from "doric";
+view: View /// 需显示的浮层View
+```
+* 返回值: 
+```typescript
+Promise<any>
 ```
 
-## Notes
+* 使用示例:
+```typescript
+popover(context).show(stack([
+    text({
+        width: 200,
+        height: 50,
+        textColor: Color.WHITE,
+        layoutConfig: layoutConfig().just().configAlignment(Gravity.Center),
+        text: "This is PopOver Window",
+        })
+    ],{
+        layoutConfig: layoutConfig().most().configMargin({left: 20, right:20, top:20, bottom:20}),
+        backgroundColor: Color.RED.alpha(1),
+}))
+```
 
-- APIs that call native capabilities usually require `this.context`.
-- View components should be attached to a parent view.
-- Platform-specific behavior depends on the runtime implementation.
+### dismiss
+隐藏浮层
+* 参数类型:
+```typescript
+view?: View | undefined/// 需消失的浮层View，如果传入undefined，则当前所有浮层都会消失
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
 
-## Related
-
-- [Complete Usage Guide](../docs/usage.html)
-- [Runtime Architecture](../docs/theory.html)
+* 使用示例:
+```typescript
+popover(context).dismiss();
+```

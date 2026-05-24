@@ -1,24 +1,24 @@
 ---
-title: HLayout
+title: HLayout - 水平线性布局容器控件
 ---
 
-`HLayout` arranges children horizontally.
+### 属性
 
-## Usage
+属性 |类型 | 描述
+--- | --- | ---
+space|number|子控件间距
+gravity|Gravity|垂直方向上子控件的对齐方式
 
-Import APIs from `doric` and use them inside a `Panel` or helper module.
-
+### 用法示例
+#### 基础用法
 ```typescript
-import { Panel, Group } from "doric";
+                    hlayout([
+                        box(1),
+                        box(2),
+                        box(3),
+                        box(4),
+                        box(5),
+                    ]).apply({
+                        space: 20
+                    } as IHLayout),
 ```
-
-## Notes
-
-- APIs that call native capabilities usually require `this.context`.
-- View components should be attached to a parent view.
-- Platform-specific behavior depends on the runtime implementation.
-
-## Related
-
-- [Complete Usage Guide](../docs/usage.html)
-- [Runtime Architecture](../docs/theory.html)

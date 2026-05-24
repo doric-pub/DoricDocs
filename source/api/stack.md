@@ -1,24 +1,19 @@
 ---
-title: Stack
+title: Stack - 层叠布局容器控件
 ---
 
-`Stack` overlays children in insertion order.
+子控件都是相对于其左上角顶点摆放
 
-## Usage
-
-Import APIs from `doric` and use them inside a `Panel` or helper module.
-
+### 用法示例
+#### 基础用法
 ```typescript
-import { Panel, Group } from "doric";
+                    stack([
+                        box(1),
+                        box(2),
+                        box(3),
+                        box(4),
+                        box(5),
+                    ]).apply({
+                        space: 20
+                    } as IHLayout),
 ```
-
-## Notes
-
-- APIs that call native capabilities usually require `this.context`.
-- View components should be attached to a parent view.
-- Platform-specific behavior depends on the runtime implementation.
-
-## Related
-
-- [Complete Usage Guide](../docs/usage.html)
-- [Runtime Architecture](../docs/theory.html)

@@ -8,6 +8,7 @@ const lunr = require('lunr');
 const full_url_for = hexo.extend.helper.get('full_url_for').bind(hexo);
 
 const localizedPath = ['docs', 'api'];
+const defaultLang = 'zh-cn';
 
 hexo.extend.helper.register('page_nav', function () {
   const type = this.page.canonical_path.split('/')[0];
@@ -68,11 +69,11 @@ hexo.extend.helper.register('header_menu', function (className) {
   let result = '';
   const self = this;
   const lang = this.page.lang;
-  const isEnglish = lang === 'en';
+  const isDefaultLang = lang === defaultLang;
 
   for (const [title, path] of Object.entries(menu)) {
     let langPath = path;
-    if (!isEnglish && ~localizedPath.indexOf(title)) langPath = lang + path;
+    if (!isDefaultLang && ~localizedPath.indexOf(title)) langPath = lang + path;
 
     result += `<a href="${self.url_for(langPath)}" class="${className}-link">${self.__('menu.' + title)}</a>`;
   }
@@ -82,7 +83,7 @@ hexo.extend.helper.register('header_menu', function (className) {
 
 hexo.extend.helper.register('canonical_url', function (lang) {
   let path = this.page.canonical_path || this.page.path;
-  if (lang && lang !== 'en') path = lang + '/' + path;
+  if (lang && lang !== defaultLang) path = lang + '/' + path;
 
   return full_url_for(path);
 });
@@ -91,7 +92,7 @@ hexo.extend.helper.register('url_for_lang', function (path) {
   const lang = this.page.lang;
   let url = this.url_for(path);
 
-  if (lang !== 'en' && url[0] === '/') url = '/' + lang + url;
+  if (lang !== defaultLang && url[0] === '/') url = '/' + lang + url;
 
   return url;
 });

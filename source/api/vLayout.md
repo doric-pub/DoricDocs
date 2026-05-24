@@ -1,24 +1,24 @@
 ---
-title: VLayout
+title: VLayout - 垂直线性布局组件
 ---
 
-`VLayout` arranges children vertically.
+### 属性
 
-## Usage
+属性 |类型 | 描述
+--- | --- | ---
+space|number|子控件间距
+gravity|Gravity|水平方向上子控件的对齐方式
 
-Import APIs from `doric` and use them inside a `Panel` or helper module.
-
+### 用法示例
+#### 基础用法
 ```typescript
-import { Panel, Group } from "doric";
+                    vlayout([
+                        box(1),
+                        box(2),
+                        box(3),
+                        box(4),
+                        box(5),
+                    ]).apply({
+                        space: 20
+                    } as IVLayout),
 ```
-
-## Notes
-
-- APIs that call native capabilities usually require `this.context`.
-- View components should be attached to a parent view.
-- Platform-specific behavior depends on the runtime implementation.
-
-## Related
-
-- [Complete Usage Guide](../docs/usage.html)
-- [Runtime Architecture](../docs/theory.html)

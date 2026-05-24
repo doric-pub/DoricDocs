@@ -1,24 +1,42 @@
 ---
-title: Scroller
+title: Scroller - 滑动控件
 ---
 
-`Scroller` provides a scrollable container.
+### 属性
 
-## Usage
+属性 |类型 | 描述
+--- | --- | ---
+content|View|可滑动的内容视图
+contentOffset|{ x: number, y: number }|内容视图偏移量
+onScroll|(offset: { x: number, y: number }) => void|滑动过程中的回调
+onScrollEnd|(offset: { x: number, y: number }) => void|滑动停止的回调
+scrollable|boolean|是否可以滑动
+bounces|boolean|边界回弹效果（iOS专属）
 
-Import APIs from `doric` and use them inside a `Panel` or helper module.
-
+### 用法示例
+#### 基础用法
 ```typescript
-import { Panel, Group } from "doric";
+            scroller(
+                vlayout(new Array(100).fill(1).map(e => label('Scroll Content')))
+            ).apply({
+                layoutConfig: layoutConfig().just(),
+                width: 300,
+                height: 500,
+                backgroundColor: Color.RED,
+            }),
 ```
-
-## Notes
-
-- APIs that call native capabilities usually require `this.context`.
-- View components should be attached to a parent view.
-- Platform-specific behavior depends on the runtime implementation.
-
-## Related
-
-- [Complete Usage Guide](../docs/usage.html)
-- [Runtime Architecture](../docs/theory.html)
+#### tsx写法
+```tsx
+      <Scroller
+          width={300}
+          height={500}
+          layoutConfig={layoutConfig().just()}
+          parent={root}
+      >
+          <VLayout
+              layoutConfig={layoutConfig().most().fitHeight()}
+          >
+              { new Array(100).fill(1).map(e => label('Scroll Content')) }
+          </VLayout>
+      </Scroller>
+```

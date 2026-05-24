@@ -1,24 +1,79 @@
 ---
-title: Navbar
+title: navbar-导航栏
 ---
 
-`navbar(context)` controls the navigation bar.
+提供导航栏相关API
 
-## Usage
-
-Import APIs from `doric` and use them inside a `Panel` or helper module.
-
+### isHidden
+当前导航栏是否隐藏
+* 参数类型:
 ```typescript
-import { Panel, Group } from "doric";
+hidden: boolean 
+```
+* 返回值: 
+```typescript
+Promise<boolean>
 ```
 
-## Notes
+### setHidden
+设置导航栏显示或隐藏，
+**请注意：当设置导航栏为隐藏后，Doric视图原点为屏幕左上角，即状态栏会覆盖在DoricPanel之上**
+* 参数类型:
+```typescript
+hidden:boolean
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
 
-- APIs that call native capabilities usually require `this.context`.
-- View components should be attached to a parent view.
-- Platform-specific behavior depends on the runtime implementation.
+### setTitle
+设置导航栏标题
+* 参数类型:
+```typescript
+title:string
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
 
-## Related
+### setBgColor
+设置导航栏背景颜色
+* 参数类型:
+```typescript
+color:Color
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
 
-- [Complete Usage Guide](../docs/usage.html)
-- [Runtime Architecture](../docs/theory.html)
+### setLeft
+设置导航栏左侧Icon或文字按钮
+* 参数类型:
+```typescript
+view: View
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+### setRight
+设置导航栏右侧Icon或文字按钮
+* 参数类型:
+```typescript
+view: View
+```
+* 返回值: 
+```typescript
+Promise<any>
+```
+
+### 使用示例
+```typescript
+const isHidden = await navbar(context).isHidden()
+navbar(context).setBgColor(Color.CYAN)
+navbar(context).setHidden(true)
+navbar(context).setTitle('首页')
+```

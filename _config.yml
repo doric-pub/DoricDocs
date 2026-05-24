@@ -3,8 +3,8 @@ subtitle: "Doric is a cross-platform development framework for Android & iOS & H
 description: "Cross-platform development framework"
 author: Zhou Pengfei
 language:
-  - en
   - zh-cn
+  - en
 timezone: UTC
 
 url: https://doric.pub
