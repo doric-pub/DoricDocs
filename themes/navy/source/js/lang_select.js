@@ -1,15 +1,22 @@
 (function() {
   'use strict';
 
-  var Cookies = window.Cookies.noConflict();
+  function setLangCookie(lang) {
+    if (window.Cookies && window.Cookies.noConflict) {
+      window.Cookies.noConflict().set('nf_lang', lang, { expires: 365 });
+      return;
+    }
+
+    document.cookie = 'nf_lang=' + encodeURIComponent(lang) + '; max-age=31536000; path=/';
+  }
 
   function changeLang() {
     var lang = this.value;
-    var canonical = this.dataset.canonical;
+    var canonical = (this.dataset.canonical || '').replace(/^\/+/, '');
     var path = '/';
     if (lang !== 'zh-cn') path += lang + '/';
 
-    Cookies.set('nf_lang', lang, { expires: 365 });
+    setLangCookie(lang);
     location.href = path + canonical;
   }
 
